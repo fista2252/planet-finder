@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Planet Finder is an open, reproducible workflow for finding and vetting transit signals in public TESS photometry.">
+  <title>Planet Finder · TESS transit research</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="top"><div class="frame top-inner">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true">◌</span> Planet Finder</a>
+    <nav aria-label="Main navigation">
+      <a href="#targets">Targets</a><a href="#planner">Transit planner</a>
+      <a href="https://github.com/fista2252/planet-finder#start-a-run">Run on your computer ↗</a>
+    </nav>
+  </div></header>
+  <main class="frame">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="kicker" id="run-label">TESS transit research</p>
+      <h1 id="page-title">Planet Finder</h1>
+      <p class="lede">Inspect transit evidence from public TESS light curves. Trace each measurement back to its source and see which signals still need follow-up.</p></div>
+      <div class="summary" id="summary" aria-label="Run summary"></div>
+    </section>
+    <p id="message" role="status">Loading run data…</p>
+    <noscript>This explorer uses JavaScript. You can read the machine-readable <a href="data.json">run data</a> directly.</noscript>
+    <section id="targets" aria-labelledby="target-heading" hidden>
+      <div class="section-head"><div><p class="kicker">Evidence</p><h2 id="target-heading">Targets</h2></div><a href="data.json" download>Download run data ↓</a></div>
+      <div class="workspace">
+        <aside class="catalog" aria-label="Target list">
+          <div class="filters">
+            <label for="search">Find a TIC</label><input id="search" type="search" placeholder="e.g. 238187210">
+            <label for="filter">Filter by status</label>
+            <select id="filter"><option value="all">All targets</option><option value="flagged">Flagged for review</option><option value="recovered">Recovered prior period</option><option value="unresolved">Unresolved priority</option></select>
+          </div>
+          <div id="list"></div>
+        </aside>
+        <article class="detail" id="detail" aria-label="Selected target evidence"></article>
+      </div>
+    </section>
+    <section id="planner" aria-labelledby="planner-heading" hidden>
+      <div class="section-head"><div><p class="kicker">Follow-up</p><h2 id="planner-heading">Transit planner</h2></div><a href="predictions.csv" id="schedule-download" download hidden>Download timing table ↓</a></div>
+      <p id="planner-note"></p>
+      <form id="plan-form" hidden>
+        <label>Start BTJD <input id="plan-start" name="start" type="number" min="1000" max="9999" step="any" required></label>
+        <label>End BTJD <input id="plan-end" name="end" type="number" min="1000" max="10000" step="any" required></label>
+        <button type="submit">Calculate windows</button>
+      </form>
+      <div class="table-wrap" id="windows"></div>
+    </section>
+  </main>
+  <footer><div class="frame"><strong>Planet Finder</strong><p>Public TESS photometry via MAST. Community ephemerides by <a href="https://github.com/eumemic/exoplanets">Eumemic</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p><a href="https://github.com/fista2252/planet-finder">Project and methods on GitHub ↗</a></div></footer>
+</body>
+</html>

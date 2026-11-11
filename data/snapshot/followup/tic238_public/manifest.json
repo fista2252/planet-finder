@@ -1,0 +1,43 @@
+[
+  {
+    "file": "gaia_ap.xml",
+    "url": "https://gaia.aip.de/tap/sync?REQUEST=doQuery&LANG=ADQL&QUERY=select+source_id%2Cradius_gspphot%2Cradius_gspphot_lower%2Cradius_gspphot_upper%2Cdistance_gspphot%2Cteff_gspphot%2Clogg_gspphot+from+gaiadr3.astrophysical_parameters+where+source_id%3D4626968478435805568",
+    "status": 200,
+    "bytes": 2986
+  },
+  {
+    "file": "eso_reduced.csv",
+    "url": "https://archive.eso.org/tap_obs/sync",
+    "params": {
+      "REQUEST": "doQuery",
+      "LANG": "ADQL",
+      "FORMAT": "csv",
+      "QUERY": "select top 100 dataproduct_type,target_name,instrument_name,s_ra,s_dec,em_res_power,s_resolution,obs_publisher_did from ivoa.ObsCore where 1=contains(point('ICRS',s_ra,s_dec),circle('ICRS',54.9519878477464,-77.5497475569085,0.008333333))"
+    },
+    "error": "HTTPSConnectionPool(host='archive.eso.org', port=443): Read timed out. (read timeout=28)"
+  },
+  {
+    "file": "eso_raw.csv",
+    "url": "https://archive.eso.org/tap_obs/sync?REQUEST=doQuery&LANG=ADQL&FORMAT=csv&QUERY=select+top+100+instrument%2Ctarget%2Cra%2Cdec%2Cdp_cat%2Cdp_type%2Cdp_id+from+dbo.raw+where+1%3Dcontains%28point%28%27ICRS%27%2Cra%2Cdec%29%2Ccircle%28%27ICRS%27%2C54.9519878477464%2C-77.5497475569085%2C0.008333333%29%29+and+dp_cat%3D%27SCIENCE%27",
+    "status": 400,
+    "bytes": 1416
+  },
+  {
+    "file": "mit_year9.html",
+    "url": "https://tess.mit.edu/tess-year-9-observations/",
+    "params": null,
+    "error": "HTTPSConnectionPool(host='tess.mit.edu', port=443): Max retries exceeded with url: /tess-year-9-observations/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))"
+  },
+  {
+    "file": "heasarc_sector.html",
+    "url": "https://heasarc.gsfc.nasa.gov/docs/tess/sector.html",
+    "status": 200,
+    "bytes": 92657
+  },
+  {
+    "file": "heasarc_ddt.html",
+    "url": "https://heasarc.gsfc.nasa.gov/docs/tess/ddt.html",
+    "status": 200,
+    "bytes": 16544
+  }
+]

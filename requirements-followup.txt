@@ -1,0 +1,4 @@
+-r requirements.txt
+scipy==1.18.1
+batman-package==2.5.3
+setuptools==84.2.0

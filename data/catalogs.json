@@ -1,0 +1,205 @@
+[
+  {
+    "kind": "toi",
+    "matches": [],
+    "rows_checked": 8151,
+    "sha256": "bfad7188c4b458954a2700e78ebb5f1694eeef9c11be10030bade82e133d381f",
+    "state": "checked_snapshot",
+    "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/"
+  },
+  {
+    "kind": "confirmed",
+    "matches": [],
+    "rows_checked": 6157,
+    "sha256": "6911f223906788dc3a303ec79e78142c799c738b6c3bed54f12b486f415c8fb8",
+    "state": "checked_snapshot",
+    "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/"
+  },
+  {
+    "kind": "ctoi",
+    "matches": [],
+    "rows_checked": 5139,
+    "sha256": "30c9221a774ee90de5518c2ef7ec036b54637b8d0f2fdefdba3511062a7fede3",
+    "state": "checked_snapshot",
+    "url": "https://exofop.ipac.caltech.edu/tess/"
+  },
+  {
+    "kind": "eclipsing_binary",
+    "matches": [],
+    "rows_checked": 4584,
+    "sha256": "97e81f6c01716a431379ab6bd37d1182b611a485107110e0eba830f817ba7a8f",
+    "state": "checked_snapshot",
+    "url": "https://tessebs.villanova.edu/"
+  },
+  {
+    "kind": "t16_periodic",
+    "matches": [],
+    "rows_checked": 11143,
+    "sha256": "935f29882b5eb555e8bbe802a54b65d55b2dd166ed8d3c142b070161a95bb399",
+    "state": "checked_snapshot",
+    "url": "https://doi.org/10.7910/DVN/CWEUGW"
+  },
+  {
+    "kind": "single_event",
+    "matches": [
+      {
+        "label": "273607159",
+        "period_days": null,
+        "tic": "273607159"
+      },
+      {
+        "label": "238187210",
+        "period_days": null,
+        "tic": "238187210"
+      },
+      {
+        "label": "220429133",
+        "period_days": null,
+        "tic": "220429133"
+      },
+      {
+        "label": "389667951",
+        "period_days": null,
+        "tic": "389667951"
+      },
+      {
+        "label": "271693283",
+        "period_days": null,
+        "tic": "271693283"
+      },
+      {
+        "label": "141423461",
+        "period_days": null,
+        "tic": "141423461"
+      },
+      {
+        "label": "382528682",
+        "period_days": null,
+        "tic": "382528682"
+      },
+      {
+        "label": "220472094",
+        "period_days": null,
+        "tic": "220472094"
+      },
+      {
+        "label": "388183759",
+        "period_days": null,
+        "tic": "388183759"
+      },
+      {
+        "label": "142108728",
+        "period_days": null,
+        "tic": "142108728"
+      },
+      {
+        "label": "285150350",
+        "period_days": null,
+        "tic": "285150350"
+      },
+      {
+        "label": "182463549",
+        "period_days": null,
+        "tic": "182463549"
+      },
+      {
+        "label": "268910284",
+        "period_days": null,
+        "tic": "268910284"
+      },
+      {
+        "label": "339672790",
+        "period_days": null,
+        "tic": "339672790"
+      },
+      {
+        "label": "150108429",
+        "period_days": null,
+        "tic": "150108429"
+      },
+      {
+        "label": "139695717",
+        "period_days": null,
+        "tic": "139695717"
+      },
+      {
+        "label": "340562993",
+        "period_days": null,
+        "tic": "340562993"
+      },
+      {
+        "label": "269730302",
+        "period_days": null,
+        "tic": "269730302"
+      },
+      {
+        "label": "382576217",
+        "period_days": null,
+        "tic": "382576217"
+      },
+      {
+        "label": "342200068",
+        "period_days": null,
+        "tic": "342200068"
+      },
+      {
+        "label": "359734636",
+        "period_days": null,
+        "tic": "359734636"
+      },
+      {
+        "label": "162809513",
+        "period_days": null,
+        "tic": "162809513"
+      },
+      {
+        "label": "141157968",
+        "period_days": null,
+        "tic": "141157968"
+      },
+      {
+        "label": "25155680",
+        "period_days": null,
+        "tic": "25155680"
+      }
+    ],
+    "rows_checked": 411,
+    "sha256": "973c8d8be0fd593b8ed95fa42c13cf91cb75ffb9277c339781ef2c98dd100555",
+    "state": "checked_snapshot",
+    "url": "https://doi.org/10.7910/DVN/CWEUGW"
+  },
+  {
+    "kind": "community",
+    "matches": [
+      {
+        "label": "TIC238187210_P26.027",
+        "period_days": 26.0268916,
+        "record": {
+          "Rp_Re": "18.94",
+          "T0_BJD_TDB": "2459895.87393",
+          "T0_err_min": "2.3",
+          "TIC": "238187210",
+          "Tmag": "12.94",
+          "candidate_id": "TIC238187210_P26.027",
+          "dec": "-77.549748",
+          "depth_ppm": "13769",
+          "duration_h": "5.95",
+          "next_tc_BJD_TDB": "2461327.353",
+          "next_tc_sigma_min": "3.6",
+          "period_d": "26.0268916",
+          "period_err_d": "3.5e-05",
+          "ra": "54.951988",
+          "registered": "2026-10-10",
+          "tess_sectors_planned": "",
+          "tess_transits_scheduled": "0",
+          "tier": "S"
+        },
+        "tic": "238187210"
+      }
+    ],
+    "rows_checked": 740,
+    "sha256": "795b431cf3c057115fb09b055fe20cfa03482d24448b324a9920b27161db42a5",
+    "state": "checked_snapshot",
+    "url": "https://github.com/eumemic/exoplanets/blob/e2eee928fd621f75c1621f6b4206d34bb222ae59/candidates/ephemerides.csv"
+  }
+]

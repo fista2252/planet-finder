@@ -1,0 +1,244 @@
+{
+  "269730302": {
+    "period": 28.430789959609342,
+    "epoch": 1520.4029497332144,
+    "odd_even": {
+      "n": [
+        10,
+        7
+      ],
+      "median_depth": [
+        0.008412890204135576,
+        0.008165954577114174
+      ],
+      "even_minus_odd_95": [
+        -0.00030088411416357916,
+        0.00111613284228052
+      ]
+    },
+    "secondary": {
+      "best_phase": 0.655,
+      "best_score": 3.2015422866763,
+      "best_n": 19,
+      "phase_scan_signflip_p": 0.5071232191952012,
+      "half_n": 19,
+      "half_median_depth": 1.4419414651332442e-05,
+      "half_median_95": [
+        -0.000138035909115162,
+        9.993332150728407e-05
+      ],
+      "half_score": -0.3427145863330688
+    },
+    "next": [
+      {
+        "cycle": 100,
+        "btjd": 4363.481945694149,
+        "date_approx": "2026-11-18",
+        "timing_95_minutes": 4.262736489852945
+      },
+      {
+        "cycle": 101,
+        "btjd": 4391.912735653757,
+        "date_approx": "2026-12-17",
+        "timing_95_minutes": 4.309368755418071
+      },
+      {
+        "cycle": 102,
+        "btjd": 4420.343525613367,
+        "date_approx": "2027-01-14",
+        "timing_95_minutes": 4.356069368272094
+      }
+    ]
+  },
+  "238187210": {
+    "period": 26.02683864090257,
+    "epoch": 1334.2650177924663,
+    "odd_even": {
+      "n": [
+        10,
+        9
+      ],
+      "median_depth": [
+        0.012317709415711127,
+        0.009967674123615086
+      ],
+      "even_minus_odd_95": [
+        -0.0019879897193385895,
+        0.004120226336361957
+      ]
+    },
+    "secondary": {
+      "best_phase": 0.08,
+      "best_score": 2.7790531562640295,
+      "best_n": 18,
+      "phase_scan_signflip_p": 0.5863534116470882,
+      "half_n": 15,
+      "half_median_depth": -0.00019122082870345195,
+      "half_median_95": [
+        -0.0008184209571981845,
+        0.00026236303979578206
+      ],
+      "half_score": -1.770625960423373
+    },
+    "next": [
+      {
+        "cycle": 117,
+        "btjd": 4379.405138778067,
+        "date_approx": "2026-12-04",
+        "timing_95_minutes": 12.470089873418615
+      },
+      {
+        "cycle": 118,
+        "btjd": 4405.43197741897,
+        "date_approx": "2026-12-30",
+        "timing_95_minutes": 12.61550932004029
+      },
+      {
+        "cycle": 119,
+        "btjd": 4431.458816059872,
+        "date_approx": "2027-01-25",
+        "timing_95_minutes": 12.76144574482842
+      }
+    ]
+  },
+  "339672790": [
+    {
+      "integer_cycles": 6,
+      "period": 119.78418493123017,
+      "period_sigma_floor": 0.0018961623063571296,
+      "next": [
+        {
+          "cycle": 24,
+          "btjd": 4367.093025342339,
+          "date_approx": "2026-11-22",
+          "timing_95_minutes": 101.7841085957694
+        },
+        {
+          "cycle": 25,
+          "btjd": 4486.87721027357,
+          "date_approx": "2027-03-22",
+          "timing_95_minutes": 107.10352731109839
+        },
+        {
+          "cycle": 26,
+          "btjd": 4606.6613952048,
+          "date_approx": "2027-07-20",
+          "timing_95_minutes": 112.42601281757925
+        }
+      ],
+      "central_injection_depth": 0.018593888231461596,
+      "rejected": false,
+      "predicted_in_product_span": [
+        {
+          "sector": 90,
+          "cycle": 19,
+          "center": 3768.172100686189,
+          "center_halfwidth_95": 0.05226095037916328,
+          "rejected_here": false,
+          "offset_measurements": [
+            {
+              "center": 3768.11983973581,
+              "actual_depth": 0.00021785574475849528,
+              "error": 0.0007409596786796513,
+              "points": 107,
+              "injected_response": 0.012428650776812015,
+              "injected_score": 17.067739157015843
+            },
+            {
+              "center": 3768.145970210999,
+              "actual_depth": 0.0001226652426540452,
+              "error": 0.0007619632768306373,
+              "points": 96,
+              "injected_response": 0.012005951212973348,
+              "injected_score": 15.917586613984948
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "integer_cycles": 5,
+      "period": 143.7410219174762,
+      "period_sigma_floor": 0.0022753947676285554,
+      "next": [
+        {
+          "cycle": 20,
+          "btjd": 4367.093025342339,
+          "date_approx": "2026-11-22",
+          "timing_95_minutes": 101.7841085957694
+        },
+        {
+          "cycle": 21,
+          "btjd": 4510.834047259816,
+          "date_approx": "2027-04-15",
+          "timing_95_minutes": 108.16779355213001
+        },
+        {
+          "cycle": 22,
+          "btjd": 4654.575069177292,
+          "date_approx": "2027-09-06",
+          "timing_95_minutes": 114.55576997731778
+        }
+      ],
+      "central_injection_depth": 0.018593888231461596,
+      "rejected": false,
+      "predicted_in_product_span": []
+    },
+    {
+      "integer_cycles": 3,
+      "period": 239.56836986246034,
+      "period_sigma_floor": 0.0037923246127142592,
+      "next": [
+        {
+          "cycle": 12,
+          "btjd": 4367.093025342339,
+          "date_approx": "2026-11-22",
+          "timing_95_minutes": 101.7841085957694
+        },
+        {
+          "cycle": 13,
+          "btjd": 4606.6613952048,
+          "date_approx": "2027-07-20",
+          "timing_95_minutes": 112.42601281757925
+        },
+        {
+          "cycle": 14,
+          "btjd": 4846.229765067261,
+          "date_approx": "2028-03-15",
+          "timing_95_minutes": 123.07859251885967
+        }
+      ],
+      "central_injection_depth": 0.018593888231461596,
+      "rejected": false,
+      "predicted_in_product_span": []
+    },
+    {
+      "integer_cycles": 2,
+      "period": 359.3525547936905,
+      "period_sigma_floor": 0.005688486919071389,
+      "next": [
+        {
+          "cycle": 8,
+          "btjd": 4367.093025342339,
+          "date_approx": "2026-11-22",
+          "timing_95_minutes": 101.7841085957694
+        },
+        {
+          "cycle": 9,
+          "btjd": 4726.44558013603,
+          "date_approx": "2027-11-16",
+          "timing_95_minutes": 117.75114924863051
+        },
+        {
+          "cycle": 10,
+          "btjd": 5085.798134929721,
+          "date_approx": "2028-11-10",
+          "timing_95_minutes": 133.73929675951794
+        }
+      ],
+      "central_injection_depth": 0.018593888231461596,
+      "rejected": false,
+      "predicted_in_product_span": []
+    }
+  ]
+}

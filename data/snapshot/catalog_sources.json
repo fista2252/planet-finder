@@ -1,0 +1,72 @@
+[
+  {
+    "file": "singleTransit_candidate_table.csv",
+    "url": "https://dataverse.harvard.edu/api/access/datafile/13605256?format=original",
+    "bytes": 24997,
+    "sha256": "973c8d8be0fd593b8ed95fa42c13cf91cb75ffb9277c339781ef2c98dd100555",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "t16_periodic.csv",
+    "url": "https://dataverse.harvard.edu/api/access/datafile/13605255?format=original",
+    "bytes": 3479020,
+    "sha256": "935f29882b5eb555e8bbe802a54b65d55b2dd166ed8d3c142b070161a95bb399",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "exofop_ctoi.csv",
+    "url": "https://exofop.ipac.caltech.edu/tess/download_ctoi.php?output=csv",
+    "bytes": 2335246,
+    "sha256": "30c9221a774ee90de5518c2ef7ec036b54637b8d0f2fdefdba3511062a7fede3",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "toi_archive.csv",
+    "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tid,toi,tfopwg_disp,pl_orbper,pl_tranmid+from+toi&format=csv",
+    "bytes": 414228,
+    "sha256": "bfad7188c4b458954a2700e78ebb5f1694eeef9c11be10030bade82e133d381f",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "confirmed_planets.csv",
+    "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tic_id,pl_name,pl_orbper,pl_tranmid+from+pscomppars+where+tic_id+is+not+null&format=csv",
+    "bytes": 361974,
+    "sha256": "6911f223906788dc3a303ec79e78142c799c738b6c3bed54f12b486f415c8fb8",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "tess_ebs.csv",
+    "url": "https://archive.stsci.edu/hlsps/tess-ebs/hlsp_tess-ebs_tess_lcf-ffi_s0001-s0026_tess_v1.0_cat.csv",
+    "bytes": 1898138,
+    "sha256": "97e81f6c01716a431379ab6bd37d1182b611a485107110e0eba830f817ba7a8f",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "raven_nsfp09_table.csv",
+    "url": "https://zenodo.org/records/19661443/files/nsfp09_table.csv",
+    "bytes": 3848618,
+    "sha256": "7b4fb0b02a8597cad8ecc4ca1687be1e75ab5b04fb74e7232ad834944641df3a",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "raven_val_rp8_table.csv",
+    "url": "https://zenodo.org/records/19661443/files/val_rp8_table.csv",
+    "bytes": 306484,
+    "sha256": "94f035680944937d5873ecefcfeeb69ddd5982b537edff841cdee3027b73c356",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "raven_val_table.csv",
+    "url": "https://zenodo.org/records/19661443/files/val_table.csv",
+    "bytes": 218985,
+    "sha256": "dbef90f19a5714bb0ed93e8e637a04b50fb506f9ddaf29829951032b751358f8",
+    "accessed": "2026-11-09"
+  },
+  {
+    "file": "raven_vet_table.csv",
+    "url": "https://zenodo.org/records/19661443/files/vet_table.csv",
+    "bytes": 3227311,
+    "sha256": "59760bd0bd749f74bb2f25e5567ef92b34209821b7a8e436038a84124bdd1df8",
+    "accessed": "2026-11-09"
+  }
+]

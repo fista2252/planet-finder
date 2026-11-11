@@ -1,0 +1,182 @@
+[
+  {
+    "logical_path": "cohort.json",
+    "path": "cohort.json.gz",
+    "sha256": "1835fe48417bb3edff61f7e5bc0d9516a3e72cf08f368f5e67790582cc7c08b2",
+    "uncompressed_sha256": "6bcf41d783abded60a70a0a568f37a040759a68828c241eff6ad725e46ab9a95"
+  },
+  {
+    "logical_path": "catalog_sources.json",
+    "path": "catalog_sources.json",
+    "sha256": "313b85066ac50cca9fd0cf95e1fee6162c9b1185b8386c79537f5dd818046480",
+    "uncompressed_sha256": "313b85066ac50cca9fd0cf95e1fee6162c9b1185b8386c79537f5dd818046480"
+  },
+  {
+    "logical_path": "selection_audit.csv",
+    "path": "selection_audit.csv.gz",
+    "sha256": "6c8ec11a1d1cf6c42e7cc419aafa3d0e19bb75eeb417d1bcb0581f8ec3a98ba9",
+    "uncompressed_sha256": "d82f04b1c7c2a4acd983a45c0d11203f9218dc52445b8034f94683124ead70cb"
+  },
+  {
+    "logical_path": "download_manifest.json",
+    "path": "download_manifest.json.gz",
+    "sha256": "6a5d6bac730fc1f8002f3dac50c232138d4fcf919a0fecf58fd7988c68fbcf5d",
+    "uncompressed_sha256": "497330393d214af7dff5152a8f44d98c47b989c424c725d342280bca6c861ea7"
+  },
+  {
+    "logical_path": "screen.json",
+    "path": "screen.json.gz",
+    "sha256": "7daaf6641787f87bdfacfe9219dd2e832d301e114927d92677b8e00c8c94245c",
+    "uncompressed_sha256": "85b1c0106a80adc3f7e5b20c85a01d84e171b857d536d296cbc46bf4c2be1ad7"
+  },
+  {
+    "logical_path": "aliases.json",
+    "path": "aliases.json.gz",
+    "sha256": "9ba63269490c98b90383b5b63cb651c30140d42ea95887647f2cb3ffcb15f074",
+    "uncompressed_sha256": "1de9ba93c70f0853eca19f01ed881cf17fa3763ee3e436aa07c9e34fc2004bad"
+  },
+  {
+    "logical_path": "vetting.json",
+    "path": "vetting.json.gz",
+    "sha256": "568c629be6f5d876d0e305304fb4eabf5acb5750bd074de7eeac4dc940108b84",
+    "uncompressed_sha256": "125f744c6430efa0b9ced9d0e2c94acb6cb1078f6e483332d72c4cb3688969ed"
+  },
+  {
+    "logical_path": "short_period.json",
+    "path": "short_period.json.gz",
+    "sha256": "849a05df42aaa0476d2581a220d051af604bfefd2acc6c9f527409fb008577eb",
+    "uncompressed_sha256": "51022767608b5c2500d550e6f876e69a8a3c2d9fca114023b8f552a33b7f0e76"
+  },
+  {
+    "logical_path": "raven_matches.json",
+    "path": "raven_matches.json",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "uncompressed_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "logical_path": "ephemeris_metrics.json",
+    "path": "ephemeris_metrics.json",
+    "sha256": "196698f64b90dd6d61d8ca150edc7f80e9c3185ad58e959106a034c3e05601aa",
+    "uncompressed_sha256": "196698f64b90dd6d61d8ca150edc7f80e9c3185ad58e959106a034c3e05601aa"
+  },
+  {
+    "logical_path": "ephemeris_vetting.json",
+    "path": "ephemeris_vetting.json.gz",
+    "sha256": "8511db0e374905f5d7af36cb4bbb41b104f6170b2c0ac16232f48d4a99b4882c",
+    "uncompressed_sha256": "b14f8c962d815d6161de23ee47cbd02f163cebdcc6b12023c8a6b2a58025563f"
+  },
+  {
+    "logical_path": "neighbor_220429131_check.json",
+    "path": "neighbor_220429131_check.json",
+    "sha256": "d847097b32b1065be15a70775c690b145d12ed3f88747a6203f15a4f8a71f532",
+    "uncompressed_sha256": "d847097b32b1065be15a70775c690b145d12ed3f88747a6203f15a4f8a71f532"
+  },
+  {
+    "logical_path": "pixel_vetting.json",
+    "path": "pixel_vetting.json.gz",
+    "sha256": "621c66c41eefcc516f6a2ac759f300b601299490d4ff7ab534aa025021e60f23",
+    "uncompressed_sha256": "c444d656265209690f4a139d86ce38e005f238de4b0a9d8e25a1876922db62c1"
+  },
+  {
+    "logical_path": "pixel_summary.csv",
+    "path": "pixel_summary.csv",
+    "sha256": "62fae4fc615825453bed4f083b33de71d51a971ffcdaad9057cbfc4e7834097d",
+    "uncompressed_sha256": "62fae4fc615825453bed4f083b33de71d51a971ffcdaad9057cbfc4e7834097d"
+  },
+  {
+    "logical_path": "cutout_manifest.json",
+    "path": "cutout_manifest.json",
+    "sha256": "967a9a5bfa6e880f20c56c1ff62b5afec50b7b5ffcfd47a0e09eb990cd91dce9",
+    "uncompressed_sha256": "967a9a5bfa6e880f20c56c1ff62b5afec50b7b5ffcfd47a0e09eb990cd91dce9"
+  },
+  {
+    "logical_path": "pilot_summary.csv",
+    "path": "pilot_summary.csv",
+    "sha256": "ece1fec1620579dd6e4942c7af5d7411eaa908d606e75acb246fb2b49af7d1aa",
+    "uncompressed_sha256": "ece1fec1620579dd6e4942c7af5d7411eaa908d606e75acb246fb2b49af7d1aa"
+  },
+  {
+    "logical_path": "followup/transit_fits.json",
+    "path": "followup/transit_fits.json.gz",
+    "sha256": "f22bf74a59bd88d2f60dffb6da3be7ac1bd9f3d9a2c2919d610a676c90d515c9",
+    "uncompressed_sha256": "c1f1bc3f1315dd12deed5883babcc03b215764ee0d74ae5b8d513b7a527258e8"
+  },
+  {
+    "logical_path": "followup/diagnostics.json",
+    "path": "followup/diagnostics.json",
+    "sha256": "b8cb03c4c2d58750e83808d741865b5b944f23daa6e520442d9ca3b47075d316",
+    "uncompressed_sha256": "b8cb03c4c2d58750e83808d741865b5b944f23daa6e520442d9ca3b47075d316"
+  },
+  {
+    "logical_path": "followup/timing_check.json",
+    "path": "followup/timing_check.json",
+    "sha256": "7749603a2d3df45652f12383cc9d4ca39cc7af797ffc30da3bdf96ba8c500a04",
+    "uncompressed_sha256": "7749603a2d3df45652f12383cc9d4ca39cc7af797ffc30da3bdf96ba8c500a04"
+  },
+  {
+    "logical_path": "followup/centroid_check.json",
+    "path": "followup/centroid_check.json",
+    "sha256": "491ad370d7d653ccf5a72d268787ae66c664f0e90430573e51385d00657ac137",
+    "uncompressed_sha256": "491ad370d7d653ccf5a72d268787ae66c664f0e90430573e51385d00657ac137"
+  },
+  {
+    "logical_path": "followup/unused_observations.json",
+    "path": "followup/unused_observations.json",
+    "sha256": "8b74fba88450893dba0bbb8801e9f97e08108d06cef0465834eb6de4b131a36d",
+    "uncompressed_sha256": "8b74fba88450893dba0bbb8801e9f97e08108d06cef0465834eb6de4b131a36d"
+  },
+  {
+    "logical_path": "followup/tic238_audit.json",
+    "path": "followup/tic238_audit.json.gz",
+    "sha256": "4ae247172e1da778fc78d337d30272cec2321e1495008e3ef3937ae17608f096",
+    "uncompressed_sha256": "ab150f5211b8a3c6b9bf22dbde8545d35f15a27337e38b9594dc5c65ea45b4fb"
+  },
+  {
+    "logical_path": "followup/tic238_pixel_inputs.json",
+    "path": "followup/tic238_pixel_inputs.json",
+    "sha256": "964d76434197827c3dd485167c1e263567a522a920888d80259356070303adab",
+    "uncompressed_sha256": "964d76434197827c3dd485167c1e263567a522a920888d80259356070303adab"
+  },
+  {
+    "logical_path": "followup/tic238_pixels.json",
+    "path": "followup/tic238_pixels.json",
+    "sha256": "7f3fae63163884e3e021f4ebda0179c8cd55c2dfc7b936bbbab4cd1d92e6adac",
+    "uncompressed_sha256": "7f3fae63163884e3e021f4ebda0179c8cd55c2dfc7b936bbbab4cd1d92e6adac"
+  },
+  {
+    "logical_path": "followup/tic238_visibility.json",
+    "path": "followup/tic238_visibility.json",
+    "sha256": "c87765e47f90277cb9c1b94cd2c4f7d3ab6f8012b809b983f0d168244d05b232",
+    "uncompressed_sha256": "c87765e47f90277cb9c1b94cd2c4f7d3ab6f8012b809b983f0d168244d05b232"
+  },
+  {
+    "logical_path": "followup/tic238_public/gaia_ap.xml",
+    "path": "followup/tic238_public/gaia_ap.xml",
+    "sha256": "775c4658efe2bec3b6a621c8e89fc2b7d58dcd6c1c99c2ae9e455f770b50e405",
+    "uncompressed_sha256": "775c4658efe2bec3b6a621c8e89fc2b7d58dcd6c1c99c2ae9e455f770b50e405"
+  },
+  {
+    "logical_path": "followup/tic238_public/nasa_pointings.txt",
+    "path": "followup/tic238_public/nasa_pointings.txt",
+    "sha256": "dcfc10bb74a2395344d6cebd3fdf55063a7da604727eff5b89044d41404da9ce",
+    "uncompressed_sha256": "dcfc10bb74a2395344d6cebd3fdf55063a7da604727eff5b89044d41404da9ce"
+  },
+  {
+    "logical_path": "followup/tic238_public/eso_cone_retry.csv",
+    "path": "followup/tic238_public/eso_cone_retry.csv",
+    "sha256": "cf5ddb4ef1f54443e3eee2e851ffd246fbcb996859c2cf1ccd1fd878a0883b4c",
+    "uncompressed_sha256": "cf5ddb4ef1f54443e3eee2e851ffd246fbcb996859c2cf1ccd1fd878a0883b4c"
+  },
+  {
+    "logical_path": "followup/tic238_public/manifest.json",
+    "path": "followup/tic238_public/manifest.json",
+    "sha256": "e6b0be2ad96ec11b17f6985c7536aed37d6f21ba56ffccef84281724f736310f",
+    "uncompressed_sha256": "e6b0be2ad96ec11b17f6985c7536aed37d6f21ba56ffccef84281724f736310f"
+  },
+  {
+    "logical_path": "predictions.csv",
+    "path": "predictions.csv",
+    "sha256": "42c223aa6f2798c32e0ff67ca4f6e9610b6ea41a30a41c2d162e8c1ced0199c9",
+    "uncompressed_sha256": "42c223aa6f2798c32e0ff67ca4f6e9610b6ea41a30a41c2d162e8c1ced0199c9"
+  }
+]

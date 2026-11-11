@@ -1,0 +1,132 @@
+[
+  {
+    "tic": "269730302",
+    "sector": 38,
+    "product": "unused TESScut",
+    "span": [
+      2333.8582593754054,
+      2360.5460328773306
+    ],
+    "nearest_outside": [
+      2316.465068602276,
+      2373.3266485214945
+    ],
+    "events": [],
+    "median_net_aperture": -0.05712039675563574,
+    "reference_source_aperture": 7793.1474533081055,
+    "error": "No useful target flux in aperture compared with verified source-bearing cutout",
+    "predicted_epochs": [
+      2344.8958585618852
+    ]
+  },
+  {
+    "tic": "238187210",
+    "sector": 5,
+    "product": "unused TESScut",
+    "span": [
+      1437.9896497653394,
+      1464.1351936572664
+    ],
+    "nearest_outside": [
+      1412.345533715174,
+      1464.3992109969793
+    ],
+    "events": [],
+    "median_net_aperture": -0.030887335538864136,
+    "reference_source_aperture": 913.982063293457,
+    "error": "No useful target flux in aperture compared with verified source-bearing cutout",
+    "predicted_epochs": [
+      1438.3723723560765
+    ]
+  },
+  {
+    "tic": "238187210",
+    "sector": 9,
+    "product": "unused TESScut",
+    "span": [
+      1543.7809991417917,
+      1568.447921187035
+    ],
+    "nearest_outside": [
+      1542.479726919687,
+      1568.5065655605895
+    ],
+    "events": [],
+    "median_net_aperture": 0.025612245604861528,
+    "reference_source_aperture": 913.982063293457,
+    "error": "No useful target flux in aperture compared with verified source-bearing cutout",
+    "predicted_epochs": []
+  },
+  {
+    "tic": "269730302",
+    "sector": 8,
+    "product": "TGLC cal_psf_flux",
+    "result": {
+      "depth": 0.005370562357336163,
+      "error": 0.00035762846172858253,
+      "nominal_score": 15.017155881211941,
+      "in_template": 9,
+      "points": 40
+    }
+  },
+  {
+    "tic": "269730302",
+    "sector": 8,
+    "product": "TGLC cal_aper_flux",
+    "result": {
+      "depth": 0.009309821418433957,
+      "error": 0.0003180547169785626,
+      "nominal_score": 29.271131416867036,
+      "in_template": 9,
+      "points": 40
+    }
+  },
+  {
+    "tic": "238187210",
+    "sector": 1,
+    "product": "TGLC cal_psf_flux",
+    "result": {
+      "depth": 0.013384133065281363,
+      "error": 0.0007628432978906273,
+      "nominal_score": 17.54506214092781,
+      "in_template": 13,
+      "points": 61
+    }
+  },
+  {
+    "tic": "238187210",
+    "sector": 1,
+    "product": "TGLC cal_aper_flux",
+    "result": {
+      "depth": 0.014288430812138,
+      "error": 0.0007007917265034214,
+      "nominal_score": 20.38898330525345,
+      "in_template": 13,
+      "points": 61
+    }
+  },
+  {
+    "tic": "339672790",
+    "sector": 7,
+    "product": "TGLC cal_psf_flux",
+    "result": {
+      "depth": 0.03518300767435385,
+      "error": 0.0006873104163773342,
+      "nominal_score": 51.189399776298956,
+      "in_template": 18,
+      "points": 64
+    }
+  },
+  {
+    "tic": "339672790",
+    "sector": 7,
+    "product": "TGLC cal_aper_flux",
+    "result": {
+      "depth": 0.04788142416019424,
+      "error": 0.0007351062883090634,
+      "nominal_score": 65.13537555274358,
+      "in_template": 18,
+      "points": 64
+    }
+  }
+]

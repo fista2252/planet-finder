@@ -1,0 +1,312 @@
+{
+  "269730302": {
+    "timing_rms_minutes": 1.8827699990643465,
+    "valid_events": 17,
+    "events": [
+      {
+        "sector": 1,
+        "cycle": -6,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.4043886872197943,
+        "edge": false
+      },
+      {
+        "sector": 2,
+        "cycle": -5,
+        "offset_days": -0.001625409880689141,
+        "amplitude_scale": 0.3599235346550853,
+        "edge": false
+      },
+      {
+        "sector": 12,
+        "cycle": 4,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.38278009902732324,
+        "edge": false
+      },
+      {
+        "sector": 13,
+        "cycle": 5,
+        "offset_days": 0.0008127049403445635,
+        "amplitude_scale": 0.3941523632896361,
+        "edge": false
+      },
+      {
+        "sector": 29,
+        "cycle": 20,
+        "offset_days": -0.001625409880689141,
+        "amplitude_scale": 0.4196635175103625,
+        "edge": false
+      },
+      {
+        "sector": 35,
+        "cycle": 26,
+        "offset_days": -0.001625409880689141,
+        "amplitude_scale": 0.43477406099607874,
+        "edge": false
+      },
+      {
+        "sector": 39,
+        "cycle": 30,
+        "offset_days": 0.0008127049403445635,
+        "amplitude_scale": 0.4070999674234032,
+        "edge": false
+      },
+      {
+        "sector": 61,
+        "cycle": 51,
+        "offset_days": 0.001625409880689134,
+        "amplitude_scale": 0.4104175309766689,
+        "edge": false
+      },
+      {
+        "sector": 62,
+        "cycle": 52,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.39392507070976984,
+        "edge": false
+      },
+      {
+        "sector": 65,
+        "cycle": 55,
+        "offset_days": 0.001625409880689134,
+        "amplitude_scale": 0.39469194916947953,
+        "edge": false
+      },
+      {
+        "sector": 66,
+        "cycle": 56,
+        "offset_days": 0.0008127049403445635,
+        "amplitude_scale": 0.4082800720549983,
+        "edge": false
+      },
+      {
+        "sector": 67,
+        "cycle": 57,
+        "offset_days": -0.0024381148210337045,
+        "amplitude_scale": 0.3964248842223167,
+        "edge": false
+      },
+      {
+        "sector": 68,
+        "cycle": 58,
+        "offset_days": 0.0008127049403445635,
+        "amplitude_scale": 0.4179742728610939,
+        "edge": false
+      },
+      {
+        "sector": 88,
+        "cycle": 77,
+        "offset_days": 0.0008127049403445635,
+        "amplitude_scale": 0.40955762434801324,
+        "edge": false
+      },
+      {
+        "sector": 93,
+        "cycle": 82,
+        "offset_days": 0.0008127049403445635,
+        "amplitude_scale": 0.41659642149450593,
+        "edge": false
+      },
+      {
+        "sector": 94,
+        "cycle": 83,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.35564069337865456,
+        "edge": false
+      },
+      {
+        "sector": 8,
+        "cycle": 0,
+        "offset_days": 0.0024381148210336975,
+        "amplitude_scale": 0.2606335423612799,
+        "edge": false
+      }
+    ],
+    "next": [
+      {
+        "cycle": 100,
+        "btjd": 4363.481945694149,
+        "date_approx": "2026-11-18",
+        "timing_95_minutes": 4.262736489852945,
+        "planning_halfwidth_minutes": 20.058188412265043
+      },
+      {
+        "cycle": 101,
+        "btjd": 4391.912735653757,
+        "date_approx": "2026-12-17",
+        "timing_95_minutes": 4.309368755418071,
+        "planning_halfwidth_minutes": 20.06815036494827
+      },
+      {
+        "cycle": 102,
+        "btjd": 4420.343525613367,
+        "date_approx": "2027-01-14",
+        "timing_95_minutes": 4.356069368272094,
+        "planning_halfwidth_minutes": 20.07823050821955
+      }
+    ]
+  },
+  "238187210": {
+    "timing_rms_minutes": 6.117550454217397,
+    "valid_events": 19,
+    "events": [
+      {
+        "sector": 2,
+        "cycle": 1,
+        "offset_days": -0.008799541449396181,
+        "amplitude_scale": 1.0067806208333765,
+        "edge": false
+      },
+      {
+        "sector": 12,
+        "cycle": 12,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.973516604432711,
+        "edge": false
+      },
+      {
+        "sector": 13,
+        "cycle": 13,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.9591460492981907,
+        "edge": false
+      },
+      {
+        "sector": 27,
+        "cycle": 27,
+        "offset_days": 0.0037712320497412105,
+        "amplitude_scale": 0.7032170353492345,
+        "edge": false
+      },
+      {
+        "sector": 28,
+        "cycle": 28,
+        "offset_days": 0.0012570773499137322,
+        "amplitude_scale": 0.9413369514650423,
+        "edge": false
+      },
+      {
+        "sector": 29,
+        "cycle": 29,
+        "offset_days": -0.007542464099482435,
+        "amplitude_scale": 0.6095292139667287,
+        "edge": false
+      },
+      {
+        "sector": 32,
+        "cycle": 33,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.952811061205044,
+        "edge": false
+      },
+      {
+        "sector": 62,
+        "cycle": 64,
+        "offset_days": -0.001257077349913746,
+        "amplitude_scale": 0.9591096072239109,
+        "edge": false
+      },
+      {
+        "sector": 66,
+        "cycle": 68,
+        "offset_days": -0.005028309399654957,
+        "amplitude_scale": 0.9907650966541043,
+        "edge": false
+      },
+      {
+        "sector": 67,
+        "cycle": 69,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.5092791378274614,
+        "edge": false
+      },
+      {
+        "sector": 68,
+        "cycle": 70,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.5989563381197619,
+        "edge": false
+      },
+      {
+        "sector": 89,
+        "cycle": 92,
+        "offset_days": 0.0012570773499137322,
+        "amplitude_scale": 0.9236815515312263,
+        "edge": false
+      },
+      {
+        "sector": 93,
+        "cycle": 96,
+        "offset_days": 0.0,
+        "amplitude_scale": 1.0175029009875263,
+        "edge": false
+      },
+      {
+        "sector": 94,
+        "cycle": 97,
+        "offset_days": 0.0037712320497412105,
+        "amplitude_scale": 0.7577362629550136,
+        "edge": false
+      },
+      {
+        "sector": 95,
+        "cycle": 98,
+        "offset_days": 0.01131369614922366,
+        "amplitude_scale": 0.5813282999814839,
+        "edge": false
+      },
+      {
+        "sector": 96,
+        "cycle": 99,
+        "offset_days": 0.0012570773499137322,
+        "amplitude_scale": 0.8541808594800977,
+        "edge": false
+      },
+      {
+        "sector": 98,
+        "cycle": 103,
+        "offset_days": 0.0,
+        "amplitude_scale": 0.6494435367491448,
+        "edge": false
+      },
+      {
+        "sector": 98,
+        "cycle": 104,
+        "offset_days": -0.0037712320497412244,
+        "amplitude_scale": 0.657667273112946,
+        "edge": false
+      },
+      {
+        "sector": 1,
+        "cycle": 0,
+        "offset_days": 0.0025141546998274783,
+        "amplitude_scale": 0.9549737460930461,
+        "edge": false
+      }
+    ],
+    "next": [
+      {
+        "cycle": 117,
+        "btjd": 4379.405138778067,
+        "date_approx": "2026-12-04",
+        "timing_95_minutes": 12.470089873418615,
+        "planning_halfwidth_minutes": 23.230650904594505
+      },
+      {
+        "cycle": 118,
+        "btjd": 4405.43197741897,
+        "date_approx": "2026-12-30",
+        "timing_95_minutes": 12.61550932004029,
+        "planning_halfwidth_minutes": 23.309034201442653
+      },
+      {
+        "cycle": 119,
+        "btjd": 4431.458816059872,
+        "date_approx": "2027-01-25",
+        "timing_95_minutes": 12.76144574482842,
+        "planning_halfwidth_minutes": 23.38834105913028
+      }
+    ]
+  }
+}

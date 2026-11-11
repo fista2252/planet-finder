@@ -1,0 +1,149 @@
+[
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "220429133"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "389667951"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "original_measurement_unavailable"
+    ],
+    "review_state": "queued",
+    "tic": "141423461"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "271693283"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "original_measurement_unavailable"
+    ],
+    "review_state": "queued",
+    "tic": "142108728"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "original_measurement_unavailable"
+    ],
+    "review_state": "queued",
+    "tic": "25155680"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "150108429"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "141157968"
+  },
+  {
+    "caveat": "Two measured dips support four periods. The Sector 90 gap leaves three of five timing offsets unmeasurable for the shortest alias.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "shortlist",
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "339672790"
+  },
+  {
+    "caveat": "The shared fit hits the impact-parameter bound. Gaia RUWE is 2.83. Stellar companions and unresolved blends remain plausible.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "shortlist",
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "269730302"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "deterministic_quality_sample"
+    ],
+    "review_state": "queued",
+    "tic": "382576217"
+  },
+  {
+    "caveat": "Pixel deficits favor the target over catalog neighbors bright enough to cause the dip. An unresolved stellar eclipse remains possible. No checked spectrum settles the mass.",
+    "prior_status": "recovered prior period",
+    "reasons": [
+      "shortlist",
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "238187210"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "340562993"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "original_measurement_unavailable"
+    ],
+    "review_state": "queued",
+    "tic": "162809513"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "139695717"
+  },
+  {
+    "caveat": "No detailed candidate interpretation.",
+    "prior_status": "unresolved",
+    "reasons": [
+      "repeat_like_signal_with_capable_neighbor"
+    ],
+    "review_state": "queued",
+    "tic": "273607159"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "tics": ["238187210"],
+  "max_sectors": 4,
+  "download_mib": 64,
+  "seeds": {
+    "238187210": {
+      "period_days": 26.0268916,
+      "epoch_btjd": 2895.87393,
+      "duration_days": 0.24791666666666667
+    }
+  }
+}

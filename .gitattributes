@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.gz binary
+*.csv -text whitespace=cr-at-eol
+data/snapshot/** -text whitespace=cr-at-eol

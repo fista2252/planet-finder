@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<VOTABLE version="1.3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+    xmlns:stc="http://www.ivoa.net/xml/STC/v1.30">
+    <RESOURCE type="results">
+        <LINK title="gaiadr3.astrophysical_parameters" content-role="doc" href="https://doi.org/10.17876/gaia/dr.3/43"/>
+        <INFO name="QUERY_STATUS" value="OK" />
+        <INFO name="QUERY" value="select source_id,radius_gspphot,radius_gspphot_lower,radius_gspphot_upper,distance_gspphot,teff_gspphot,logg_gspphot from gaiadr3.astrophysical_parameters where source_id=4626968478435805568" />
+        <INFO name="QUERY_LANGUAGE" value="adql-2.1" />
+        <INFO name="SOURCE" value="gaiadr3.astrophysical_parameters" />
+        <TABLE name="gaia_user_anonymous.2026-11-10-11-21-11-332375">
+                <FIELD name="source_id" ucd="meta.id;meta.main;meta.ref" ID="datalinkID" datatype="long"> <DESCRIPTION>Source Identifier</DESCRIPTION> </FIELD>
+                <FIELD name="radius_gspphot" unit="solRad" ucd="phys.size.radius" datatype="float"> <DESCRIPTION>Radius from GSP-Phot Aeneas best library using BP/RP spectra</DESCRIPTION> </FIELD>
+                <FIELD name="radius_gspphot_lower" unit="solRad" ucd="stat.value;phys.size.radius" datatype="float"> <DESCRIPTION>Lower confidence level (16%) of radius from GSP-Phot Aeneas best library using BP/RP spectra</DESCRIPTION> </FIELD>
+                <FIELD name="radius_gspphot_upper" unit="solRad" ucd="stat.value;phys.size.radius" datatype="float"> <DESCRIPTION>Upper confidence level (84%) of radius from GSP-Phot Aeneas best library using BP/RP spectra</DESCRIPTION> </FIELD>
+                <FIELD name="distance_gspphot" unit="pc" ucd="pos.distance" datatype="float"> <DESCRIPTION>Distance from GSP-Phot Aeneas best library using BP/RP spectra</DESCRIPTION> </FIELD>
+                <FIELD name="teff_gspphot" unit="K" ucd="phys.temperature.effective" datatype="float"> <DESCRIPTION>Effective temperature from GSP-Phot Aeneas best library using BP/RP spectra</DESCRIPTION> </FIELD>
+                <FIELD name="logg_gspphot" unit="log(cm.s**-2)" ucd="phys.gravity" datatype="float"> <DESCRIPTION>Surface gravity from GSP-Phot Aeneas best library using BP/RP spectra</DESCRIPTION> </FIELD>
+            <DATA>
+                <TABLEDATA><TR><TD>4626968478435805568</TD><TD>1.49</TD><TD>1.4725</TD><TD>1.504</TD><TD>718.7646</TD><TD>5534.3916</TD><TD>4.2149</TD></TR>
+                </TABLEDATA>
+            </DATA>
+        </TABLE>
+    </RESOURCE>
+    <RESOURCE type="meta" utype="adhoc:service">
+        <PARAM name="standardID" datatype="char" arraysize="*" value="ivo://ivoa.net/std/DataLink#links-1.0" />
+        <PARAM name="accessURL" datatype="char" arraysize="*" value="https://gaia.aip.de/datalink/links" />
+        <GROUP name="inputParams">
+            <PARAM name="ID" datatype="char" arraysize="*" value="" ref="datalinkID"/>
+        </GROUP>
+    </RESOURCE>
+</VOTABLE>

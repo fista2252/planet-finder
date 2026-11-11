@@ -1,0 +1,289 @@
+{
+  "code_fingerprint": "c553c4239fba4f1353523412ef7a9ed4d93b52f3a99b96de469851ac5fcca7f1",
+  "config": {
+    "download_mib": 72,
+    "durations_days": [
+      0.08,
+      0.16,
+      0.24
+    ],
+    "grid_points": 8000,
+    "max_period_days": 35.0,
+    "max_sectors": 6,
+    "min_period_days": 1.0,
+    "seeds": {},
+    "tics": [
+      "183374187"
+    ]
+  },
+  "config_sha256": "c5c22c11244f6e0628d054b75b437f6bb0a65833c59f3cbf3eb0b00623629edd",
+  "created_at": "2026-11-11T10:33:39+00:00",
+  "new_fits_bytes": 0,
+  "processed_at": "2026-11-11T10:42:48+00:00",
+  "review_queue": [
+    {
+      "prior_status": "known catalog signal",
+      "reasons": [
+        "period_grid_truncated",
+        "repeat_like_signal",
+        "prior_report"
+      ],
+      "review_state": "queued",
+      "tic": "183374187"
+    }
+  ],
+  "run_id": "example-unseeded",
+  "schema_version": 1,
+  "targets": [
+    {
+      "catalog_checks": [
+        {
+          "kind": "community",
+          "matches": [],
+          "retrieved_at": "2026-11-11T10:33:46+00:00",
+          "rows_checked": 740,
+          "sha256": "795b431cf3c057115fb09b055fe20cfa03482d24448b324a9920b27161db42a5",
+          "state": "checked_snapshot",
+          "url": "https://github.com/eumemic/exoplanets/blob/e2eee928fd621f75c1621f6b4206d34bb222ae59/candidates/ephemerides.csv"
+        },
+        {
+          "kind": "toi",
+          "matches": [],
+          "retrieved_at": "2026-11-11T10:33:48+00:00",
+          "rows_checked": 0,
+          "sha256": "5a02640bcb08fbfd8dfa8e839d97e10081a5a92db8eebbeecec8536eec00920d",
+          "state": "checked_no_rows",
+          "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tid%2Cpl_orbper%2Ctoi+from+toi+where+tid%3D183374187&format=csv"
+        },
+        {
+          "kind": "confirmed",
+          "matches": [
+            {
+              "label": "TIC 183374187 b",
+              "period_days": 5.05907,
+              "tic": "183374187"
+            }
+          ],
+          "retrieved_at": "2026-11-11T10:33:50+00:00",
+          "rows_checked": 1,
+          "sha256": "90cc424621579b525de445333b43d6c4e556e5d883eed3111e59d68e18fb4bd2",
+          "state": "checked_snapshot",
+          "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tic_id%2Cpl_orbper%2Cpl_name+from+pscomppars+where+tic_id%3D%27TIC+183374187%27&format=csv"
+        }
+      ],
+      "coordinates_icrs_deg": [
+        357.6160381557,
+        -41.4124228393
+      ],
+      "evidence": {
+        "depth_fraction": 0.009310583710895385,
+        "duration_days": 0.16,
+        "epoch_btjd": 1357.1566477810816,
+        "events": [
+          {
+            "coverage": "measured",
+            "cycle": 0,
+            "measurement": {
+              "cadence": 0.02083323895931244,
+              "depth": 0.010881432458488096,
+              "duration": 0.16,
+              "error": 0.0011660718651546995,
+              "points": 8,
+              "score": 9.331699686489294,
+              "tc": 1357.1566477810816
+            },
+            "midpoint_btjd": 1357.1566477810816,
+            "sector": 2
+          },
+          {
+            "coverage": "measured",
+            "cycle": 1,
+            "measurement": {
+              "cadence": 0.02083323895931244,
+              "depth": 0.01130434514995578,
+              "duration": 0.16,
+              "error": 0.0013231363295524111,
+              "points": 8,
+              "score": 8.543598189749503,
+              "tc": 1362.2152960574085
+            },
+            "midpoint_btjd": 1362.2152960574085,
+            "sector": 2
+          },
+          {
+            "coverage": "insufficient_cadence",
+            "cycle": 2,
+            "measurement": null,
+            "midpoint_btjd": 1367.2739443337355,
+            "sector": 2
+          },
+          {
+            "coverage": "measured",
+            "cycle": 3,
+            "measurement": {
+              "cadence": 0.02083323895931244,
+              "depth": 0.009940449682593496,
+              "duration": 0.16,
+              "error": 0.0013307825112752769,
+              "points": 8,
+              "score": 7.469627529946763,
+              "tc": 1372.3325926100626
+            },
+            "midpoint_btjd": 1372.3325926100626,
+            "sector": 2
+          },
+          {
+            "coverage": "measured",
+            "cycle": 4,
+            "measurement": {
+              "cadence": 0.02083323895931244,
+              "depth": 0.009122095888768606,
+              "duration": 0.16,
+              "error": 0.0016061529407532151,
+              "points": 7,
+              "score": 5.679469032687972,
+              "tc": 1377.3912408863896
+            },
+            "midpoint_btjd": 1377.3912408863896,
+            "sector": 2
+          }
+        ],
+        "flags": [
+          "period_grid_truncated"
+        ],
+        "half_phase_measurements": [
+          {
+            "cadence": 0.02083323895931244,
+            "depth": 0.0002471346282844223,
+            "duration": 0.16,
+            "error": 0.001654607065363204,
+            "points": 8,
+            "score": 0.14936152120816285,
+            "sector": 2,
+            "tc": 1354.627323642918
+          },
+          {
+            "cadence": 0.02083323895931244,
+            "depth": 0.003086546391008753,
+            "duration": 0.16,
+            "error": 0.0016288656672687118,
+            "points": 8,
+            "score": 1.894905425923972,
+            "sector": 2,
+            "tc": 1359.685971919245
+          },
+          {
+            "cadence": 0.02083323895931244,
+            "depth": -0.0025884334523617746,
+            "duration": 0.16,
+            "error": 0.0015662178245934686,
+            "points": 7,
+            "score": -1.6526650455109173,
+            "sector": 2,
+            "tc": 1364.744620195572
+          },
+          {
+            "cadence": 0.02083323895931244,
+            "depth": -0.0007316563751718294,
+            "duration": 0.16,
+            "error": 0.0012832488840072284,
+            "points": 8,
+            "score": -0.5701593699322539,
+            "sector": 2,
+            "tc": 1369.803268471899
+          },
+          {
+            "cadence": 0.02083323895931244,
+            "depth": 0.00045806583216801344,
+            "duration": 0.16,
+            "error": 0.0011615357714858056,
+            "points": 8,
+            "score": 0.3943622257815339,
+            "sector": 2,
+            "tc": 1374.8619167482261
+          },
+          {
+            "cadence": 0.02083323895931244,
+            "depth": -0.004842960239500006,
+            "duration": 0.16,
+            "error": 0.0014326796483129496,
+            "points": 8,
+            "score": -3.38035111003554,
+            "sector": 2,
+            "tc": 1379.920565024553
+          }
+        ],
+        "local_controls": {
+          "box_depth_fraction": 0.0046552918554476925,
+          "inverted_at_or_above_5": 0,
+          "recovered_at_or_above_5": 1,
+          "testable": 27
+        },
+        "mode": "period_grid",
+        "odd_even": {
+          "even_depth": 0.010001764173628351,
+          "nominal_difference_score": -0.32343390185799975,
+          "odd_depth": 0.010622397416274638
+        },
+        "period_days": 5.058648276326999,
+        "search": {
+          "grid_limited": true,
+          "grid_points": 8000,
+          "ideal_grid_points": 8671,
+          "inverted_max_snr": 0.019530861576325245,
+          "search_snr": 0.05117955125395205
+        },
+        "status": "measured",
+        "supported_cycles": 4,
+        "uncertainty": "No calibrated period or timing uncertainty. Local errors use sideband scatter and are nominal."
+      },
+      "failures": [],
+      "prior_reports": [
+        {
+          "kind": "confirmed",
+          "label": "TIC 183374187 b",
+          "period_agrees": true,
+          "period_days": 5.05907,
+          "source": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tic_id%2Cpl_orbper%2Cpl_name+from+pscomppars+where+tic_id%3D%27TIC+183374187%27&format=csv",
+          "tic": "183374187"
+        }
+      ],
+      "prior_status": "known catalog signal",
+      "provenance": [
+        {
+          "bytes": 313920,
+          "cadence_count": 1226,
+          "dataRights": "PUBLIC",
+          "dataURL": "mast:HLSP/t16/s0002/cam2-ccd4/0065/3344/4503/3860/hlsp_t16_tess_ffi_s0002-cam2-ccd4-06533444503386077056_tess_v01_llc.fits",
+          "first_btjd": 1354.1406477810815,
+          "last_btjd": 1381.4945892686956,
+          "method": "public archive",
+          "obs_id": "hlsp_t16_tess_ffi_s0002-cam2-ccd4-06533444503386077056_tess_v01",
+          "provenance_name": "T16",
+          "retrieved_at": "2026-11-11T10:33:44+00:00",
+          "s_dec": -41.4124228393,
+          "s_ra": 357.6160381557,
+          "sequence_number": 2,
+          "sha256": "557522e5b6c8bab669f8893489e0a0574abc0e636edf17f5adef4ebf21c66ae1",
+          "t_exptime": 1800,
+          "tic": "183374187",
+          "uri": "mast:HLSP/t16/s0002/cam2-ccd4/0065/3344/4503/3860/hlsp_t16_tess_ffi_s0002-cam2-ccd4-06533444503386077056_tess_v01_llc.fits"
+        }
+      ],
+      "review_reasons": [
+        "period_grid_truncated",
+        "repeat_like_signal",
+        "prior_report"
+      ],
+      "stages": {
+        "catalog": "complete",
+        "discovery": "complete",
+        "ingestion": "complete",
+        "screening_vetting": "complete"
+      },
+      "tic": "183374187"
+    }
+  ],
+  "time_scale": "BJD_TDB minus 2457000",
+  "verified_resume_download_bytes": 0
+}

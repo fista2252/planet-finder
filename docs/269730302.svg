@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 280" role="img">
+<title>Fitted event depths for TIC 269730302</title>
+<rect width="820" height="280" fill="#f7f8fc"/>
+<g font-family="system-ui,sans-serif" fill="#253346" font-size="13">
+<text x="24" y="32" font-size="19">Fitted event depths · TIC 269730302</text>
+<text x="24" y="57">Depth (%)</text><path d="M69 72v140h690" fill="none" stroke="#91a0ae"/>
+<text x="58" y="216" text-anchor="end">0.00</text><text x="58" y="181" text-anchor="end">0.25</text><text x="58" y="146" text-anchor="end">0.50</text><text x="58" y="111" text-anchor="end">0.75</text><text x="58" y="76" text-anchor="end">1.00</text><text x="69.0" y="238" text-anchor="middle">1349.8</text><text x="241.5" y="238" text-anchor="middle">1982.4</text><text x="414.0" y="238" text-anchor="middle">2615.0</text><text x="586.5" y="238" text-anchor="middle">3247.6</text><text x="759.0" y="238" text-anchor="middle">3880.2</text><text x="414" y="267" text-anchor="middle">Event midpoint (BTJD)</text>
+<g fill="#236a6c"><circle cx="69.00" cy="98.81" r="4"><title>1349.8182 BTJD, 0.805%</title></circle>
+<circle cx="76.75" cy="108.25" r="4"><title>1378.2490 BTJD, 0.738%</title></circle>
+<circle cx="146.53" cy="105.17" r="4"><title>1634.1261 BTJD, 0.760%</title></circle>
+<circle cx="154.28" cy="100.29" r="4"><title>1662.5569 BTJD, 0.795%</title></circle>
+<circle cx="270.57" cy="90.42" r="4"><title>2089.0187 BTJD, 0.865%</title></circle>
+<circle cx="317.09" cy="87.00" r="4"><title>2259.6035 BTJD, 0.889%</title></circle>
+<circle cx="348.10" cy="93.91" r="4"><title>2373.3266 BTJD, 0.840%</title></circle>
+<circle cx="510.91" cy="92.13" r="4"><title>2970.3732 BTJD, 0.853%</title></circle>
+<circle cx="518.66" cy="96.69" r="4"><title>2998.8040 BTJD, 0.820%</title></circle>
+<circle cx="541.92" cy="97.19" r="4"><title>3084.0964 BTJD, 0.817%</title></circle>
+<circle cx="549.67" cy="93.52" r="4"><title>3112.5272 BTJD, 0.843%</title></circle>
+<circle cx="557.43" cy="97.00" r="4"><title>3140.9580 BTJD, 0.818%</title></circle>
+<circle cx="565.18" cy="89.78" r="4"><title>3169.3888 BTJD, 0.869%</title></circle>
+<circle cx="712.48" cy="93.52" r="4"><title>3709.5738 BTJD, 0.843%</title></circle>
+<circle cx="751.25" cy="91.12" r="4"><title>3851.7277 BTJD, 0.860%</title></circle>
+<circle cx="759.00" cy="107.34" r="4"><title>3880.1585 BTJD, 0.744%</title></circle>
+<circle cx="115.52" cy="136.63" r="4"><title>1520.4029 BTJD, 0.536%</title></circle></g></g></svg>

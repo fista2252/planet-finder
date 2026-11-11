@@ -1,0 +1,140 @@
+[
+  {
+    "tic": "339672790",
+    "sector": 7,
+    "draws": 500,
+    "block": 1,
+    "target_distance_pixels_95": [
+      0.05960225285682205,
+      0.13811458130101878,
+      0.19763211815991538
+    ],
+    "plausible_neighbors": [
+      {
+        "tic": "339672789",
+        "separation_pixels": 0.5876386070930588,
+        "target_closer_fraction": 1.0
+      }
+    ]
+  },
+  {
+    "tic": "339672790",
+    "sector": 33,
+    "draws": 500,
+    "block": 3,
+    "target_distance_pixels_95": [
+      0.04037789118233439,
+      0.07603049840376272,
+      0.1080745805963375
+    ],
+    "plausible_neighbors": [
+      {
+        "tic": "339672789",
+        "separation_pixels": 0.5776705456896748,
+        "target_closer_fraction": 1.0
+      }
+    ]
+  },
+  {
+    "tic": "269730302",
+    "sector": 8,
+    "draws": 500,
+    "block": 1,
+    "target_distance_pixels_95": [
+      0.12902870788933765,
+      0.2017516147853715,
+      0.3172981697245469
+    ],
+    "plausible_neighbors": [
+      {
+        "tic": "269730306",
+        "separation_pixels": 1.934786033736693,
+        "target_closer_fraction": 1.0
+      }
+    ]
+  },
+  {
+    "tic": "269730302",
+    "sector": 68,
+    "draws": 500,
+    "block": 9,
+    "target_distance_pixels_95": [
+      0.06355308337135475,
+      0.1345821919837577,
+      0.2252770205827369
+    ],
+    "plausible_neighbors": [
+      {
+        "tic": "269730306",
+        "separation_pixels": 1.7935910138239999,
+        "target_closer_fraction": 1.0
+      }
+    ]
+  },
+  {
+    "tic": "238187210",
+    "sector": 1,
+    "draws": 500,
+    "block": 1,
+    "target_distance_pixels_95": [
+      0.018175813235281033,
+      0.09951096071210494,
+      0.2514037449893805
+    ],
+    "plausible_neighbors": [
+      {
+        "tic": "238187209",
+        "separation_pixels": 1.029987772471985,
+        "target_closer_fraction": 1.0
+      },
+      {
+        "tic": "238187206",
+        "separation_pixels": 1.716587523821562,
+        "target_closer_fraction": 1.0
+      },
+      {
+        "tic": "238187212",
+        "separation_pixels": 1.720715879364591,
+        "target_closer_fraction": 1.0
+      },
+      {
+        "tic": "650116794",
+        "separation_pixels": 0.6360846383136621,
+        "target_closer_fraction": 1.0
+      },
+      {
+        "tic": "650116828",
+        "separation_pixels": 1.8915213924992844,
+        "target_closer_fraction": 1.0
+      }
+    ]
+  },
+  {
+    "tic": "238187210",
+    "sector": 66,
+    "draws": 500,
+    "block": 9,
+    "target_distance_pixels_95": [
+      0.010481234176123934,
+      0.058980702047216435,
+      0.13223887217766325
+    ],
+    "plausible_neighbors": [
+      {
+        "tic": "238187209",
+        "separation_pixels": 1.0429446877916948,
+        "target_closer_fraction": 1.0
+      },
+      {
+        "tic": "238187206",
+        "separation_pixels": 1.8024673638164,
+        "target_closer_fraction": 1.0
+      },
+      {
+        "tic": "238187212",
+        "separation_pixels": 1.7208185916016503,
+        "target_closer_fraction": 1.0
+      }
+    ]
+  }
+]

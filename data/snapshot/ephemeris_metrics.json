@@ -1,0 +1,132 @@
+[
+  {
+    "tic": "389667951",
+    "period": 15.797022364729553,
+    "epoch": 1333.8506498384472,
+    "rms_minutes": 25.000817371719343,
+    "events": 31,
+    "last_training_epoch": 2376.4692410637235,
+    "fit_used_late": false,
+    "primary_events": 52,
+    "median_depth": 0.012734687533823414,
+    "later_events": 22,
+    "later_sectors": 15,
+    "halfway_usable": 60,
+    "halfway_over_5": 0,
+    "halfway_quiet_sensitive": 59,
+    "odd_even": [
+      {
+        "count": 28,
+        "median_depth": 0.012507109749716812
+      },
+      {
+        "count": 24,
+        "median_depth": 0.012971058767761218
+      }
+    ]
+  },
+  {
+    "tic": "150108429",
+    "period": 49.560259445598305,
+    "epoch": 1495.756040606691,
+    "rms_minutes": 40.62730133880785,
+    "events": 6,
+    "last_training_epoch": 2338.239624418859,
+    "fit_used_late": false,
+    "primary_events": 6,
+    "median_depth": 0.00954512132675489,
+    "later_events": 1,
+    "later_sectors": 1,
+    "halfway_usable": 17,
+    "halfway_over_5": 0,
+    "halfway_quiet_sensitive": 4,
+    "odd_even": [
+      {
+        "count": 4,
+        "median_depth": 0.00892189872840466
+      },
+      {
+        "count": 2,
+        "median_depth": 0.010261306402119284
+      }
+    ]
+  },
+  {
+    "tic": "269730302",
+    "period": 28.430675699576497,
+    "epoch": 1520.4091697807446,
+    "rms_minutes": 15.28629225368122,
+    "events": 7,
+    "last_training_epoch": 2373.318686235351,
+    "fit_used_late": false,
+    "primary_events": 17,
+    "median_depth": 0.006271788147182432,
+    "later_events": 9,
+    "later_sectors": 9,
+    "halfway_usable": 19,
+    "halfway_over_5": 0,
+    "halfway_quiet_sensitive": 19,
+    "odd_even": [
+      {
+        "count": 10,
+        "median_depth": 0.0063670075179257735
+      },
+      {
+        "count": 7,
+        "median_depth": 0.006135433986464296
+      }
+    ]
+  },
+  {
+    "tic": "238187210",
+    "period": 26.027341455409626,
+    "epoch": 1334.2531730904302,
+    "rms_minutes": 10.7203045499106,
+    "events": 8,
+    "last_training_epoch": 2193.1623150167834,
+    "fit_used_late": false,
+    "primary_events": 18,
+    "median_depth": 0.01003236971879533,
+    "later_events": 10,
+    "later_sectors": 9,
+    "halfway_usable": 15,
+    "halfway_over_5": 0,
+    "halfway_quiet_sensitive": 10,
+    "odd_even": [
+      {
+        "count": 10,
+        "median_depth": 0.010368952159857342
+      },
+      {
+        "count": 8,
+        "median_depth": 0.009265035598715176
+      }
+    ]
+  },
+  {
+    "tic": "340562993",
+    "period": 20.23547153923209,
+    "epoch": 1522.9274250673482,
+    "rms_minutes": 2.839117232875275,
+    "events": 4,
+    "last_training_epoch": 3141.765903115572,
+    "fit_used_late": true,
+    "primary_events": 4,
+    "median_depth": 0.005004797239428926,
+    "later_events": 2,
+    "later_sectors": 2,
+    "halfway_usable": 16,
+    "halfway_over_5": 1,
+    "halfway_quiet_sensitive": 12,
+    "odd_even": [
+      {
+        "count": 4,
+        "median_depth": 0.005004797239428926
+      },
+      {
+        "count": 0,
+        "median_depth": null
+      }
+    ]
+  }
+]

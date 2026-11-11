@@ -1,0 +1,19 @@
+{
+  "alias_matches_frozen": true,
+  "archive_sectors": 21,
+  "inverted_at_or_above_8": 0,
+  "original": {
+    "cadence": 0.020833148155361414,
+    "depth": 0.011894469962178087,
+    "duration": 0.16075,
+    "error": 0.0006894160830967474,
+    "points": 7,
+    "score": 17.25296269380607,
+    "tc": 1334.2624946096912
+  },
+  "recovered": 351,
+  "screen_matches_frozen": true,
+  "testable": 1049,
+  "tic": "238187210",
+  "vet_matches_frozen": true
+}

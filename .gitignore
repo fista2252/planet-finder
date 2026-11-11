@@ -1,0 +1,9 @@
+.audit-cache/
+.venv/
+__pycache__/
+*.py[cod]
+*.fits
+*.part
+*.eml
+runs/
+exports/

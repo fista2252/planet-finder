@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 280" role="img">
+<title>Fitted event depths for TIC 339672790</title>
+<rect width="820" height="280" fill="#f7f8fc"/>
+<g font-family="system-ui,sans-serif" fill="#253346" font-size="13">
+<text x="24" y="32" font-size="19">Fitted event depths · TIC 339672790</text>
+<text x="24" y="57">Depth (%)</text><path d="M69 72v140h690" fill="none" stroke="#91a0ae"/>
+<text x="58" y="216" text-anchor="end">0.00</text><text x="58" y="181" text-anchor="end">1.12</text><text x="58" y="146" text-anchor="end">2.25</text><text x="58" y="111" text-anchor="end">3.37</text><text x="58" y="76" text-anchor="end">4.49</text><text x="69.0" y="238" text-anchor="middle">1492.3</text><text x="241.5" y="238" text-anchor="middle">1671.9</text><text x="414.0" y="238" text-anchor="middle">1851.6</text><text x="586.5" y="238" text-anchor="middle">2031.3</text><text x="759.0" y="238" text-anchor="middle">2211.0</text><text x="414" y="267" text-anchor="middle">Event midpoint (BTJD)</text>
+<g fill="#236a6c"><circle cx="759.00" cy="87.00" r="4"><title>2210.9777 BTJD, 4.010%</title></circle>
+<circle cx="69.00" cy="96.09" r="4"><title>1492.2726 BTJD, 3.719%</title></circle></g></g></svg>
