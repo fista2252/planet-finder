@@ -575,8 +575,11 @@ def target_list(path):
 
 
 def cli():
+    import maintenance
+
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
+    maintenance.add_parser(commands)
     new = commands.add_parser("new")
     inputs = new.add_mutually_exclusive_group(required=True)
     inputs.add_argument("--config", type=Path)
@@ -598,6 +601,8 @@ def cli():
             sub.add_argument("--start-btjd", required=True, type=float)
             sub.add_argument("--end-btjd", required=True, type=float)
     args = parser.parse_args()
+    if args.command == "maintenance":
+        raise SystemExit(maintenance.cli(args))
     root = run_path(args.id)
     if args.command == "new":
         config = load(args.config) if args.config else {"tics": args.tic or target_list(args.tic_file)}

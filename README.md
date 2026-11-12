@@ -1,5 +1,7 @@
 # Planet Finder
 
+Weekly upkeep follows the [maintenance protocol](docs/maintenance.md). Run `python workflow.py maintenance --dry-run` to check a checkout without claiming work.
+
 Planet Finder runs bounded transit searches and follow-up checks on public TESS light curves. Start with a TIC list, review the evidence and archive a versioned report. The [hosted explorer](https://fista2252.github.io/planet-finder/) shows the first imported pilot. The local Python runner creates new runs and can export the same explorer for their results.
 
 **The pilot recovered a previously reported period.** Eumemic listed TIC 238187210 at **26.0268916 d** on **2026-10-10**. The pilot's independent fit near 26.02685 d recovers that period. TIC 269730302 has a grazing fit and Gaia astrometric concerns. TIC 339672790 retains four aliases. The three signals remain unconfirmed in this project. Roth et al. originally published the three single events. [Pinned prior ephemerides](https://github.com/eumemic/exoplanets/blob/e2eee928fd621f75c1621f6b4206d34bb222ae59/candidates/ephemerides.csv) · [Roth et al.](https://arxiv.org/abs/2604.18579)

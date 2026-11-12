@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "EVAL-001",
+      "problem": "Search changes can pass unit tests while worsening period selection.",
+      "reference": "docs/maintenance.md",
+      "license": null,
+      "expected_benefit": "Repeatable comparisons of recovery, false alarms, wrong periods and abstention.",
+      "state": "enabled",
+      "acceptance": ["Repeatable case outcomes", "Explicit sample sizes and limits", "Published baseline and safety checks"],
+      "benchmark": "planet-finder-v1",
+      "estimated_cost": "One bounded CPU process; no downloads",
+      "dependencies": ["Existing Planet Finder search and cached public example reports"],
+      "rejection_rationale": null
+    },
+    {
+      "id": "TECH-001",
+      "problem": "Correlated photometric noise may inflate event significance or distort missing-transit constraints.",
+      "reference": "https://arxiv.org/abs/0909.0747",
+      "license": "Paper reference only; verify implementation license before reuse",
+      "expected_benefit": "Better-calibrated event scores and fewer spurious detections in correlated noise.",
+      "state": "proposed",
+      "acceptance": ["Measure the unchanged baseline first", "Use separate development and validation injections", "Reduce false alarms without increasing wrong periods or reducing recovery", "Publish runtime and assumptions"],
+      "benchmark": "planet-finder-v1 plus a versioned correlated-noise extension",
+      "estimated_cost": "Unknown; first experiment limited to local fixtures and one weekly window",
+      "dependencies": ["EVAL-001", "A prespecified validation set and a noise model"],
+      "rejection_rationale": null
+    },
+    {
+      "id": "TECH-002",
+      "problem": "Box templates can lose sensitivity to shallow signals with resolved ingress and egress.",
+      "reference": "https://arxiv.org/abs/1901.02015",
+      "license": "Paper reference only; verify the license of any code before reuse",
+      "expected_benefit": "Possible recovery gains for shallow signals using physically shaped templates.",
+      "state": "proposed",
+      "acceptance": ["Test as an opt-in method", "Show a recovery gain at a matched false-alarm rate on independent validation inputs", "Retain sparse-sector and eclipse safety gates"],
+      "benchmark": "planet-finder-v1 plus a versioned shaped-transit extension",
+      "estimated_cost": "Unmeasured; begin with a small offline benchmark",
+      "dependencies": ["EVAL-001", "Versioned injected shapes and dilution levels"],
+      "rejection_rationale": null
+    }
+  ]
+}

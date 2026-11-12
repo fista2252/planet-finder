@@ -1,0 +1,394 @@
+{
+  "dry_run": {
+    "attempts": [],
+    "benchmark": {
+      "cases": [
+        {
+          "accepted_period_days": null,
+          "cadence_samples": 7776,
+          "cpu_seconds": 1.328125,
+          "id": "sparse-harmonics",
+          "leading_trial_days": 26.026711702638636,
+          "outcome": "abstained",
+          "role": "injected",
+          "sensitive_missing_cycles": 0,
+          "status": "inconclusive_search",
+          "wall_seconds": 1.546286
+        },
+        {
+          "accepted_period_days": null,
+          "cadence_samples": 809,
+          "cpu_seconds": 0.0,
+          "id": "transit-gaps",
+          "leading_trial_days": 1.625,
+          "outcome": "gap_preserved",
+          "role": "gap",
+          "sensitive_missing_cycles": 0,
+          "status": "measured",
+          "wall_seconds": 0.006681
+        },
+        {
+          "accepted_period_days": null,
+          "cadence_samples": 1056,
+          "cpu_seconds": 0.109375,
+          "id": "alternating-eclipses",
+          "leading_trial_days": 1.62698412698412,
+          "outcome": "eclipse_held",
+          "role": "eclipse",
+          "sensitive_missing_cycles": 0,
+          "status": "ambiguous_period",
+          "wall_seconds": 0.116367
+        },
+        {
+          "accepted_period_days": null,
+          "cadence_samples": 1248,
+          "cpu_seconds": 0.078125,
+          "id": "validation-injection",
+          "leading_trial_days": 3.367559523809551,
+          "outcome": "abstained",
+          "role": "injected",
+          "sensitive_missing_cycles": 0,
+          "status": "ambiguous_period",
+          "wall_seconds": 0.077228
+        },
+        {
+          "accepted_period_days": 3.3706826459875456,
+          "cadence_samples": 1248,
+          "cpu_seconds": 0.0625,
+          "id": "validation-dilution",
+          "leading_trial_days": 3.3706826459875456,
+          "outcome": "recovered",
+          "role": "injected",
+          "sensitive_missing_cycles": 0,
+          "status": "measured",
+          "wall_seconds": 0.084128
+        },
+        {
+          "accepted_period_days": null,
+          "cadence_samples": 1248,
+          "cpu_seconds": 0.078125,
+          "id": "validation-correlated-injection",
+          "leading_trial_days": 3.3706826459875456,
+          "outcome": "abstained",
+          "role": "injected",
+          "sensitive_missing_cycles": 0,
+          "status": "ambiguous_period",
+          "wall_seconds": 0.082508
+        },
+        {
+          "accepted_period_days": null,
+          "cadence_samples": 1248,
+          "cpu_seconds": 0.1875,
+          "id": "white-no-signal",
+          "leading_trial_days": 2.2886745535377893,
+          "outcome": "no_alarm",
+          "role": "null",
+          "sensitive_missing_cycles": 0,
+          "status": "inconclusive_search",
+          "wall_seconds": 0.195349
+        },
+        {
+          "accepted_period_days": null,
+          "cadence_samples": 1248,
+          "cpu_seconds": 0.15625,
+          "id": "correlated-no-signal",
+          "leading_trial_days": 4.929881512741438,
+          "outcome": "no_alarm",
+          "role": "null",
+          "sensitive_missing_cycles": 0,
+          "status": "inconclusive_search",
+          "wall_seconds": 0.190597
+        }
+      ],
+      "definition_sha256": "727b940558c63d1946fcd6c42fba4c16834629f3c3cc91bc42d4e84c59fc7210",
+      "id": "planet-finder-v1",
+      "limitations": [
+        "Small synthetic fixture set; rates are counts over the listed cases.",
+        "Validation fixtures are public and fixed; there is no blind holdout.",
+        "Dilution scales depth only. This does not simulate source localization."
+      ],
+      "metrics": {
+        "abstained": {
+          "count": 3,
+          "n": 4
+        },
+        "ambiguous": {
+          "count": 2,
+          "n": 4
+        },
+        "false_alarm": {
+          "count": 0,
+          "n": 2
+        },
+        "recovered": {
+          "count": 1,
+          "n": 4
+        },
+        "wrong_period": {
+          "count": 0,
+          "n": 4
+        }
+      },
+      "peak_process_rss_bytes": null,
+      "violations": []
+    },
+    "catalog": {
+      "age_days": 8,
+      "coverage_limit": "Newer prior work remains unchecked in the default pinned source.",
+      "live_refresh": "not_run",
+      "refresh_config": "examples/refresh-priors.json",
+      "revision": "e2eee928fd621f75c1621f6b4206d34bb222ae59",
+      "revision_date": "2026-11-04",
+      "scope": "Pinned Eumemic CSV plus the configured exact-TIC archive queries",
+      "status": "warning"
+    },
+    "checks": {
+      "benchmark": {
+        "baseline_metrics": {
+          "abstained": {
+            "count": 3,
+            "n": 4
+          },
+          "ambiguous": {
+            "count": 2,
+            "n": 4
+          },
+          "false_alarm": {
+            "count": 0,
+            "n": 2
+          },
+          "recovered": {
+            "count": 1,
+            "n": 4
+          },
+          "wrong_period": {
+            "count": 0,
+            "n": 4
+          }
+        },
+        "baseline_sha256": "582ce53c07de19e07f46260ba4859146471f2d404fafe51e8a805bfdf2bf671f",
+        "command": [
+          "python",
+          "maintenance_benchmark.py"
+        ],
+        "elapsed_seconds": 3.706,
+        "exit_code": 0,
+        "metrics": {
+          "abstained": {
+            "count": 3,
+            "n": 4
+          },
+          "ambiguous": {
+            "count": 2,
+            "n": 4
+          },
+          "false_alarm": {
+            "count": 0,
+            "n": 2
+          },
+          "recovered": {
+            "count": 1,
+            "n": 4
+          },
+          "wrong_period": {
+            "count": 0,
+            "n": 4
+          }
+        },
+        "regressions": [],
+        "status": "passed",
+        "stderr": ""
+      },
+      "cached_examples": {
+        "cached_examples": [
+          {
+            "passed": true,
+            "path": "examples/results/example-unseeded-v2.json",
+            "sha256": "43c280739f93745450af9650e87bf30f46bc2340a13957dafda9c25ea2c53d86",
+            "status": "ambiguous_period",
+            "supported_cycles": 4
+          },
+          {
+            "passed": true,
+            "path": "examples/results/example-recovery-v2.json",
+            "sha256": "63f6983143487450849df4d4077232b230916096e39f73287dc637fd292e8838",
+            "status": "measured",
+            "supported_cycles": 3
+          }
+        ],
+        "status": "passed"
+      },
+      "dependencies": {
+        "command": [
+          "python",
+          "-c",
+          "import numpy, astropy, requests"
+        ],
+        "elapsed_seconds": 0.756,
+        "exit_code": 0,
+        "status": "passed",
+        "stderr": "",
+        "stdout": ""
+      },
+      "javascript": {
+        "command": [
+          "node",
+          "--check",
+          "site/app.js"
+        ],
+        "elapsed_seconds": 0.079,
+        "exit_code": 0,
+        "status": "passed",
+        "stderr": "",
+        "stdout": ""
+      },
+      "publication": {
+        "command": [
+          "python",
+          "audit.py",
+          "--out",
+          "<temporary-publication>"
+        ],
+        "compared_files": 10,
+        "differing_files": [],
+        "elapsed_seconds": 0.24,
+        "exit_code": 0,
+        "status": "passed",
+        "stderr": "",
+        "stdout": "24 targets, 18 prediction rows -> <temporary-publication>\n"
+      },
+      "registry": {
+        "status": "passed"
+      },
+      "regression_suite": {
+        "command": [
+          "python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "elapsed_seconds": 4.186,
+        "exit_code": 0,
+        "status": "passed",
+        "stderr": "test_expired_attempt_cannot_be_marked_ready_for_review (test_maintenance.MaintenanceTests.test_expired_attempt_cannot_be_marked_ready_for_review) ... ok\ntest_weekly_attempts_reserve_one_item_and_stop_after_two (test_maintenance.MaintenanceTests.test_weekly_attempts_reserve_one_item_and_stop_after_two) ... ok\ntest_weekly_health_replay_skips_checks_and_preserves_ledger (test_maintenance.MaintenanceTests.test_weekly_health_replay_skips_checks_and_preserves_ledger) ... ok\ntest_alias_with_gap_retains_shortest_period (test_pipeline.PilotTests.test_alias_with_gap_retains_shortest_period) ... ok\ntest_checkpoint_rebuilds_after_mutation (test_pipeline.PilotTests.test_checkpoint_rebuilds_after_mutation) ... ok\ntest_failed_catalog_cannot_credit_a_recovery (test_pipeline.PilotTests.test_failed_catalog_cannot_credit_a_recovery) ... ok\ntest_frozen_pilot_and_priority_correction (test_pipeline.PilotTests.test_frozen_pilot_and_priority_correction) ... ok\ntest_catalog_branch_resolved_once_per_run (test_pipeline.RunTests.test_catalog_branch_resolved_once_per_run) ... ok\ntest_failed_discovery_is_exported_for_review (test_pipeline.RunTests.test_failed_discovery_is_exported_for_review) ... ok\ntest_fits_download_budget_refuses_before_network (test_pipeline.RunTests.test_fits_download_budget_refuses_before_network) ... ok\ntest_fits_validation_rejects_unexpected_timescale (test_pipeline.RunTests.test_fits_validation_rejects_unexpected_timescale) ... ok\ntest_invalid_config_or_duplicate_run_rejected (test_pipeline.RunTests.test_invalid_config_or_duplicate_run_rejected) ... ok\ntest_legacy_config_hash_still_resumes (test_pipeline.RunTests.test_legacy_config_hash_still_resumes) ... ok\ntest_process_resume_export_and_fresh_run (test_pipeline.RunTests.test_process_resume_export_and_fresh_run) ... ok\ntest_alternating_eclipse_depths_do_not_promote_a_short_harmonic (test_pipeline.SearchTests.test_alternating_eclipse_depths_do_not_promote_a_short_harmonic) ... ok\ntest_no_data_is_explicit (test_pipeline.SearchTests.test_no_data_is_explicit) ... ok\ntest_observed_cadence_gap_is_unmeasurable (test_pipeline.SearchTests.test_observed_cadence_gap_is_unmeasurable) ... ok\ntest_seeded_binary_warning_and_local_injection (test_pipeline.SearchTests.test_seeded_binary_warning_and_local_injection) ... ok\ntest_short_harmonic_contradicted_only_with_sensitive_coverage (test_pipeline.SearchTests.test_short_harmonic_contradicted_only_with_sensitive_coverage) ... ok\ntest_sparse_multiyear_search_rejects_coarse_harmonic (test_pipeline.SearchTests.test_sparse_multiyear_search_rejects_coarse_harmonic) ... ok\ntest_unseeded_period_is_reproducible (test_pipeline.SearchTests.test_unseeded_period_is_reproducible) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 2.681s\n\nOK\n",
+        "stdout": "failure TIC 123\n  discovery: running\n  discovery: failed\n  ingestion: running\n  ingestion: unavailable\n  screening_vetting: running\n  screening_vetting: no_usable_observations\n  catalog: running\n  catalog: complete\nlegacy TIC 123\n  discovery: running\n  discovery: no_products\n  ingestion: running\n  ingestion: unavailable\n  screening_vetting: running\n  screening_vetting: no_usable_observations\n  catalog: running\n  catalog: complete\nfixture-a TIC 123456\n  discovery: running\n  discovery: complete\n  ingestion: running\n  ingestion: complete\n  screening_vetting: running\n  screening_vetting: complete\n  catalog: running\n  catalog: complete\nfixture-a TIC 123456\n  discovery: running\n  discovery: complete\n  ingestion: running\n  ingestion: complete\n  screening_vetting: running\n  screening_vetting: complete\n  catalog: running\n  catalog: complete\nfixture-b TIC 123456\n  discovery: running\n  discovery: complete\n  ingestion: running\n  ingestion: complete\n  screening_vetting: running\n  screening_vetting: complete\n  catalog: running\n  catalog: complete\n"
+      }
+    },
+    "completed_at": "2026-11-12T10:52:21.310771+00:00",
+    "deadline_at": "2026-11-12T11:22:12.075475+00:00",
+    "defects": [],
+    "disposition": "no_change",
+    "dry_run": true,
+    "input_hashes": {
+      "audit.py": "7c1c33b538c744b283319123ed19ad9716d757caad5aa9dec1cbba5c886dd572",
+      "data/catalogs.json": "555211182e22a4631f76f68fde5770cdadce21e3cf3dbc2f8208ba3e05633a7f",
+      "data/fits-manifest.json.gz": "025c880ab236f4579e7c1ece7cf42ba5749141730379c605e3bc8c223b9836ce",
+      "data/snapshot-manifest.json": "53fa8903c8ff400211d04277c7e7972f1dfc816e8ecd0a84863453b36bbf777b",
+      "examples/results/example-recovery-v2.json": "63f6983143487450849df4d4077232b230916096e39f73287dc637fd292e8838",
+      "examples/results/example-unseeded-v2.json": "43c280739f93745450af9650e87bf30f46bc2340a13957dafda9c25ea2c53d86",
+      "import_pilot.py": "bb301294929127b39a72e7fd17e96bf7e5eec5a43e82c5bd3c3dc2c02649d762",
+      "legacy/download_curves.py": "a074b3379cd46648471969cf2bde89d9a8977a01ee15e2ca4e9ae9e4e96ce72d",
+      "legacy/screen.py": "d4b19993ca0052aeff57bfa175e82615002e6ac567dc3c3939a776f9b4483d96",
+      "maintenance.py": "b4934a098f3489aa15630bc7261a5c18ba00023faa05a508a310216bf93a6cb9",
+      "maintenance_benchmark.py": "72f601c8c944db4b99d83ca1851f47e81ff40ccd1239f1b2c1d19da69467057d",
+      "maintenance_specs/backlog.json": "03bcc26489229c2ec01baf4787bfa15596fff57e7141ff1b3d417ed2cf665edc",
+      "maintenance_specs/benchmark-v1.json": "727b940558c63d1946fcd6c42fba4c16834629f3c3cc91bc42d4e84c59fc7210",
+      "maintenance_specs/registry.json": "d38bd56603979a09fb230b88876e0955f776cb908d8379410cbec625a52082f7",
+      "requirements.txt": "dac776a21fae7cd7ecce23cc1a92c735a1466eed6e3d38455a21562ce55b3565",
+      "search.py": "3f427bde708be01e03e322b902bf374f813629749aba0384c1d52fd85a840552",
+      "workflow.py": "4ff0d0bad1039321071cdaab5916d3dddff979855e4b95abb3811f07b60d5fbc"
+    },
+    "item": null,
+    "limitations": [
+      "Remote CI is supplied by the scheduler for live work.",
+      "Cached reports and synthetic fixtures are checked without fetching FITS or live catalogs."
+    ],
+    "limits": {
+      "attempts": 2,
+      "network": "offline checks",
+      "window_minutes": 30
+    },
+    "next_item": {
+      "id": "TECH-001",
+      "next": "Define development and reserved validation noise fixtures before testing a scoring change.",
+      "priority": 1
+    },
+    "repository": {
+      "branch": "maintenance/framework",
+      "commands": [
+        {
+          "command": [
+            "git",
+            "rev-parse",
+            "HEAD"
+          ],
+          "elapsed_seconds": 0.051,
+          "exit_code": 0,
+          "status": "passed",
+          "stderr": "",
+          "stdout": "60c75c63fd5e51f1f905eac13525dae32bccab95\n"
+        },
+        {
+          "command": [
+            "git",
+            "symbolic-ref",
+            "--short",
+            "HEAD"
+          ],
+          "elapsed_seconds": 0.052,
+          "exit_code": 0,
+          "status": "passed",
+          "stderr": "",
+          "stdout": "maintenance/framework\n"
+        },
+        {
+          "command": [
+            "git",
+            "status",
+            "--porcelain"
+          ],
+          "elapsed_seconds": 0.057,
+          "exit_code": 0,
+          "status": "passed",
+          "stderr": "",
+          "stdout": ""
+        },
+        {
+          "command": [
+            "git",
+            "rev-parse",
+            "HEAD^{tree}"
+          ],
+          "elapsed_seconds": 0.053,
+          "exit_code": 0,
+          "status": "passed",
+          "stderr": "",
+          "stdout": "5ba9e3399a324075c758c0272ba6fba89306036f\n"
+        }
+      ],
+      "dirty": false,
+      "head": "60c75c63fd5e51f1f905eac13525dae32bccab95",
+      "reason": null,
+      "remote": null,
+      "status": "passed",
+      "tree": "5ba9e3399a324075c758c0272ba6fba89306036f"
+    },
+    "review_pending": false,
+    "schema_version": 1,
+    "started_at": "2026-11-12T10:52:12.075475+00:00",
+    "week": "2026-11-09"
+  },
+  "verification": {
+    "blocked_without_remote": {
+      "defects": [],
+      "disposition": "blocked",
+      "reason": "Current remote revision and successful CI need verification"
+    },
+    "publication_git_base": "1fa6ab0d31518e4981dc124eff6bf956ca692b8f",
+    "repeated_digest_equal": true,
+    "repeated_ledger_sha256": "b210ce6687099a53da17d01bfc3126bfce650c9cc45165cc3cd0eb5b73373762"
+  }
+}

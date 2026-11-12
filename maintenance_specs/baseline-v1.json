@@ -1,0 +1,131 @@
+{
+  "cases": [
+    {
+      "accepted_period_days": null,
+      "cadence_samples": 7776,
+      "cpu_seconds": 1.390625,
+      "id": "sparse-harmonics",
+      "leading_trial_days": 26.026711702638636,
+      "outcome": "abstained",
+      "role": "injected",
+      "sensitive_missing_cycles": 0,
+      "status": "inconclusive_search",
+      "wall_seconds": 1.506642
+    },
+    {
+      "accepted_period_days": null,
+      "cadence_samples": 809,
+      "cpu_seconds": 0.015625,
+      "id": "transit-gaps",
+      "leading_trial_days": 1.625,
+      "outcome": "gap_preserved",
+      "role": "gap",
+      "sensitive_missing_cycles": 0,
+      "status": "measured",
+      "wall_seconds": 0.00895
+    },
+    {
+      "accepted_period_days": null,
+      "cadence_samples": 1056,
+      "cpu_seconds": 0.109375,
+      "id": "alternating-eclipses",
+      "leading_trial_days": 1.62698412698412,
+      "outcome": "eclipse_held",
+      "role": "eclipse",
+      "sensitive_missing_cycles": 0,
+      "status": "ambiguous_period",
+      "wall_seconds": 0.114638
+    },
+    {
+      "accepted_period_days": null,
+      "cadence_samples": 1248,
+      "cpu_seconds": 0.09375,
+      "id": "validation-injection",
+      "leading_trial_days": 3.367559523809551,
+      "outcome": "abstained",
+      "role": "injected",
+      "sensitive_missing_cycles": 0,
+      "status": "ambiguous_period",
+      "wall_seconds": 0.081592
+    },
+    {
+      "accepted_period_days": 3.3706826459875456,
+      "cadence_samples": 1248,
+      "cpu_seconds": 0.0625,
+      "id": "validation-dilution",
+      "leading_trial_days": 3.3706826459875456,
+      "outcome": "recovered",
+      "role": "injected",
+      "sensitive_missing_cycles": 0,
+      "status": "measured",
+      "wall_seconds": 0.088315
+    },
+    {
+      "accepted_period_days": null,
+      "cadence_samples": 1248,
+      "cpu_seconds": 0.09375,
+      "id": "validation-correlated-injection",
+      "leading_trial_days": 3.3706826459875456,
+      "outcome": "abstained",
+      "role": "injected",
+      "sensitive_missing_cycles": 0,
+      "status": "ambiguous_period",
+      "wall_seconds": 0.082208
+    },
+    {
+      "accepted_period_days": null,
+      "cadence_samples": 1248,
+      "cpu_seconds": 0.15625,
+      "id": "white-no-signal",
+      "leading_trial_days": 2.2886745535377893,
+      "outcome": "no_alarm",
+      "role": "null",
+      "sensitive_missing_cycles": 0,
+      "status": "inconclusive_search",
+      "wall_seconds": 0.169763
+    },
+    {
+      "accepted_period_days": null,
+      "cadence_samples": 1248,
+      "cpu_seconds": 0.1875,
+      "id": "correlated-no-signal",
+      "leading_trial_days": 4.929881512741438,
+      "outcome": "no_alarm",
+      "role": "null",
+      "sensitive_missing_cycles": 0,
+      "status": "inconclusive_search",
+      "wall_seconds": 0.17694
+    }
+  ],
+  "definition_sha256": "727b940558c63d1946fcd6c42fba4c16834629f3c3cc91bc42d4e84c59fc7210",
+  "id": "planet-finder-v1",
+  "limitations": [
+    "Small synthetic fixture set; rates are counts over the listed cases.",
+    "Validation fixtures are public and fixed; there is no blind holdout.",
+    "Dilution scales depth only. This does not simulate source localization."
+  ],
+  "metrics": {
+    "abstained": {
+      "count": 3,
+      "n": 4
+    },
+    "ambiguous": {
+      "count": 2,
+      "n": 4
+    },
+    "false_alarm": {
+      "count": 0,
+      "n": 2
+    },
+    "recovered": {
+      "count": 1,
+      "n": 4
+    },
+    "wrong_period": {
+      "count": 0,
+      "n": 4
+    }
+  },
+  "peak_process_rss_bytes": null,
+  "violations": []
+}

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "completed": ["Published original and updated cached examples with explicit historical prior warnings", "EVAL-001"],
+  "items": [
+    {"priority": 1, "id": "TECH-001", "next": "Define development and reserved validation noise fixtures before testing a scoring change."},
+    {"priority": 2, "id": "TECH-002", "next": "Define a shaped-transit injection suite and measure the current box-search baseline."}
+  ]
+}

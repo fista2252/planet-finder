@@ -1,0 +1,14 @@
+{
+  "id": "planet-finder-v1",
+  "period_tolerance_days": 0.03,
+  "cases": [
+    {"id": "sparse-harmonics", "role": "injected", "rng": 19, "starts": [1500,1865,2230,2595,2960,3325], "days": 27, "period": 26.026849, "depth": 0.011, "duration": 0.24},
+    {"id": "transit-gaps", "role": "gap", "rng": 733, "starts": [1500], "days": 22, "period": 3.25, "depth": 0.015, "duration": 0.18, "omit_half_phase": true, "seed_period": 1.625},
+    {"id": "alternating-eclipses", "role": "eclipse", "rng": 733, "starts": [1500], "days": 22, "period": 3.25, "depth": 0.015, "secondary_depth": 0.012, "duration": 0.18, "bounds": [1.4,3.8]},
+    {"id": "validation-injection", "role": "injected", "rng": 49127, "starts": [1500], "days": 26, "period": 3.37, "depth": 0.012, "duration": 0.18, "bounds": [2.6,4.3]},
+    {"id": "validation-dilution", "role": "injected", "rng": 81431, "starts": [1500], "days": 26, "period": 3.37, "depth": 0.012, "flux_fraction": 0.25, "duration": 0.18, "bounds": [2.6,4.3]},
+    {"id": "validation-correlated-injection", "role": "injected", "rng": 61309, "starts": [1500], "days": 26, "period": 3.37, "depth": 0.009, "duration": 0.18, "rho": 0.85, "bounds": [2.6,4.3]},
+    {"id": "white-no-signal", "role": "null", "rng": 94031, "starts": [1500], "days": 26, "bounds": [1.4,5.0]},
+    {"id": "correlated-no-signal", "role": "null", "rng": 77321, "starts": [1500], "days": 26, "rho": 0.85, "bounds": [1.4,5.0]}
+  ]
+}
