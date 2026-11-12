@@ -1,0 +1,24 @@
+{
+  "tics": ["238187210"],
+  "max_sectors": 4,
+  "prior_sources": [
+    {
+      "name": "eumemic",
+      "kind": "community",
+      "repository": "eumemic/exoplanets",
+      "ref": "main",
+      "path": "candidates/ephemerides.csv",
+      "tic_column": "TIC",
+      "period_column": "period_d",
+      "label_column": "candidate_id"
+    },
+    {
+      "name": "exofop-ctoi",
+      "kind": "ctoi",
+      "url": "https://exofop.ipac.caltech.edu/tess/download_ctoi.php?output=csv",
+      "tic_column": "TIC ID",
+      "period_column": "Period (days)",
+      "label_column": "CTOI"
+    }
+  ]
+}

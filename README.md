@@ -36,11 +36,22 @@ Each run has its own config digest and ID. Use a new ID to change settings. To r
 
 1. **Discover.** Query MAST for public SPOC, TESS-SPOC, QLP and T16 light curves. Select one product per sector with documented priority. If the available sectors exceed the limit, spread the selection across the observed baseline. Freeze the inventory and hash its source response.
 2. **Ingest.** Cache FITS by MAST URI, verify local bytes and time convention, and record the product, sector, retained cadences, hash and retrieval timestamp. `--local-fits` can supply an existing archive cache with the original filenames. Check that the cache came from the stated archive before using it.
-3. **Screen and vet.** Search the selected photometry using Box Least Squares, or test a supplied period and epoch. Measure local box depths only where the center and sidebands have sufficient actual cadences. Record repeat support, nominal odd/even and half-phase diagnostics, an inverted BLS control, and fixed-grid box injection and inversion on the available cadences. Keep strong inverted results, gaps and missing data visible.
-4. **Crossmatch and review.** Query NASA Exoplanet Archive TOI and confirmed-planet tables and a pinned community ephemeris catalog. Match exact TIC IDs and flag period agreement within 0.1%. Failed queries remain visible. Unresolved status means priority is open. The queue selects repeat-like, flagged, failed or incomplete cases and a deterministic quality sample. A reviewer can save a decision with a reason. The runner uses no AI service or cloud compute.
+3. **Screen and vet.** Combine Box Least Squares with a bounded search over separations between individual dips, refine trial periods, and compare integer harmonics. Check expected events on the retained cadences for positive support and sensitive non-detections. Ambiguous or inconclusive periods stay out of the planner. A seeded run tests the supplied period and epoch. The report keeps odd/even, half-phase and inversion controls visible.
+4. **Crossmatch and review.** Query NASA Exoplanet Archive TOI and confirmed-planet tables, plus configured CSV catalogs. Match exact TIC IDs and flag period agreement within 0.1%. Failed queries remain visible and unresolved means priority is open. The review queue records queued, reviewed and stale cases. An unchanged evidence fingerprint preserves a saved decision when a run resumes. The runner uses no AI service or cloud compute.
 5. **Plan and export.** Use BTJD for linear midpoint projections. Generic runs leave future TESS and ground visibility, and timing uncertainty, uncomputed. The imported pilot supplies its previously checked conditional timing and footprint for TIC 238187210. Export only the report files you intend to publish.
 
 Default limits are eight targets per run, six sectors per target, 72 MiB of new FITS per invocation and 12 MiB per FITS. Hard caps are 12 sectors and 128 MiB per invocation. Metadata queries have separate fixed timeouts and bounds. The config also limits the period grid to at most 12,000 points. The runner leaves cases outside its cadence, event or sample limits in the review queue. An unseeded period may be a harmonic or an artifact. Local scores and inversion counts have no calibrated survey false-alarm interpretation.
+
+### Refresh or extend the prior search
+
+The default community source is pinned to the November 4 Eumemic snapshot. To check a newer revision, create a new run with [the refresh config](examples/refresh-priors.json), which resolves the public GitHub `main` branch once and also checks ExoFOP CTOIs.
+
+```sh
+python workflow.py new --id current-priors --config examples/refresh-priors.json
+python workflow.py run current-priors
+```
+
+Set `prior_sources` to a list of up to six CSV sources. Each entry declares `name`, `kind`, `tic_column`, `period_column` and `label_column`, plus either `repository`, `ref` and `path`, or a public HTTPS `url`. Kinds include `community`, `ctoi`, `eclipsing_binary` and `tce`. Use the EB or TCE kind with an archive CSV that provides a TIC column and periods in days. Built-in NASA checks run in addition to these sources. Each run freezes CSV bytes and their digest, and records the resolved GitHub commit and date when available. An endpoint without a version exposes the content hash, retrieval time and any server modification date. Matching only covers the selected sources and their exact TIC records.
 
 ## Imported pilot and verification
 

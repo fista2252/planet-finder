@@ -68,23 +68,32 @@ function archived(t) {
 function current(t) {
   const e = t.evidence;
   const review = run.decisions?.[t.tic];
+  const reviewState = run.review_queue?.find(row => row.tic === t.tic)?.review_state;
   const evidence = fields([
     ["Measurement status", words(e.status)], ["Mode", e.mode ? words(e.mode) : "Unavailable"],
-    ["Period (d)", num(e.period_days, 7)], ["Midpoint (BTJD)", num(e.epoch_btjd, 6)],
-    ["Supported cycles", e.supported_cycles], ["Local controls", e.local_controls?.testable]
+    [e.period_days == null && e.trial_period_days ? "Leading trial period (d)" : "Period (d)", num(e.period_days ?? e.trial_period_days, 7)],
+    ["Trial epoch (BTJD)", num(e.epoch_btjd ?? e.trial_epoch_btjd, 6)],
+    ["Supported cycles", e.supported_cycles], ["Sensitive non-detections", e.sensitive_missing_cycles]
   ]);
   const flags = t.review_reasons.length ? "<p>Review flags: " + esc(t.review_reasons.map(words).join(", ")) + ".</p>" : "";
   const events = e.events ?? [];
-  const rows = events.map(r => [r.sector, r.cycle, num(r.midpoint_btjd, 6), words(r.coverage),
+  const rows = events.map(r => [r.sector, r.cycle, num(r.midpoint_btjd, 6), words(r.event_state ?? r.coverage),
     num(r.measurement?.depth * 100, 3), num(r.measurement?.score, 1)]);
   const productRows = t.provenance.map(r => [r.sequence_number, r.provenance_name, r.cadence_count, r.sha256]);
-  const catalogRows = t.catalog_checks.map(r => [r.kind, words(r.state), r.rows_checked]);
-  return evidence + flags + (review ? "<p>Review decision: " + esc(words(review.decision)) + " · " + esc(review.reason) + "</p>" : "") +
+  const catalogRows = t.catalog_checks.map(r => [r.source_name ?? r.kind, words(r.state), r.rows_checked,
+    r.revision?.slice(0, 12), r.revision_date ?? r.source_modified_at, r.retrieved_at]);
+  const alternatives = (e.alternatives ?? []).map(a => [num(a.period_days, 7), words(a.method),
+    a.supported_cycles, a.sensitive_missing_cycles, a.sensitive_missing_cycles >= 2 ? "Contradicted" :
+      a.supported_cycles >= 3 ? "Retained for comparison" : "Insufficient support"]);
+  return evidence + flags + (review ? "<p>" + (reviewState === "stale" ? "Previous review · evidence changed" : "Review decision") +
+    " · " + esc(words(review.decision)) + " · " + esc(review.reason) + "</p>" : "") +
     eventPlot(events) + (e.uncertainty ? "<p>" + esc(e.uncertainty) + "</p>" : "") +
-    '<details><summary>Observed cadence and local measurements</summary>' + table(["Sector", "Cycle", "BTJD", "Coverage", "Depth (%)", "Nominal score"], rows) + '</details>' +
+    (alternatives.length ? '<details><summary>Tested periods and harmonics</summary>' +
+      table(["Period (d)", "Origin", "Supported cycles", "Sensitive misses", "Comparison"], alternatives) + '</details>' : '') +
+    '<details><summary>Observed cadence and local measurements</summary>' + table(["Sector", "Cycle", "BTJD", "Window result", "Depth (%)", "Nominal score"], rows) + '</details>' +
     '<details><summary>Products and SHA-256 digests</summary>' + table(["Sector", "Pipeline", "Cadences", "SHA-256"], productRows) + '</details>' +
     '<details><summary>Stage status and catalog checks</summary>' + table(["Stage", "State"], Object.entries(t.stages).map(([k,v]) => [words(k), words(v)])) +
-    table(["Catalog", "State", "Rows"], catalogRows) +
+    table(["Catalog", "State", "Rows", "Revision", "Source date", "Retrieved (UTC)"], catalogRows) +
     (t.failures.length ? "<ul>" + t.failures.map(f => "<li>" + esc(f.stage + " · " + f.error) + "</li>").join("") + "</ul>" : "") + '</details>';
 }
 
@@ -147,7 +156,7 @@ function planner() {
     const rows = [];
     for (const t of run.targets) {
       const e = t.evidence;
-      if (e.status !== "measured" || !(e.period_days > 0)) continue;
+      if (e.status !== "measured" || !(e.period_days > 0) || !(e.supported_cycles >= 3)) continue;
       for (let i = Math.ceil((lo-e.epoch_btjd)/e.period_days); i < Math.ceil((hi-e.epoch_btjd)/e.period_days); i++) {
         rows.push([t.tic, e.epoch_btjd + i * e.period_days, 24 * e.duration_days]);
       }
@@ -166,7 +175,7 @@ async function initialize() {
     if (run.schema_version !== 1 || !Array.isArray(run.targets)) throw Error("Unsupported run schema");
     const queueResponse = run.run_id ? null : await fetch("review-queue.json");
     const queue = run.run_id ? run.review_queue : queueResponse.ok ? await queueResponse.json() : [];
-    queued = new Set(queue.map(r => r.tic));
+    queued = new Set(queue.filter(r => r.review_state !== "reviewed").map(r => r.tic));
     el("run-label").textContent = run.run_id ? "Local run · " + run.run_id : "Imported pilot · " + run.snapshot_date;
     el("summary").innerHTML = [
       [run.targets.length, "Targets"],

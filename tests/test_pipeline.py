@@ -104,11 +104,52 @@ class SearchTests(unittest.TestCase):
         result = search(curve, config)
         self.assertEqual(result, search(curve, config))
         self.assertAlmostEqual(result["period_days"], 3.25, delta=.02)
-        self.assertEqual(result["mode"], "period_grid")
+        self.assertEqual(result["mode"], "blind")
         self.assertGreater(result["search"]["search_snr"], result["search"]["inverted_max_snr"])
 
     def test_no_data_is_explicit(self):
         self.assertEqual(search([], workflow.DEFAULTS), {"status": "no_usable_observations"})
+
+    def test_sparse_multiyear_search_rejects_coarse_harmonic(self):
+        period = 26.026849
+        rng = np.random.default_rng(19)
+        curves = []
+        for sector, start in enumerate([1500, 1865, 2230, 2595, 2960, 3325]):
+            time = start + np.arange(0, 27, 1 / 48)
+            flux = rng.normal(0, .001, len(time))
+            phase = (time - 1501 + period / 2) % period - period / 2
+            flux[abs(phase) < .12] -= .011
+            curves.append(dict(time=time, flux=flux, sector=sector))
+        result = search(curves, workflow.DEFAULTS)
+        coarse = next(r for r in result["alternatives"] if r["method"] == "bls_grid")
+        self.assertAlmostEqual(coarse["period_days"], period / 6, delta=.002)
+        self.assertGreaterEqual(coarse["sensitive_missing_cycles"], 20)
+        self.assertAlmostEqual(result["trial_period_days"], period, delta=.003)
+        self.assertEqual(result["supported_cycles"], 7)
+        self.assertEqual(result["status"], "inconclusive_search")
+        self.assertIsNone(result["period_days"])
+        self.assertEqual(workflow.plan({"targets": [{"tic": "123", "evidence": result}]}, 4300, 4400), [])
+
+    def test_short_harmonic_contradicted_only_with_sensitive_coverage(self):
+        time, flux = series(1500)
+        trial = dict(period_days=1.625, epoch_btjd=1501, duration_days=.18)
+        data = dict(time=time, flux=flux, sector=1)
+        with_coverage = search([data], workflow.DEFAULTS, trial)
+        self.assertEqual(with_coverage["status"], "contradicted_ephemeris")
+        self.assertGreaterEqual(with_coverage["sensitive_missing_cycles"], 4)
+        phase = (time - 1501 + 1.625) % 3.25 - 1.625
+        keep = abs(abs(phase) - 1.625) > .4
+        gap = search([dict(data, time=time[keep], flux=flux[keep])], workflow.DEFAULTS, trial)
+        self.assertEqual(gap["sensitive_missing_cycles"], 0)
+        self.assertTrue(any(e["event_state"] == "insufficient_cadence" for e in gap["events"]))
+
+    def test_alternating_eclipse_depths_do_not_promote_a_short_harmonic(self):
+        time, flux = series(1500, secondary=True)
+        config = workflow.DEFAULTS | dict(min_period_days=1.4, max_period_days=3.8)
+        result = search([dict(time=time, flux=flux, sector=1)], config)
+        self.assertIn("possible_odd_even_difference", result["flags"])
+        self.assertEqual(result["status"], "ambiguous_period")
+        self.assertTrue(any(abs(a["period_days"] - 3.25) < .03 for a in result["alternatives"]))
 
 
 class RunTests(unittest.TestCase):
@@ -154,8 +195,14 @@ class RunTests(unittest.TestCase):
                 config = dict(tics=[tic], min_period_days=2.6, max_period_days=3.8)
                 run = workflow.create_run(config, "fixture-a")
                 first = workflow.process(run, root / "cache", local)
+                workflow.record_review(run, tic, "needs_followup", "Test review")
                 second = workflow.process(run, root / "cache")
                 self.assertEqual(first["targets"][0]["evidence"], second["targets"][0]["evidence"])
+                self.assertEqual(audit.load(run / "review-queue.json")[0]["review_state"], "reviewed")
+                stale = json.loads(json.dumps(second))
+                stale["targets"][0]["evidence"]["supported_cycles"] -= 1
+                queue = workflow.review_queue(stale, workflow.saved_decisions(run))
+                self.assertEqual(queue[0]["review_state"], "stale")
                 fresh = workflow.create_run(config | {"max_sectors": 1}, "fixture-b")
                 workflow.process(fresh, root / "cache")
                 discover.assert_called_once_with(tic)
@@ -164,6 +211,7 @@ class RunTests(unittest.TestCase):
                 out = root / "publication"
                 workflow.export(run, out)
                 self.assertEqual(audit.load(out / "data.json")["run_id"], "fixture-a")
+                self.assertEqual(audit.load(out / "data.json")["review_queue"][0]["review_state"], "reviewed")
                 self.assertTrue(workflow.plan(first, 1700, 1720))
                 with self.assertRaises(FileExistsError):
                     workflow.export(run, out)
@@ -178,6 +226,39 @@ class RunTests(unittest.TestCase):
             self.assertEqual(target["stages"]["discovery"], "failed")
             self.assertEqual(target["evidence"]["status"], "no_usable_observations")
             self.assertIn("incomplete_evidence", audit.load(run / "review-queue.json")[0]["reasons"])
+
+    def test_catalog_branch_resolved_once_per_run(self):
+        source = dict(workflow.DEFAULT_CATALOG, ref="main")
+        raw = b"TIC,period_d,candidate_id\n123,26.02,old\n"
+        updated = b"TIC,period_d,candidate_id\n123,26.02,new\n"
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            with patch.object(workflow, "resolve_github", side_effect=[
+                dict(revision="a" * 40, revision_date="2026-11-04"),
+                dict(revision="b" * 40, revision_date="2026-11-12"),
+            ]) as resolve, patch.object(workflow, "fetch_catalog", side_effect=[
+                (raw, "https://example.com", None), (updated, "https://example.com", None),
+            ]) as fetch:
+                first, receipt = workflow.source_snapshot(root / "first", source)
+                self.assertEqual(workflow.source_snapshot(root / "first", source), (first, receipt))
+                second, new_receipt = workflow.source_snapshot(root / "second", source)
+                self.assertEqual((resolve.call_count, fetch.call_count), (2, 2))
+                self.assertIn("/" + "a" * 40 + "/", fetch.call_args_list[0].args[0])
+                self.assertEqual(receipt["requested_ref"], "main")
+                self.assertNotEqual(new_receipt["revision"], receipt["revision"])
+                _, matches = workflow.parse_catalog(second, ["TIC", "period_d", "candidate_id"], "123", False)
+                self.assertEqual(matches[0]["label"], "new")
+
+    def test_legacy_config_hash_still_resumes(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(workflow, "RUNS", Path(temp)), \
+                patch.object(workflow, "discover", return_value={"products": []}), \
+                patch.object(workflow, "catalogs_for", return_value=[]):
+            run = workflow.create_run({"tics": ["123"]}, "legacy")
+            record = audit.load(run / "run.json")
+            record["config"].pop("prior_sources")
+            record["config_sha256"] = workflow.sha(json_bytes(record["config"]))
+            workflow.write(run / "run.json", record)
+            self.assertEqual(workflow.process(run, Path(temp) / "cache")["run_id"], "legacy")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,11 @@
 # Changelog
 
+## Search and review corrections
+
+- Added dip-pair period refinement, harmonic comparisons and cadence-based sensitive non-detections. Unresolved blind periods stay out of the planner.
+- Added configurable, frozen prior-catalog inputs and GitHub revision resolution.
+- Tied review decisions to evidence fingerprints so unchanged runs retain reviewed cases.
+
 ## Initial release
 
 - Added bounded public TESS discovery, FITS ingestion, periodic screening, local vetting, prior-report checks and report exports for configurable runs.

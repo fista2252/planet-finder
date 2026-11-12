@@ -7,17 +7,22 @@ import math
 import re
 import shutil
 import sys
+from contextlib import contextmanager
 from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from urllib.parse import quote, urlsplit
 from uuid import uuid4
 
 from audit import atomic, checkpoint, load, prior_reports
-from import_pilot import COMMIT, COMMUNITY, ROOT, json_bytes, sha
+from import_pilot import COMMIT, ROOT, json_bytes, sha
 
+DEFAULT_CATALOG = dict(name="eumemic", kind="community", repository="eumemic/exoplanets", ref=COMMIT,
+                       path="candidates/ephemerides.csv", tic_column="TIC", period_column="period_d",
+                       label_column="candidate_id")
 DEFAULTS = dict(max_sectors=6, download_mib=72, min_period_days=1.0, max_period_days=35.0,
-                durations_days=[.08, .16, .24], grid_points=8000, seeds={})
+                durations_days=[.08, .16, .24], grid_points=8000, seeds={}, prior_sources=[DEFAULT_CATALOG])
 RUNS = ROOT / "runs"
 SHARED = ROOT / ".audit-cache" / "shared"
 MIB = 1024 * 1024
@@ -27,7 +32,7 @@ TIC = re.compile(r"[1-9][0-9]{0,15}")
 PIPELINES = ["SPOC", "TESS-SPOC", "QLP", "T16"]
 MAST = "https://mast.stsci.edu/api/v0/invoke"
 NASA = "https://exoplanetarchive.ipac.caltech.edu/TAP/sync"
-RAW_COMMUNITY = f"https://raw.githubusercontent.com/eumemic/exoplanets/{COMMIT}/candidates/ephemerides.csv"
+REVISION = re.compile(r"[0-9a-f]{40}")
 
 
 def now():
@@ -38,9 +43,38 @@ def write(path, value):
     atomic(path, json_bytes(value))
 
 
+def validate_sources(sources):
+    if not isinstance(sources, list) or len(sources) > 6:
+        raise ValueError("Specify at most six prior_sources")
+    fields = {"name", "kind", "tic_column", "period_column", "label_column"}
+    names = {"toi", "confirmed"}
+    for source in sources:
+        if not isinstance(source, dict) or set(source) not in (fields | {"url"}, fields | {"repository", "ref", "path"}):
+            raise ValueError("Prior source requires CSV columns, name and kind, plus url or repository/ref/path")
+        if any(not isinstance(value, str) or not value.strip() for value in source.values()):
+            raise ValueError("Prior source values must be nonempty strings")
+        name = source["name"]
+        if not ID.fullmatch(name) or name in names or source["kind"] not in {"community", "ctoi", "eclipsing_binary", "tce"}:
+            raise ValueError("Invalid, duplicate or reserved prior source name or kind")
+        names.add(name)
+        if "url" in source:
+            url = urlsplit(source["url"])
+            if url.scheme != "https" or not url.hostname or url.username is not None or url.password is not None:
+                raise ValueError("Prior CSV URL must use HTTPS with no credentials")
+        else:
+            repo = source["repository"]
+            ref = source["ref"]
+            path = source["path"]
+            if (not re.fullmatch(r"[\w.-]+/[\w.-]+", repo, re.ASCII)
+                    or not re.fullmatch(r"[\w./-]{1,160}", ref, re.ASCII)
+                    or not re.fullmatch(r"[\w./-]{1,240}\.csv", path, re.ASCII)
+                    or any(part in {"", ".", ".."} for value in (repo, ref, path) for part in value.split("/"))):
+                raise ValueError("Invalid GitHub repository, ref or CSV path")
+
+
 def validate_config(config):
     if not isinstance(config, dict) or set(config) - {"tics", *DEFAULTS}:
-        raise ValueError("Unknown settings. See examples/new-run.json.")
+        raise ValueError("Unknown settings. See the example JSON configs.")
     config = DEFAULTS | config
     tics = config.get("tics")
     if not isinstance(tics, list) or not 1 <= len(tics) <= 8 or any(type(tic) is not str or not TIC.fullmatch(tic) for tic in tics):
@@ -70,6 +104,7 @@ def validate_config(config):
             .5 <= period <= 500 and 1000 <= epoch <= 10000 and .04 <= dur <= min(1, .4 * period)
         ):
             raise ValueError("Seed outside supported period, duration or BTJD range")
+    validate_sources(config["prior_sources"])
     return config
 
 
@@ -201,7 +236,7 @@ def fetch_product(product, cache, budget, local_cache):
     return path, meta
 
 
-def catalog_rows(url, args, kind, columns, tic, allow_empty):
+def fetch_catalog(url, args):
     import requests
 
     response = requests.get(url, params=args, timeout=(8, 20), stream=True)
@@ -213,24 +248,81 @@ def catalog_rows(url, args, kind, columns, tic, allow_empty):
             if buffer.tell() > 4 * MIB:
                 raise ValueError("Catalog exceeded transfer limit")
     raw = buffer.getvalue()
+    return raw, response.url, response.headers.get("Last-Modified")
+
+
+def parse_catalog(raw, columns, tic, allow_empty):
     source = csv.DictReader(io.StringIO(raw.decode("utf-8-sig")))
     if not set(columns) <= set(source.fieldnames or []):
         raise ValueError("Unexpected catalog schema")
-    id_column, period, label = columns
+    id_column, period_column, label_column = columns
     rows = list(source)
     if not rows and not allow_empty:
         raise ValueError("Catalog returned no rows")
-    matches = [dict(tic=tic, period_days=float(row[period]) if row[period] else None, label=row[label],
-                    **({"record": row} if kind == "community" else {}))
-               for row in rows if row[id_column].strip().removeprefix("TIC ").strip() == tic]
+    matches = []
+    for row in rows:
+        if row[id_column] is None or row[id_column].strip().removeprefix("TIC ").strip().lstrip("0") != tic:
+            continue
+        period = float(row[period_column]) if row[period_column] else None
+        if period is not None and (not math.isfinite(period) or period <= 0):
+            raise ValueError(f"Invalid period in matching catalog row for TIC {tic}")
+        matches.append(dict(tic=tic, period_days=period, label=row[label_column]))
+    return rows, matches
+
+
+def catalog_rows(url, args, kind, columns, tic, allow_empty, *, source=None):
+    raw, final_url, modified = fetch_catalog(url, args)
+    rows, matches = parse_catalog(raw, columns, tic, allow_empty)
     return dict(kind=kind, state="checked_snapshot" if rows else "checked_no_rows", rows_checked=len(rows),
-                url=COMMUNITY if kind == "community" else response.url, sha256=sha(raw),
-                retrieved_at=now(), matches=matches)
+                url=final_url, sha256=sha(raw), source_name=source or kind,
+                retrieved_at=now(), source_modified_at=modified, scope="exact TIC", matches=matches)
 
 
-def catalogs_for(tic, cache, failures):
+def resolve_github(source):
+    import requests
+
+    repo, ref = source["repository"], source["ref"]
+    if REVISION.fullmatch(ref):
+        date = "2026-11-04" if source == DEFAULT_CATALOG else None
+        return dict(revision=ref, revision_date=date)
+    response = requests.get(f"https://api.github.com/repos/{repo}/commits/{quote(ref, safe='')}",
+                            timeout=(8, 20))
+    response.raise_for_status()
+    data = response.json()
+    if not REVISION.fullmatch(data.get("sha", "")):
+        raise ValueError("GitHub did not return an immutable revision")
+    return dict(revision=data["sha"], revision_date=data["commit"]["committer"]["date"])
+
+
+def source_snapshot(root, source):
+    """Freeze an optional catalog and receipt before matching any TIC."""
+    folder = root / "prior-snapshots" / source["name"]
+    metadata = folder / "receipt.json"
+    data = folder / "catalog.csv"
+    if metadata.is_file():
+        receipt = load(metadata)
+        raw = data.read_bytes()
+        if sha(raw) != receipt["sha256"]:
+            raise ValueError("Frozen catalog SHA-256 mismatch")
+        return raw, receipt
+    if "repository" in source:
+        resolved = checkpoint(folder / "revision.json", sha(json_bytes(source)), lambda: resolve_github(source))
+        repo, path, rev = source["repository"], source["path"], resolved["revision"]
+        download = f"https://raw.githubusercontent.com/{repo}/{rev}/{path}"
+        link = f"https://github.com/{repo}/blob/{rev}/{path}"
+    else:
+        resolved = dict(revision=None, revision_date=None)
+        download = link = source["url"]
+    raw, _, modified = fetch_catalog(download, None)
+    receipt = dict(url=link, sha256=sha(raw), source_modified_at=modified, retrieved_at=now(),
+                   requested_ref=source.get("ref"), **resolved)
+    atomic(data, raw)
+    write(metadata, receipt)
+    return raw, receipt
+
+
+def catalogs_for(tic, cache, failures, root, sources):
     specs = (
-        ("community", RAW_COMMUNITY, None, ("TIC", "period_d", "candidate_id"), False),
         ("toi", NASA, {"query": f"select tid,pl_orbper,toi from toi where tid={tic}", "format": "csv"}, ("tid", "pl_orbper", "toi"), True),
         ("confirmed", NASA, {"query": f"select tic_id,pl_orbper,pl_name from pscomppars where tic_id='TIC {tic}'", "format": "csv"}, ("tic_id", "pl_orbper", "pl_name"), True),
     )
@@ -245,6 +337,18 @@ def catalogs_for(tic, cache, failures):
         except (ValueError, OSError) as exc:
             failures.append(dict(stage="catalog", source=kind, error=str(exc)))
             records.append(dict(kind=kind, state="failed", url=url, rows_checked=0, matches=[]))
+    for source in sources:
+        name, kind = source["name"], source["kind"]
+        try:
+            raw, receipt = source_snapshot(root, source)
+            columns = [source[k] for k in ("tic_column", "period_column", "label_column")]
+            rows, matches = parse_catalog(raw, columns, tic, allow_empty=False)
+            records.append(dict(kind=kind, source_name=name, state="checked_snapshot",
+                                rows_checked=len(rows), scope="exact TIC", matches=matches, **receipt))
+        except (ValueError, OSError, KeyError) as exc:
+            failures.append(dict(stage="catalog", source=name, error=str(exc)))
+            records.append(dict(kind=kind, source_name=name, state="failed", rows_checked=0, matches=[],
+                                requested_ref=source.get("ref"), url=source.get("url")))
     return records
 
 
@@ -315,7 +419,7 @@ def run_target(root, config, tic, cache, budget, local_cache, code):
     if catalog_root.is_file():
         catalogs = load(catalog_root)
     else:
-        catalogs = catalogs_for(tic, cache, failures)
+        catalogs = catalogs_for(tic, cache, failures, root, config["prior_sources"])
         if all(r["state"] != "failed" for r in catalogs):
             write(catalog_root, catalogs)
     stage("catalog", "incomplete" if any(r["state"] == "failed" for r in catalogs) else "complete")
@@ -324,7 +428,7 @@ def run_target(root, config, tic, cache, budget, local_cache, code):
     reasons = list(result.get("flags", []))
     if failures or result["status"] != "measured":
         reasons.append("incomplete_evidence")
-    if result.get("supported_cycles", 0) >= 3:
+    if result["status"] == "measured" and result.get("supported_cycles", 0) >= 3:
         reasons.append("repeat_like_signal")
     if records:
         reasons.append("prior_report")
@@ -335,23 +439,70 @@ def run_target(root, config, tic, cache, budget, local_cache, code):
                 prior_reports=records, catalog_checks=catalogs, review_reasons=reasons)
 
 
+@contextmanager
+def run_lock(root):
+    lock = root / "running.lock"
+    with lock.open("x", encoding="utf-8") as f:
+        f.write(now())
+    try:
+        yield
+    finally:
+        lock.unlink()
+
+
+def evidence_fingerprint(row):
+    products = [(p["uri"], p["sha256"], p["cadence_count"]) for p in row["provenance"]]
+    checks = [(c.get("source_name", c["kind"]), c["state"]) for c in row["catalog_checks"]]
+    return stage_key(row["tic"], row["evidence"], products, checks, row["stages"],
+                     row["prior_status"], row["prior_reports"], row["review_reasons"])
+
+
+def saved_decisions(root):
+    return {path.stem: load(path) for path in sorted((root / "decisions").glob("*.json"))}
+
+
+def review_queue(report, decisions):
+    queue = []
+    for row in report["targets"]:
+        tic = row["tic"]
+        decision = decisions.get(tic)
+        if not row["review_reasons"] and decision is None:
+            continue
+        fingerprint = evidence_fingerprint(row)
+        state = "queued"
+        if decision is not None:
+            state = "reviewed" if decision.get("evidence_sha256") == fingerprint else "stale"
+        queue.append(dict(tic=tic, reasons=row["review_reasons"], prior_status=row["prior_status"],
+                          review_state=state, evidence_sha256=fingerprint))
+    return queue
+
+
+def record_review(root, tic, decision, reason):
+    with run_lock(root):
+        report = load(root / "report.json")
+        target = next((row for row in report["targets"] if row["tic"] == tic), None)
+        if target is None:
+            raise ValueError("TIC has no evidence in this run")
+        write(root / "decisions" / f"{tic}.json",
+              dict(tic=tic, decision=decision, reason=reason, reviewed_at=now(),
+                   evidence_sha256=evidence_fingerprint(target)))
+        write(root / "review-queue.json", review_queue(report, saved_decisions(root)))
+
+
 def process(root, cache, local_cache=None):
     import numpy
     import astropy
 
     sys.path.insert(0, str(ROOT / "legacy"))
     record = load(root / "run.json")
-    config = validate_config(record["config"])
-    if record["config_sha256"] != sha(json_bytes(config)):
+    if record["config_sha256"] != sha(json_bytes(record["config"])):
         raise ValueError("Run config changed. Create a new run to change settings.")
+    config = validate_config(record["config"])
     code = [sys.version.split()[0], numpy.__version__, astropy.__version__, version("requests")]
     code.extend(sha(path.read_bytes()) for path in (Path(__file__), ROOT / "search.py", ROOT / "audit.py",
                                                    ROOT / "legacy/screen.py", ROOT / "legacy/download_curves.py"))
     budget = [config["download_mib"] * MIB]
-    lock = root / "running.lock"
-    with lock.open("x", encoding="utf-8") as f:
-        f.write(now())
-    try:
+    with run_lock(root):
         rows = []
         for tic in config["tics"]:
             print(f"{record['run_id']} TIC {tic}", flush=True)
@@ -360,11 +511,7 @@ def process(root, cache, local_cache=None):
                       time_scale="BJD_TDB minus 2457000", new_fits_bytes=config["download_mib"] * MIB - budget[0],
                       targets=rows)
         write(root / "report.json", report)
-        queue = [dict(tic=r["tic"], reasons=r["review_reasons"], prior_status=r["prior_status"],
-                      review_state="queued") for r in rows if r["review_reasons"]]
-        write(root / "review-queue.json", queue)
-    finally:
-        lock.unlink()
+        write(root / "review-queue.json", review_queue(report, saved_decisions(root)))
     return report
 
 
@@ -374,7 +521,7 @@ def plan(report, start, end):
     rows = []
     for row in report["targets"]:
         m = row["evidence"]
-        if m["status"] != "measured":
+        if m["status"] != "measured" or m.get("supported_cycles", 0) < 3:
             continue
         epoch, period = m["epoch_btjd"], m["period_days"]
         for cycle in range(math.ceil((start - epoch) / period), math.ceil((end - epoch) / period)):
@@ -386,8 +533,8 @@ def plan(report, start, end):
 
 def export(root, out):
     report = load(root / "report.json")
-    queue = load(root / "review-queue.json")
-    decisions = {path.stem: load(path) for path in sorted((root / "decisions").glob("*.json"))}
+    decisions = saved_decisions(root)
+    queue = review_queue(report, decisions)
     if out.exists():
         raise FileExistsError(f"Export already exists: {out}")
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -449,10 +596,7 @@ def cli():
         for path in sorted((root / "targets").glob("*/status.json")):
             print(path.read_text(encoding="utf-8").strip())
     elif args.command == "review":
-        if args.tic not in load(root / "run.json")["config"]["tics"]:
-            raise ValueError("TIC is outside this run")
-        write(root / "decisions" / f"{args.tic}.json",
-              dict(tic=args.tic, decision=args.decision, reason=args.reason, reviewed_at=now()))
+        record_review(root, args.tic, args.decision, args.reason)
     elif args.command == "export":
         export(root, args.out)
         print(args.out)
