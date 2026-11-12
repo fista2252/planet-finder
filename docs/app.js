@@ -85,7 +85,8 @@ function current(t) {
   const alternatives = (e.alternatives ?? []).map(a => [num(a.period_days, 7), words(a.method),
     a.supported_cycles, a.sensitive_missing_cycles, a.sensitive_missing_cycles >= 2 ? "Contradicted" :
       a.supported_cycles >= 3 ? "Retained for comparison" : "Insufficient support"]);
-  return evidence + flags + (review ? "<p>" + (reviewState === "stale" ? "Previous review · evidence changed" : "Review decision") +
+  const priorWarning = t.prior_warning ? '<p role="note">' + esc(t.prior_warning) + '</p>' : "";
+  return evidence + priorWarning + flags + (review ? "<p>" + (reviewState === "stale" ? "Previous review · evidence changed" : "Review decision") +
     " · " + esc(words(review.decision)) + " · " + esc(review.reason) + "</p>" : "") +
     eventPlot(events) + (e.uncertainty ? "<p>" + esc(e.uncertainty) + "</p>" : "") +
     (alternatives.length ? '<details><summary>Tested periods and harmonics</summary>' +

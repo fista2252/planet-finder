@@ -195,6 +195,14 @@ class RunTests(unittest.TestCase):
                 config = dict(tics=[tic], min_period_days=2.6, max_period_days=3.8)
                 run = workflow.create_run(config, "fixture-a")
                 first = workflow.process(run, root / "cache", local)
+                target = first["targets"][0]
+                self.assertIn("2026-11-04", target["prior_warning"])
+                self.assertIn("examples/refresh-priors.json", target["prior_warning"])
+                queued = audit.load(run / "review-queue.json")[0]
+                self.assertEqual(queued["prior_warning"], target["prior_warning"])
+                self.assertIn(workflow.PINNED_PRIOR_REASON, queued["reasons"])
+                before_notice = dict(target, review_reasons=target["review_reasons"][:-1])
+                self.assertEqual(workflow.evidence_fingerprint(target), workflow.evidence_fingerprint(before_notice))
                 workflow.record_review(run, tic, "needs_followup", "Test review")
                 second = workflow.process(run, root / "cache")
                 self.assertEqual(first["targets"][0]["evidence"], second["targets"][0]["evidence"])
@@ -203,8 +211,11 @@ class RunTests(unittest.TestCase):
                 stale["targets"][0]["evidence"]["supported_cycles"] -= 1
                 queue = workflow.review_queue(stale, workflow.saved_decisions(run))
                 self.assertEqual(queue[0]["review_state"], "stale")
-                fresh = workflow.create_run(config | {"max_sectors": 1}, "fixture-b")
-                workflow.process(fresh, root / "cache")
+                fresh = workflow.create_run(config | {"max_sectors": 1, "prior_sources": [
+                    dict(workflow.DEFAULT_CATALOG, ref="main")
+                ]}, "fixture-b")
+                refreshed = workflow.process(fresh, root / "cache")
+                self.assertIsNone(refreshed["targets"][0]["prior_warning"])
                 discover.assert_called_once_with(tic)
                 self.assertNotEqual(audit.load(run / "run.json")["config_sha256"],
                                     audit.load(fresh / "run.json")["config_sha256"])

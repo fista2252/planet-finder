@@ -44,7 +44,7 @@ Default limits are eight targets per run, six sectors per target, 72 MiB of new 
 
 ### Refresh or extend the prior search
 
-The default community source is pinned to the November 4 Eumemic snapshot. To check a newer revision, create a new run with [the refresh config](examples/refresh-priors.json), which resolves the public GitHub `main` branch once and also checks ExoFOP CTOIs.
+The default community source is pinned to the November 4 Eumemic snapshot. The report and review queue flag that cutoff because newer entries may be unchecked. To check a newer revision, create a new run with [the refresh config](examples/refresh-priors.json), which resolves the public GitHub `main` branch once and also checks ExoFOP CTOIs.
 
 ```sh
 python workflow.py new --id current-priors --config examples/refresh-priors.json

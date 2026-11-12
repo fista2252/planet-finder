@@ -21,6 +21,12 @@ from import_pilot import COMMIT, ROOT, json_bytes, sha
 DEFAULT_CATALOG = dict(name="eumemic", kind="community", repository="eumemic/exoplanets", ref=COMMIT,
                        path="candidates/ephemerides.csv", tic_column="TIC", period_column="period_d",
                        label_column="candidate_id")
+DEFAULT_CATALOG_DATE = "2026-11-04"
+PINNED_PRIOR_REASON = "pinned_historical_prior_catalog"
+PINNED_PRIOR_WARNING = (
+    f"The default Eumemic catalog is pinned to {DEFAULT_CATALOG_DATE}. Newer entries in that catalog "
+    "and other prior work may be unchecked. Start a new run with examples/refresh-priors.json to check a newer revision."
+)
 DEFAULTS = dict(max_sectors=6, download_mib=72, min_period_days=1.0, max_period_days=35.0,
                 durations_days=[.08, .16, .24], grid_points=8000, seeds={}, prior_sources=[DEFAULT_CATALOG])
 RUNS = ROOT / "runs"
@@ -283,7 +289,7 @@ def resolve_github(source):
 
     repo, ref = source["repository"], source["ref"]
     if REVISION.fullmatch(ref):
-        date = "2026-11-04" if source == DEFAULT_CATALOG else None
+        date = DEFAULT_CATALOG_DATE if source == DEFAULT_CATALOG else None
         return dict(revision=ref, revision_date=date)
     response = requests.get(f"https://api.github.com/repos/{repo}/commits/{quote(ref, safe='')}",
                             timeout=(8, 20))
@@ -434,9 +440,14 @@ def run_target(root, config, tic, cache, budget, local_cache, code):
         reasons.append("prior_report")
     if not reasons and int(sha(tic.encode()), 16) % 5 == 0:
         reasons.append("deterministic_quality_sample")
+    prior_warning = None
+    if DEFAULT_CATALOG in config["prior_sources"]:
+        reasons.append(PINNED_PRIOR_REASON)
+        prior_warning = PINNED_PRIOR_WARNING
     return dict(tic=tic, coordinates_icrs_deg=[inputs[0]["s_ra"], inputs[0]["s_dec"]] if inputs else None,
                 provenance=inputs, stages=stages, failures=failures, evidence=result, prior_status=prior,
-                prior_reports=records, catalog_checks=catalogs, review_reasons=reasons)
+                prior_reports=records, catalog_checks=catalogs, review_reasons=reasons,
+                prior_warning=prior_warning)
 
 
 @contextmanager
@@ -453,8 +464,11 @@ def run_lock(root):
 def evidence_fingerprint(row):
     products = [(p["uri"], p["sha256"], p["cadence_count"]) for p in row["provenance"]]
     checks = [(c.get("source_name", c["kind"]), c["state"]) for c in row["catalog_checks"]]
+    # The historical-catalog notice explains coverage already present in the
+    # evidence. Adding the notice must not invalidate a prior review.
+    reasons = [reason for reason in row["review_reasons"] if reason != PINNED_PRIOR_REASON]
     return stage_key(row["tic"], row["evidence"], products, checks, row["stages"],
-                     row["prior_status"], row["prior_reports"], row["review_reasons"])
+                     row["prior_status"], row["prior_reports"], reasons)
 
 
 def saved_decisions(root):
@@ -473,7 +487,7 @@ def review_queue(report, decisions):
         if decision is not None:
             state = "reviewed" if decision.get("evidence_sha256") == fingerprint else "stale"
         queue.append(dict(tic=tic, reasons=row["review_reasons"], prior_status=row["prior_status"],
-                          review_state=state, evidence_sha256=fingerprint))
+                          review_state=state, evidence_sha256=fingerprint, prior_warning=row.get("prior_warning")))
     return queue
 
 
