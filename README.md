@@ -1,6 +1,6 @@
 # Planet Finder
 
-Weekly upkeep follows the [maintenance protocol](docs/maintenance.md). Run `python workflow.py maintenance --dry-run` to check a checkout without claiming work.
+Weekly upkeep follows the [maintenance protocol](docs/maintenance.md). Run `python workflow.py maintenance --dry-run` to check a checkout without claiming work. The [five-target TESS validation](validation/fresh-tess-v1/) shows what the blind search and archive ingestion did on new public data.
 
 Planet Finder runs bounded transit searches and follow-up checks on public TESS light curves. Start with a TIC list, review the evidence and archive a versioned report. The [hosted explorer](https://fista2252.github.io/planet-finder/) shows the first imported pilot. The local Python runner creates new runs and can export the same explorer for their results.
 
@@ -37,7 +37,7 @@ Each run has its own config digest and ID. Use a new ID to change settings. To r
 ### How the runner works
 
 1. **Discover.** Query MAST for public SPOC, TESS-SPOC, QLP and T16 light curves. Select one product per sector with documented priority. If the available sectors exceed the limit, spread the selection across the observed baseline. Freeze the inventory and hash its source response.
-2. **Ingest.** Cache FITS by MAST URI, verify local bytes and time convention, and record the product, sector, retained cadences, hash and retrieval timestamp. `--local-fits` can supply an existing archive cache with the original filenames. Check that the cache came from the stated archive before using it.
+2. **Ingest.** Cache FITS by MAST URI, verify local bytes and time convention, and record the product, sector, retained cadences, hash and retrieval timestamp. When a sector's preferred product fails, try up to two alternatives within the same byte budget. Save the rejected attempts and pin the successful product on resume. `--local-fits` can supply an existing archive cache with the original filenames.
 3. **Screen and vet.** Combine Box Least Squares with a bounded search over separations between individual dips, refine trial periods, and compare integer harmonics. Check expected events on the retained cadences for positive support and sensitive non-detections. Ambiguous or inconclusive periods stay out of the planner. A seeded run tests the supplied period and epoch. The report keeps odd/even, half-phase and inversion controls visible.
 4. **Crossmatch and review.** Query NASA Exoplanet Archive TOI and confirmed-planet tables, plus configured CSV catalogs. Match exact TIC IDs and flag period agreement within 0.1%. Failed queries remain visible and unresolved means priority is open. The review queue records queued, reviewed and stale cases. An unchanged evidence fingerprint preserves a saved decision when a run resumes. The runner uses no AI service or cloud compute.
 5. **Plan and export.** Use BTJD for linear midpoint projections. Generic runs leave future TESS and ground visibility, and timing uncertainty, uncomputed. The imported pilot supplies its previously checked conditional timing and footprint for TIC 238187210. Export only the report files you intend to publish.

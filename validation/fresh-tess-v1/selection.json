@@ -1,0 +1,77 @@
+{
+  "archive_query": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+hostname%2Ctic_id%2Cpl_name%2Cpl_orbper%2Cpl_tranmid%2Cpl_trandur%2Cdiscoverymethod+from+pscomppars+where+tic_id+in+%28%27TIC+100100827%27%2C%27TIC+259377017%27%2C%27TIC+447061717%27%2C%27TIC+120362137%27%2C%27TIC+419015728%27%29+order+by+tic_id%2Cpl_orbper&format=csv",
+  "archive_response_sha256": "53a20c260da2585476e7d81409888006b545c3a366f0d08723220894966706d9",
+  "before_blind_search": true,
+  "comparison": {
+    "eb_relative_tolerance": 0.01,
+    "harmonic_factors": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "relative_tolerance": 0.001,
+    "require_distinct_supported_cycles": 3,
+    "use_catalog_periods_as_search_seeds": false
+  },
+  "config_sha256": "e7bbc8eb46a1375221141ca792bad275ab947c7b05adff5eacd50b0796fd384f",
+  "expected_outcomes": {
+    "eclipsing_control": "Any coherent period is classified against the stellar reference, even if reported without an EB flag.",
+    "known": "Reference period or identified harmonic when sensitivity suffices; otherwise report ambiguity or abstention.",
+    "negative": "No selected transit-like period expected. Flag any selection for inspection."
+  },
+  "frozen_at": "2026-11-12T12:11:03+00:00",
+  "schema_version": 1,
+  "targets": [
+    {
+      "name": "WASP-18",
+      "reference_period_days": [
+        0.94145223
+      ],
+      "role": "known_transiting",
+      "source": "https://exoplanetarchive.ipac.caltech.edu/overview/WASP-18",
+      "tic": "100100827"
+    },
+    {
+      "name": "TOI-270",
+      "reference_period_days": [
+        3.35992,
+        5.66051,
+        11.38194
+      ],
+      "role": "known_multiplanet",
+      "source": "https://exoplanetarchive.ipac.caltech.edu/overview/TOI-270",
+      "tic": "259377017"
+    },
+    {
+      "name": "TOI-1231",
+      "reference_period_days": [
+        24.245586
+      ],
+      "role": "known_long_period_sparse",
+      "source": "https://exoplanetarchive.ipac.caltech.edu/overview/TOI-1231",
+      "tic": "447061717"
+    },
+    {
+      "name": "TIC 120362137",
+      "note": "Inner stellar binary. The paper also reports an outer eclipse cycle near 51.3 days, outside the blind search range.",
+      "reference_period_days": [
+        3.28
+      ],
+      "role": "eclipsing_stellar_control",
+      "source": "https://doi.org/10.1038/s41467-026-69223-4",
+      "tic": "120362137"
+    },
+    {
+      "name": "Tau Ceti",
+      "note": "The archive lists RV signals. No listed transit midpoint is available for this TIC. This is a nominal negative for transit-like signals, with no claim of constant flux or absence of planets.",
+      "reference_period_days": [],
+      "role": "nominal_negative",
+      "source": "https://simbad.u-strasbg.fr/simbad/sim-id?Ident=tau+Ceti&protocol=html",
+      "tic": "419015728"
+    }
+  ]
+}

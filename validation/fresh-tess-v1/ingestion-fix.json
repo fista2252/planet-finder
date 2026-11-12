@@ -1,0 +1,896 @@
+{
+  "export_manifest": {
+    ".nojekyll": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "app.js": "12d2a726668c4ad5d3424d322874d8649e4f3762e976fc9c875309fa53a0c797",
+    "data.json": "c5f5c086f872551b586b5658e4ba3cfc178d8a15c0707233bba10b0708472b6f",
+    "index.html": "c4ddbcbc56943dbc78fce28eb9a4c76343591872ce2f55587b1f1a4348ef27f1",
+    "style.css": "336bcfb9efb4ed15d0fbf994d4b54a72c0db1244d6a9b4e005f1dbe2bf3e32ff"
+  },
+  "fits_receipts": [
+    {
+      "bytes": 1848960,
+      "method": "public archive",
+      "retrieved_at": "2026-11-12T12:12:14+00:00",
+      "sha256": "ce3307946e80e7bed5f3f80f39a8cc1edfb16e609af5e33e8d771f9de08df708",
+      "uri": "mast:TESS/product/tess2019058134432-s0009-0000000447061717-0139-s_lc.fits"
+    },
+    {
+      "bytes": 204480,
+      "method": "public archive",
+      "retrieved_at": "2026-11-12T12:15:42+00:00",
+      "sha256": "070d24769a4b7b4608ee303c33d18c8909ee48b56bdf6e02e10a019b13cd8d95",
+      "uri": "mast:HLSP/qlp/s0037/0000/0004/4706/1717/hlsp_qlp_tess_ffi_s0037-0000000447061717_tess_v01_llc.fits"
+    },
+    {
+      "bytes": 2021760,
+      "method": "public archive",
+      "retrieved_at": "2026-11-12T12:12:16+00:00",
+      "sha256": "fe5508ebf008f61a970681dffadb6cd102c009e1633af6cf42cb7ea0d6d8ccf1",
+      "uri": "mast:TESS/product/tess2026005125623-s0099-0000000447061717-0300-s_lc.fits"
+    }
+  ],
+  "fixed_report": {
+    "code_fingerprint": "0430e2b8b62f641d6b1986833d74b633d051ee3627f789ee88fe82838b915fef",
+    "config": {
+      "download_mib": 96,
+      "durations_days": [
+        0.08,
+        0.16,
+        0.24
+      ],
+      "grid_points": 8000,
+      "max_period_days": 35,
+      "max_sectors": 3,
+      "min_period_days": 0.75,
+      "prior_sources": [
+        {
+          "kind": "community",
+          "label_column": "candidate_id",
+          "name": "eumemic",
+          "path": "candidates/ephemerides.csv",
+          "period_column": "period_d",
+          "ref": "e2eee928fd621f75c1621f6b4206d34bb222ae59",
+          "repository": "eumemic/exoplanets",
+          "tic_column": "TIC"
+        }
+      ],
+      "seeds": {},
+      "tics": [
+        "447061717"
+      ]
+    },
+    "config_sha256": "dc724604c99a032e944839d70c75736a5bd39c57bb843621c7394cf3fb9647f6",
+    "created_at": "2026-11-12T12:15:36+00:00",
+    "new_fits_bytes": 599040,
+    "processed_at": "2026-11-12T12:15:45+00:00",
+    "run_id": "fresh-tess-v1-ingestion-fix",
+    "schema_version": 1,
+    "targets": [
+      {
+        "catalog_checks": [
+          {
+            "kind": "toi",
+            "matches": [
+              {
+                "label": "1231.01",
+                "period_days": 24.2454967,
+                "tic": "447061717"
+              }
+            ],
+            "retrieved_at": "2026-11-12T12:12:22+00:00",
+            "rows_checked": 1,
+            "scope": "exact TIC",
+            "sha256": "4201ce71697c5fd82f03484034aaf321d75991fda1eba9ffb7fe6f41ce4309ca",
+            "source_modified_at": null,
+            "source_name": "toi",
+            "state": "checked_snapshot",
+            "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tid%2Cpl_orbper%2Ctoi+from+toi+where+tid%3D447061717&format=csv"
+          },
+          {
+            "kind": "confirmed",
+            "matches": [
+              {
+                "label": "TOI-1231 b",
+                "period_days": 24.245586,
+                "tic": "447061717"
+              }
+            ],
+            "retrieved_at": "2026-11-12T12:12:24+00:00",
+            "rows_checked": 1,
+            "scope": "exact TIC",
+            "sha256": "b3f146bdefff836f40469c33ce4ba2a4c2e254398f2705c4bf2b6090b8483ee0",
+            "source_modified_at": null,
+            "source_name": "confirmed",
+            "state": "checked_snapshot",
+            "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tic_id%2Cpl_orbper%2Cpl_name+from+pscomppars+where+tic_id%3D%27TIC+447061717%27&format=csv"
+          },
+          {
+            "kind": "community",
+            "matches": [],
+            "requested_ref": "e2eee928fd621f75c1621f6b4206d34bb222ae59",
+            "retrieved_at": "2026-11-12T12:11:48+00:00",
+            "revision": "e2eee928fd621f75c1621f6b4206d34bb222ae59",
+            "revision_date": "2026-11-04",
+            "rows_checked": 740,
+            "scope": "exact TIC",
+            "sha256": "795b431cf3c057115fb09b055fe20cfa03482d24448b324a9920b27161db42a5",
+            "source_modified_at": null,
+            "source_name": "eumemic",
+            "state": "checked_snapshot",
+            "url": "https://github.com/eumemic/exoplanets/blob/e2eee928fd621f75c1621f6b4206d34bb222ae59/candidates/ephemerides.csv"
+          }
+        ],
+        "coordinates_icrs_deg": [
+          156.747889309047,
+          -52.4694292630656
+        ],
+        "evidence": {
+          "alternatives": [
+            {
+              "duration_days": 0.16,
+              "epoch_btjd": 1563.8790212061945,
+              "median_support_score": 27.25048377189677,
+              "method": "bls_grid",
+              "period_days": 32.239175495163515,
+              "sensitive_missing_cycles": 0,
+              "sensitive_non_detection_examples": [],
+              "supported_cycles": 1
+            },
+            {
+              "duration_days": 0.16,
+              "epoch_btjd": 1563.8790212061945,
+              "median_support_score": 27.25048377189677,
+              "method": "integer_harmonic",
+              "period_days": 16.119587747581757,
+              "sensitive_missing_cycles": 2,
+              "sensitive_non_detection_examples": [
+                {
+                  "cycle": -1,
+                  "depth_fraction": 0.00022594604702591504,
+                  "injected_scores": [
+                    16.75580918182593,
+                    17.484886605746038,
+                    15.364216077678577
+                  ],
+                  "midpoint_btjd": 1547.7594334586126,
+                  "sector": 9
+                },
+                {
+                  "cycle": 47,
+                  "depth_fraction": -0.00038353824422280094,
+                  "injected_scores": [
+                    9.36485071317145,
+                    10.451618762888382,
+                    9.622952931685324
+                  ],
+                  "midpoint_btjd": 2321.499645342537,
+                  "sector": 37
+                }
+              ],
+              "supported_cycles": 1
+            },
+            {
+              "duration_days": 0.16,
+              "epoch_btjd": 1563.8790212061945,
+              "median_support_score": 27.25048377189677,
+              "method": "integer_harmonic",
+              "period_days": 10.746391831721171,
+              "sensitive_missing_cycles": 4,
+              "sensitive_non_detection_examples": [
+                {
+                  "cycle": -1,
+                  "depth_fraction": 3.8490730856598825e-05,
+                  "injected_scores": [
+                    14.261960121679207,
+                    15.321288609472898,
+                    15.21874853793118
+                  ],
+                  "midpoint_btjd": 1553.1326293744733,
+                  "sector": 9
+                },
+                {
+                  "cycle": 70,
+                  "depth_fraction": 0.0001122876299287404,
+                  "injected_scores": [
+                    21.301448457721815,
+                    20.256440900845856,
+                    19.14822123729121
+                  ],
+                  "midpoint_btjd": 2316.1264494266766,
+                  "sector": 37
+                },
+                {
+                  "cycle": 71,
+                  "depth_fraction": 9.930999424173944e-05,
+                  "injected_scores": [
+                    17.82951141561286,
+                    18.450856253011544,
+                    17.805047816294923
+                  ],
+                  "midpoint_btjd": 2326.872841258398,
+                  "sector": 37
+                },
+                {
+                  "cycle": 233,
+                  "depth_fraction": -0.00013332012369908903,
+                  "injected_scores": [
+                    13.860404752598,
+                    13.15850045782416,
+                    11.93534493826596
+                  ],
+                  "midpoint_btjd": 4067.7883179972273,
+                  "sector": 99
+                }
+              ],
+              "supported_cycles": 1
+            },
+            {
+              "duration_days": 0.16,
+              "epoch_btjd": 1563.8790212061945,
+              "median_support_score": 27.25048377189677,
+              "method": "integer_harmonic",
+              "period_days": 8.059793873790879,
+              "sensitive_missing_cycles": 6,
+              "sensitive_non_detection_examples": [
+                {
+                  "cycle": -2,
+                  "depth_fraction": 0.00022594604702591504,
+                  "injected_scores": [
+                    16.75580918182593,
+                    17.484886605746038,
+                    15.364216077678577
+                  ],
+                  "midpoint_btjd": 1547.7594334586126,
+                  "sector": 9
+                },
+                {
+                  "cycle": 93,
+                  "depth_fraction": -0.00013608979118867598,
+                  "injected_scores": [
+                    16.200152439276085,
+                    18.007749106444127,
+                    20.314075126299567
+                  ],
+                  "midpoint_btjd": 2313.4398514687464,
+                  "sector": 37
+                },
+                {
+                  "cycle": 94,
+                  "depth_fraction": -0.00038353824422280094,
+                  "injected_scores": [
+                    9.36485071317145,
+                    10.451618762888382,
+                    9.622952931685324
+                  ],
+                  "midpoint_btjd": 2321.499645342537,
+                  "sector": 37
+                },
+                {
+                  "cycle": 95,
+                  "depth_fraction": -6.76670734663622e-05,
+                  "injected_scores": [
+                    15.921794927796768,
+                    13.969088918812407,
+                    13.580560511951592
+                  ],
+                  "midpoint_btjd": 2329.559439216328,
+                  "sector": 37
+                },
+                {
+                  "cycle": 309,
+                  "depth_fraction": -0.0002355869627271016,
+                  "injected_scores": [
+                    11.74939250809437,
+                    11.945758178294259,
+                    12.146062389136793
+                  ],
+                  "midpoint_btjd": 4054.355328207576,
+                  "sector": 99
+                },
+                {
+                  "cycle": 311,
+                  "depth_fraction": 0.00037391642033536435,
+                  "injected_scores": [
+                    13.150222439673326,
+                    14.298430351135199,
+                    14.915056026394799
+                  ],
+                  "midpoint_btjd": 4070.474915955158,
+                  "sector": 99
+                }
+              ],
+              "supported_cycles": 1
+            },
+            {
+              "duration_days": 0.16,
+              "epoch_btjd": 1563.8790212061945,
+              "median_support_score": 27.25048377189677,
+              "method": "integer_harmonic",
+              "period_days": 6.447835099032703,
+              "sensitive_missing_cycles": 7,
+              "sensitive_non_detection_examples": [
+                {
+                  "cycle": -3,
+                  "depth_fraction": 0.00022152334447954954,
+                  "injected_scores": [
+                    14.0332331981728,
+                    13.91323382493332,
+                    13.064978952686706
+                  ],
+                  "midpoint_btjd": 1544.5355159090964,
+                  "sector": 9
+                },
+                {
+                  "cycle": -2,
+                  "depth_fraction": 0.0001656720469932989,
+                  "injected_scores": [
+                    14.968918435028392,
+                    15.2821759639281,
+                    15.989283302797704
+                  ],
+                  "midpoint_btjd": 1550.9833510081291,
+                  "sector": 9
+                },
+                {
+                  "cycle": 116,
+                  "depth_fraction": 0.00022865336373922537,
+                  "injected_scores": [
+                    19.082560478968194,
+                    20.149800112555138,
+                    19.974633457288583
+                  ],
+                  "midpoint_btjd": 2311.827892693988,
+                  "sector": 37
+                },
+                {
+                  "cycle": 117,
+                  "depth_fraction": -8.717702021587685e-05,
+                  "injected_scores": [
+                    15.213962458246046,
+                    16.139002835444153,
+                    15.617131809223311
+                  ],
+                  "midpoint_btjd": 2318.275727793021,
+                  "sector": 37
+                },
+                {
+                  "cycle": 118,
+                  "depth_fraction": -6.314221899168993e-05,
+                  "injected_scores": [
+                    17.14162456374246,
+                    14.992781581326089,
+                    15.501535800780749
+                  ],
+                  "midpoint_btjd": 2324.7235628920535,
+                  "sector": 37
+                },
+                {
+                  "cycle": 119,
+                  "depth_fraction": -0.00021965284211842158,
+                  "injected_scores": [
+                    15.437358187789059,
+                    14.412358349389821,
+                    14.273502463094452
+                  ],
+                  "midpoint_btjd": 2331.171397991086,
+                  "sector": 37
+                }
+              ],
+              "supported_cycles": 1
+            },
+            {
+              "duration_days": 0.16,
+              "epoch_btjd": 1563.8790212061945,
+              "median_support_score": 27.25048377189677,
+              "method": "integer_harmonic",
+              "period_days": 5.3731959158605855,
+              "sensitive_missing_cycles": 8,
+              "sensitive_non_detection_examples": [
+                {
+                  "cycle": -3,
+                  "depth_fraction": 0.00022594604702591504,
+                  "injected_scores": [
+                    16.75580918182593,
+                    17.484886605746038,
+                    15.364216077678577
+                  ],
+                  "midpoint_btjd": 1547.7594334586126,
+                  "sector": 9
+                },
+                {
+                  "cycle": -2,
+                  "depth_fraction": 3.8490730856598825e-05,
+                  "injected_scores": [
+                    14.261960121679207,
+                    15.321288609472898,
+                    15.21874853793118
+                  ],
+                  "midpoint_btjd": 1553.1326293744733,
+                  "sector": 9
+                },
+                {
+                  "cycle": -1,
+                  "depth_fraction": -0.00020665658700553093,
+                  "injected_scores": [
+                    13.028417774849943,
+                    12.693112424327358,
+                    11.898661927834144
+                  ],
+                  "midpoint_btjd": 1558.5058252903339,
+                  "sector": 9
+                },
+                {
+                  "cycle": 140,
+                  "depth_fraction": 0.0001122876299287404,
+                  "injected_scores": [
+                    21.301448457721815,
+                    20.256440900845856,
+                    19.14822123729121
+                  ],
+                  "midpoint_btjd": 2316.1264494266766,
+                  "sector": 37
+                },
+                {
+                  "cycle": 141,
+                  "depth_fraction": -0.00038353824422280094,
+                  "injected_scores": [
+                    9.36485071317145,
+                    10.451618762888382,
+                    9.622952931685324
+                  ],
+                  "midpoint_btjd": 2321.499645342537,
+                  "sector": 37
+                },
+                {
+                  "cycle": 142,
+                  "depth_fraction": 9.930999424173944e-05,
+                  "injected_scores": [
+                    17.82951141561286,
+                    18.450856253011544,
+                    17.805047816294923
+                  ],
+                  "midpoint_btjd": 2326.872841258398,
+                  "sector": 37
+                }
+              ],
+              "supported_cycles": 1
+            },
+            {
+              "duration_days": 0.16,
+              "epoch_btjd": 1563.8790212061945,
+              "median_support_score": 27.25048377189677,
+              "method": "integer_harmonic",
+              "period_days": 4.605596499309073,
+              "sensitive_missing_cycles": 10,
+              "sensitive_non_detection_examples": [
+                {
+                  "cycle": -4,
+                  "depth_fraction": -0.0002015028537885371,
+                  "injected_scores": [
+                    13.703044383982602,
+                    12.423078216202107,
+                    12.191485519247438
+                  ],
+                  "midpoint_btjd": 1545.4566352089582,
+                  "sector": 9
+                },
+                {
+                  "cycle": -3,
+                  "depth_fraction": -0.00016357103139803532,
+                  "injected_scores": [
+                    11.473199195293738,
+                    12.07234483178895,
+                    13.047260562922784
+                  ],
+                  "midpoint_btjd": 1550.0622317082673,
+                  "sector": 9
+                },
+                {
+                  "cycle": -2,
+                  "depth_fraction": -0.0001365711537238421,
+                  "injected_scores": [
+                    14.677155511979127,
+                    12.486795984544434,
+                    11.981197208612638
+                  ],
+                  "midpoint_btjd": 1554.6678282075763,
+                  "sector": 9
+                },
+                {
+                  "cycle": -1,
+                  "depth_fraction": -1.547971366850446e-05,
+                  "injected_scores": [
+                    15.08878937388443,
+                    13.946843246622029,
+                    12.516794320109705
+                  ],
+                  "midpoint_btjd": 1559.2734247068854,
+                  "sector": 9
+                },
+                {
+                  "cycle": 163,
+                  "depth_fraction": -6.953281187873247e-05,
+                  "injected_scores": [
+                    17.97090795870581,
+                    16.243602754873674,
+                    16.195125632804427
+                  ],
+                  "midpoint_btjd": 2314.5912505935735,
+                  "sector": 37
+                },
+                {
+                  "cycle": 165,
+                  "depth_fraction": -1.2939064992190836e-05,
+                  "injected_scores": [
+                    18.779201796712197,
+                    18.33039172958407,
+                    16.685329826492698
+                  ],
+                  "midpoint_btjd": 2323.8024435921916,
+                  "sector": 37
+                }
+              ],
+              "supported_cycles": 1
+            },
+            {
+              "duration_days": 0.16,
+              "epoch_btjd": 1563.8790212061945,
+              "median_support_score": 27.25048377189677,
+              "method": "integer_harmonic",
+              "period_days": 4.029896936895439,
+              "sensitive_missing_cycles": 13,
+              "sensitive_non_detection_examples": [
+                {
+                  "cycle": -4,
+                  "depth_fraction": 0.00022594604702591504,
+                  "injected_scores": [
+                    16.75580918182593,
+                    17.484886605746038,
+                    15.364216077678577
+                  ],
+                  "midpoint_btjd": 1547.7594334586126,
+                  "sector": 9
+                },
+                {
+                  "cycle": -3,
+                  "depth_fraction": 9.581005573535003e-07,
+                  "injected_scores": [
+                    12.283855658251456,
+                    13.621699904972187,
+                    14.943213484778903
+                  ],
+                  "midpoint_btjd": 1551.7893303955082,
+                  "sector": 9
+                },
+                {
+                  "cycle": -1,
+                  "depth_fraction": -0.00028334477314177986,
+                  "injected_scores": [
+                    12.229170820129408,
+                    12.19788048332017,
+                    13.296738426372501
+                  ],
+                  "midpoint_btjd": 1559.849124269299,
+                  "sector": 9
+                },
+                {
+                  "cycle": 1,
+                  "depth_fraction": -1.3580478374767582e-05,
+                  "injected_scores": [
+                    13.23918010666791,
+                    13.50669172630397,
+                    13.243649609823295
+                  ],
+                  "midpoint_btjd": 1567.90891814309,
+                  "sector": 9
+                },
+                {
+                  "cycle": 186,
+                  "depth_fraction": -0.00013608979118867598,
+                  "injected_scores": [
+                    16.200152439276085,
+                    18.007749106444127,
+                    20.314075126299567
+                  ],
+                  "midpoint_btjd": 2313.4398514687464,
+                  "sector": 37
+                },
+                {
+                  "cycle": 187,
+                  "depth_fraction": 7.453832556519031e-05,
+                  "injected_scores": [
+                    18.152896223004042,
+                    16.920307328244288,
+                    18.216863846787213
+                  ],
+                  "midpoint_btjd": 2317.4697484056414,
+                  "sector": 37
+                }
+              ],
+              "supported_cycles": 1
+            }
+          ],
+          "depth_fraction": 0.004350254359762438,
+          "duration_days": 0.16,
+          "epoch_btjd": null,
+          "events": [
+            {
+              "coverage": "measured",
+              "cycle": 0,
+              "event_state": "supported",
+              "injected_depth_fraction": 0.002175127179881219,
+              "injected_scores": [
+                35.292892095219294,
+                40.87572565784515,
+                37.672202876376666
+              ],
+              "measurement": {
+                "cadence": 0.0013889122990349279,
+                "depth": 0.004350254359762438,
+                "duration": 0.16,
+                "error": 0.00015963952773010307,
+                "points": 114,
+                "score": 27.25048377189677,
+                "tc": 1563.8790212061945
+              },
+              "midpoint_btjd": 1563.8790212061945,
+              "sector": 9,
+              "timing_samples": [
+                {
+                  "cadence": 0.0013889122990349279,
+                  "depth": 0.00328567839284426,
+                  "duration": 0.16,
+                  "error": 0.00015472819733765002,
+                  "points": 114,
+                  "score": 21.235162364583147,
+                  "tc": 1563.8390212061945
+                },
+                {
+                  "cadence": 0.0013889122990349279,
+                  "depth": 0.004350254359762438,
+                  "duration": 0.16,
+                  "error": 0.00015963952773010307,
+                  "points": 114,
+                  "score": 27.25048377189677,
+                  "tc": 1563.8790212061945
+                },
+                {
+                  "cadence": 0.0013889122990349279,
+                  "depth": 0.004005308565742434,
+                  "duration": 0.16,
+                  "error": 0.0001640582518071768,
+                  "points": 116,
+                  "score": 24.413941521515223,
+                  "tc": 1563.9190212061944
+                }
+              ]
+            },
+            {
+              "coverage": "insufficient_cadence",
+              "cycle": 77,
+              "event_state": "insufficient_cadence",
+              "injected_depth_fraction": 0.002175127179881219,
+              "injected_scores": [
+                null,
+                null,
+                12.900232997709802
+              ],
+              "measurement": null,
+              "midpoint_btjd": 4046.2955343337853,
+              "sector": 99,
+              "timing_samples": [
+                null,
+                null,
+                {
+                  "cadence": 0.0013889635620216723,
+                  "depth": 0.0001162101059682479,
+                  "duration": 0.16,
+                  "error": 0.00017761983727396642,
+                  "points": 115,
+                  "score": 0.6542631034449253,
+                  "tc": 4046.3355343337853
+                }
+              ]
+            }
+          ],
+          "flags": [
+            "fewer_than_three_supported_cycles",
+            "period_grid_truncated"
+          ],
+          "half_phase_measurements": [
+            {
+              "cadence": 0.0013889122990349279,
+              "depth": 0.00022594604702591504,
+              "duration": 0.16,
+              "error": 0.00013732277944073553,
+              "points": 115,
+              "score": 1.6453646506873005,
+              "sector": 9,
+              "tc": 1547.7594334586129
+            },
+            {
+              "cadence": 0.006944333298861238,
+              "depth": -0.00038353824422280094,
+              "duration": 0.16,
+              "error": 0.0001714173637886596,
+              "points": 23,
+              "score": -2.23745270459103,
+              "sector": 37,
+              "tc": 2321.4996453425374
+            }
+          ],
+          "local_controls": {
+            "box_depth_fraction": 0.002175127179881219,
+            "inverted_at_or_above_5": 0,
+            "recovered_at_or_above_5": 75,
+            "testable": 75
+          },
+          "mode": "blind",
+          "odd_even": null,
+          "period_days": null,
+          "search": {
+            "coarse_period_days": 32.239175495163515,
+            "event_anchors": 1,
+            "event_shortlist_limited": false,
+            "grid_limited": true,
+            "grid_points": 8000,
+            "ideal_grid_points": 104370887,
+            "inverted_max_snr": 0.023538163208608503,
+            "search_snr": 0.04549363400786226,
+            "trial_method": "bls_grid"
+          },
+          "sensitive_missing_cycles": 0,
+          "status": "inconclusive_search",
+          "supported_cycles": 1,
+          "trial_epoch_btjd": 1563.8790212061945,
+          "trial_period_days": 32.239175495163515,
+          "uncertainty": "No calibrated period or timing uncertainty. Local errors use sideband scatter and are nominal."
+        },
+        "failures": [
+          {
+            "error": "Insufficient valid flux in tess2021091135823-s0037-0000000447061717-0208-s_lc.fits",
+            "recovered_with": "mast:HLSP/qlp/s0037/0000/0004/4706/1717/hlsp_qlp_tess_ffi_s0037-0000000447061717_tess_v01_llc.fits",
+            "stage": "ingestion",
+            "uri": "mast:TESS/product/tess2021091135823-s0037-0000000447061717-0208-s_lc.fits"
+          },
+          {
+            "error": "Insufficient valid flux in hlsp_tess-spoc_tess_phot_0000000447061717-s0037_tess_v1_lc.fits",
+            "recovered_with": "mast:HLSP/qlp/s0037/0000/0004/4706/1717/hlsp_qlp_tess_ffi_s0037-0000000447061717_tess_v01_llc.fits",
+            "stage": "ingestion",
+            "uri": "mast:HLSP/tess-spoc/s0037/target/0000/0004/4706/1717/hlsp_tess-spoc_tess_phot_0000000447061717-s0037_tess_v1_lc.fits"
+          }
+        ],
+        "prior_reports": [
+          {
+            "kind": "toi",
+            "label": "1231.01",
+            "period_agrees": false,
+            "period_days": 24.2454967,
+            "source": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tid%2Cpl_orbper%2Ctoi+from+toi+where+tid%3D447061717&format=csv",
+            "tic": "447061717"
+          },
+          {
+            "kind": "confirmed",
+            "label": "TOI-1231 b",
+            "period_agrees": false,
+            "period_days": 24.245586,
+            "source": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tic_id%2Cpl_orbper%2Cpl_name+from+pscomppars+where+tic_id%3D%27TIC+447061717%27&format=csv",
+            "tic": "447061717"
+          }
+        ],
+        "prior_status": "unresolved",
+        "prior_warning": "The default Eumemic catalog is pinned to 2026-11-04. Newer entries in that catalog and other prior work may be unchecked. Start a new run with examples/refresh-priors.json to check a newer revision.",
+        "provenance": [
+          {
+            "bytes": 1848960,
+            "cadence_count": 16231,
+            "dataRights": "PUBLIC",
+            "dataURL": "mast:TESS/product/tess2019058134432-s0009-0000000447061717-0139-s_lc.fits",
+            "first_btjd": 1544.0790212061945,
+            "last_btjd": 1568.4780518882155,
+            "method": "public archive",
+            "obs_id": "tess2019058134432-s0009-0000000447061717-0139-s",
+            "provenance_name": "SPOC",
+            "retrieved_at": "2026-11-12T12:12:14+00:00",
+            "s_dec": -52.4694292630656,
+            "s_ra": 156.747889309047,
+            "sequence_number": 9,
+            "sha256": "ce3307946e80e7bed5f3f80f39a8cc1edfb16e609af5e33e8d771f9de08df708",
+            "t_exptime": 120,
+            "tic": "447061717",
+            "uri": "mast:TESS/product/tess2019058134432-s0009-0000000447061717-0139-s_lc.fits"
+          },
+          {
+            "bytes": 204480,
+            "cadence_count": 2807,
+            "dataRights": "PUBLIC",
+            "dataURL": "mast:HLSP/qlp/s0037/0000/0004/4706/1717/hlsp_qlp_tess_ffi_s0037-0000000447061717_tess_v01_llc.fits",
+            "first_btjd": 2311.2083214527315,
+            "last_btjd": 2332.4996364910908,
+            "method": "public archive",
+            "obs_id": "hlsp_qlp_tess_ffi_s0037-0000000447061717_tess_v01_llc",
+            "provenance_name": "QLP",
+            "rejected_products": [
+              {
+                "error": "Insufficient valid flux in tess2021091135823-s0037-0000000447061717-0208-s_lc.fits",
+                "recovered_with": "mast:HLSP/qlp/s0037/0000/0004/4706/1717/hlsp_qlp_tess_ffi_s0037-0000000447061717_tess_v01_llc.fits",
+                "stage": "ingestion",
+                "uri": "mast:TESS/product/tess2021091135823-s0037-0000000447061717-0208-s_lc.fits"
+              },
+              {
+                "error": "Insufficient valid flux in hlsp_tess-spoc_tess_phot_0000000447061717-s0037_tess_v1_lc.fits",
+                "recovered_with": "mast:HLSP/qlp/s0037/0000/0004/4706/1717/hlsp_qlp_tess_ffi_s0037-0000000447061717_tess_v01_llc.fits",
+                "stage": "ingestion",
+                "uri": "mast:HLSP/tess-spoc/s0037/target/0000/0004/4706/1717/hlsp_tess-spoc_tess_phot_0000000447061717-s0037_tess_v1_lc.fits"
+              }
+            ],
+            "retrieved_at": "2026-11-12T12:15:42+00:00",
+            "s_dec": -52.4694292631,
+            "s_ra": 156.747889309,
+            "sequence_number": 37,
+            "sha256": "070d24769a4b7b4608ee303c33d18c8909ee48b56bdf6e02e10a019b13cd8d95",
+            "t_exptime": 600,
+            "tic": "447061717",
+            "uri": "mast:HLSP/qlp/s0037/0000/0004/4706/1717/hlsp_qlp_tess_ffi_s0037-0000000447061717_tess_v01_llc.fits"
+          },
+          {
+            "bytes": 2021760,
+            "cadence_count": 13354,
+            "dataRights": "PUBLIC",
+            "dataURL": "mast:TESS/product/tess2026005125623-s0099-0000000447061717-0300-s_lc.fits",
+            "first_btjd": 4046.1151868462775,
+            "last_btjd": 4073.779156111222,
+            "method": "public archive",
+            "obs_id": "tess2026005125623-s0099-0000000447061717-0300-s",
+            "provenance_name": "SPOC",
+            "retrieved_at": "2026-11-12T12:12:16+00:00",
+            "s_dec": -52.4694292630656,
+            "s_ra": 156.747889309047,
+            "sequence_number": 99,
+            "sha256": "fe5508ebf008f61a970681dffadb6cd102c009e1633af6cf42cb7ea0d6d8ccf1",
+            "t_exptime": 120,
+            "tic": "447061717",
+            "uri": "mast:TESS/product/tess2026005125623-s0099-0000000447061717-0300-s_lc.fits"
+          }
+        ],
+        "review_reasons": [
+          "fewer_than_three_supported_cycles",
+          "period_grid_truncated",
+          "incomplete_evidence",
+          "alternate_product_used",
+          "prior_report",
+          "pinned_historical_prior_catalog"
+        ],
+        "stages": {
+          "catalog": "complete",
+          "discovery": "complete",
+          "ingestion": "complete",
+          "screening_vetting": "inconclusive_search"
+        },
+        "tic": "447061717"
+      }
+    ],
+    "time_scale": "BJD_TDB minus 2457000"
+  },
+  "original_catalogs_sha256": "12456a3751eb514ed135f49a83872d8afae56c320854098a6a6744e428d200ae",
+  "original_inventory_sha256": "286f7476dac4c8e31e4eb4ad5beee854eff49d940a79e8386db57f76c8718b5c",
+  "original_run_id": "fresh-tess-v1",
+  "process_wall_seconds": 8.799,
+  "review_queue": [
+    {
+      "evidence_sha256": "88321a5aab1b2faa50383f74e1a3d06b335a4afb095763523dedaea2d6eedcf5",
+      "prior_status": "unresolved",
+      "prior_warning": "The default Eumemic catalog is pinned to 2026-11-04. Newer entries in that catalog and other prior work may be unchecked. Start a new run with examples/refresh-priors.json to check a newer revision.",
+      "reasons": [
+        "fewer_than_three_supported_cycles",
+        "period_grid_truncated",
+        "incomplete_evidence",
+        "alternate_product_used",
+        "prior_report",
+        "pinned_historical_prior_catalog"
+      ],
+      "review_state": "queued",
+      "tic": "447061717"
+    }
+  ]
+}

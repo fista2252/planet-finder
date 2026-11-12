@@ -1,0 +1,36 @@
+{
+  "completed_at": "2026-11-12T12:12:55+00:00",
+  "empty_fits_cache_at_start": true,
+  "started_at": "2026-11-12T12:11:21+00:00",
+  "steps": [
+    {
+      "args": [
+        "new",
+        "--id",
+        "fresh-tess-v1",
+        "--config",
+        "validation\\fresh-tess-v1\\config.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.252
+    },
+    {
+      "args": [
+        "run",
+        "fresh-tess-v1"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 92.861
+    },
+    {
+      "args": [
+        "export",
+        "fresh-tess-v1",
+        "--out",
+        "exports/fresh-tess-v1"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.353
+    }
+  ]
+}

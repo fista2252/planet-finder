@@ -1,0 +1,284 @@
+{
+  "archive_csv_sha256": "53a20c260da2585476e7d81409888006b545c3a366f0d08723220894966706d9",
+  "initial_evidence_sha256": "c97aed0593923bb312d55fe4dca94da0c15bf12933992f009e9efa29910f973d",
+  "initial_results": [
+    {
+      "accepted_period_days": null,
+      "failures": [],
+      "flags": [
+        "possible_half_phase_secondary",
+        "period_grid_truncated"
+      ],
+      "leading_trial_comparison": {
+        "kind": "reference_period",
+        "reference_period_days": 0.94145223
+      },
+      "name": "WASP-18",
+      "products": [
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 18299,
+          "sector": 2
+        },
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 14665,
+          "sector": 69
+        },
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 13019,
+          "sector": 106
+        }
+      ],
+      "reference_matches_in_alternatives": [
+        {
+          "period_days": 0.9414529801402793,
+          "sensitive_missing_cycles": 0,
+          "supported_cycles": 63
+        },
+        {
+          "period_days": 0.9419402816176512,
+          "sensitive_missing_cycles": 16,
+          "supported_cycles": 46
+        },
+        {
+          "period_days": 0.9409654328824163,
+          "sensitive_missing_cycles": 20,
+          "supported_cycles": 46
+        },
+        {
+          "period_days": 0.9408354292195865,
+          "sensitive_missing_cycles": 20,
+          "supported_cycles": 44
+        },
+        {
+          "period_days": 0.9411441262183597,
+          "sensitive_missing_cycles": 21,
+          "supported_cycles": 44
+        },
+        {
+          "period_days": 0.941762128314039,
+          "sensitive_missing_cycles": 22,
+          "supported_cycles": 44
+        },
+        {
+          "period_days": 0.9406104380418081,
+          "sensitive_missing_cycles": 26,
+          "supported_cycles": 36
+        },
+        {
+          "period_days": 0.9422985752442032,
+          "sensitive_missing_cycles": 28,
+          "supported_cycles": 36
+        }
+      ],
+      "review_reasons": [
+        "possible_half_phase_secondary",
+        "period_grid_truncated",
+        "incomplete_evidence",
+        "prior_report",
+        "pinned_historical_prior_catalog"
+      ],
+      "status": "ambiguous_period",
+      "supported_cycles": 63,
+      "tic": "100100827",
+      "trial_period_days": 0.9414529801402793
+    },
+    {
+      "accepted_period_days": null,
+      "failures": [],
+      "flags": [
+        "period_grid_truncated"
+      ],
+      "leading_trial_comparison": {
+        "kind": "integer_harmonic",
+        "reference_period_days": 5.66051,
+        "trial_over_reference": 0.3333333333333333
+      },
+      "name": "TOI-270",
+      "products": [
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 12974,
+          "sector": 3
+        },
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 16436,
+          "sector": 30
+        },
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 28918,
+          "sector": 98
+        }
+      ],
+      "reference_matches_in_alternatives": [
+        {
+          "period_days": 5.6599367894712005,
+          "sensitive_missing_cycles": 0,
+          "supported_cycles": 11
+        }
+      ],
+      "review_reasons": [
+        "period_grid_truncated",
+        "incomplete_evidence",
+        "prior_report",
+        "pinned_historical_prior_catalog"
+      ],
+      "status": "inconclusive_search",
+      "supported_cycles": 12,
+      "tic": "259377017",
+      "trial_period_days": 1.8866455964904
+    },
+    {
+      "accepted_period_days": null,
+      "failures": [
+        {
+          "error": "Insufficient valid flux in tess2021091135823-s0037-0000000447061717-0208-s_lc.fits",
+          "stage": "ingestion",
+          "uri": "mast:TESS/product/tess2021091135823-s0037-0000000447061717-0208-s_lc.fits"
+        }
+      ],
+      "flags": [
+        "fewer_than_three_supported_cycles",
+        "period_grid_truncated"
+      ],
+      "leading_trial_comparison": null,
+      "name": "TOI-1231",
+      "products": [
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 16231,
+          "sector": 9
+        },
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 13354,
+          "sector": 99
+        }
+      ],
+      "reference_matches_in_alternatives": [],
+      "review_reasons": [
+        "fewer_than_three_supported_cycles",
+        "period_grid_truncated",
+        "incomplete_evidence",
+        "prior_report",
+        "pinned_historical_prior_catalog"
+      ],
+      "status": "inconclusive_search",
+      "supported_cycles": 1,
+      "tic": "447061717",
+      "trial_period_days": 32.239175495163515
+    },
+    {
+      "accepted_period_days": null,
+      "failures": [],
+      "flags": [
+        "period_grid_truncated"
+      ],
+      "leading_trial_comparison": {
+        "kind": "integer_harmonic",
+        "reference_period_days": 3.28,
+        "trial_over_reference": 0.5
+      },
+      "name": "TIC 120362137",
+      "products": [
+        {
+          "nominal_exposure_seconds": 1800,
+          "pipeline": "TESS-SPOC",
+          "retained_cadences": 778,
+          "sector": 14
+        },
+        {
+          "nominal_exposure_seconds": 600,
+          "pipeline": "TESS-SPOC",
+          "retained_cadences": 2822,
+          "sector": 53
+        },
+        {
+          "nominal_exposure_seconds": 200,
+          "pipeline": "QLP",
+          "retained_cadences": 10941,
+          "sector": 81
+        }
+      ],
+      "reference_matches_in_alternatives": [
+        {
+          "period_days": 3.2879523530221424,
+          "sensitive_missing_cycles": 0,
+          "supported_cycles": 18
+        },
+        {
+          "period_days": 3.2879358772350478,
+          "sensitive_missing_cycles": 0,
+          "supported_cycles": 15
+        }
+      ],
+      "review_reasons": [
+        "period_grid_truncated",
+        "incomplete_evidence",
+        "pinned_historical_prior_catalog"
+      ],
+      "status": "inconclusive_search",
+      "supported_cycles": 33,
+      "tic": "120362137",
+      "trial_period_days": 1.6439679386175239
+    },
+    {
+      "accepted_period_days": null,
+      "failures": [],
+      "flags": [
+        "possible_half_phase_secondary",
+        "local_controls_unavailable",
+        "period_grid_truncated"
+      ],
+      "leading_trial_comparison": null,
+      "name": "Tau Ceti",
+      "products": [
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 12906,
+          "sector": 3
+        },
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 15783,
+          "sector": 30
+        },
+        {
+          "nominal_exposure_seconds": 120,
+          "pipeline": "SPOC",
+          "retained_cadences": 28889,
+          "sector": 97
+        }
+      ],
+      "reference_matches_in_alternatives": [],
+      "review_reasons": [
+        "possible_half_phase_secondary",
+        "local_controls_unavailable",
+        "period_grid_truncated",
+        "incomplete_evidence",
+        "prior_report",
+        "pinned_historical_prior_catalog"
+      ],
+      "status": "inconclusive_search",
+      "supported_cycles": 9,
+      "tic": "419015728",
+      "trial_period_days": 0.8492870341547977
+    }
+  ],
+  "original_fits_bytes": 29053440,
+  "repair_additional_fits_bytes": 599040
+}

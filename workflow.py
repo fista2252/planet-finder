@@ -161,17 +161,18 @@ def discover(tic):
                 response_sha256=sha(response.content))
 
 
-def choose_products(inventory, limit):
-    best = {}
+def choose_product_groups(inventory, limit):
+    groups = {}
     ordered = sorted(inventory["products"], key=lambda p: (PIPELINES.index(p["provenance_name"]),
                      p["t_exptime"] or 1e8, p["dataURL"]))
     for product in ordered:
-        best.setdefault(int(product["sequence_number"]), product)
-    sectors = sorted(best)
+        sector = int(product["sequence_number"])
+        groups.setdefault(sector, {})[product["dataURL"]] = product
+    sectors = sorted(groups)
     if len(sectors) > limit:
         indexes = [round(i * (len(sectors) - 1) / (limit - 1)) for i in range(limit)] if limit > 1 else [-1]
         sectors = [sectors[i] for i in indexes]
-    return [best[s] for s in sectors]
+    return [list(groups[s].values()) for s in sectors]
 
 
 def product_cache(product, cache):
@@ -362,10 +363,41 @@ def stage_key(*values):
     return sha(json_bytes(values))
 
 
-def run_target(root, config, tic, cache, budget, local_cache, code):
+def ingest_sector(tic, options, cache, budget, local_cache, locked, input_lock, failures):
     from screen import read_curve
-    from search import search
     from urllib3.exceptions import HTTPError
+
+    # A resumed sector keeps its successful product. New sectors can try
+    # up to two alternatives without bypassing the overall byte limit.
+    frozen = next((p for p in options if p["dataURL"] in locked), None)
+    if frozen:
+        failures.extend(locked[frozen["dataURL"]].get("rejected_products", []))
+    first_failure = len(failures)
+    choices = [frozen] if frozen else options[:3]
+    for choice in choices:
+        product = dict(tic=tic, **choice)
+        uri = product["dataURL"]
+        try:
+            file, receipt = fetch_product(product, cache, budget, local_cache)
+            if frozen and locked[uri]["sha256"] != receipt["sha256"]:
+                raise ValueError("Archive bytes differ from this run's frozen input")
+            time, flux, _ = read_curve(product, path=file)
+            if not frozen:
+                if first_failure < len(failures):
+                    failures[first_failure:] = [dict(row, recovered_with=uri) for row in failures[first_failure:]]
+                    receipt = dict(receipt, rejected_products=failures[first_failure:])
+                locked[uri] = receipt
+                write(input_lock, locked)
+            return (dict(sector=product["sequence_number"], time=time, flux=flux),
+                    dict(**product, **locked[uri], cadence_count=len(time), first_btjd=float(time[0]),
+                         last_btjd=float(time[-1])))
+        except (OSError, HTTPError, ValueError, KeyError, IndexError) as exc:
+            failures.append(dict(stage="ingestion", uri=uri, error=str(exc)))
+    return None
+
+
+def run_target(root, config, tic, cache, budget, local_cache, code):
+    from search import search
 
     target_dir = root / "targets" / tic
     path = target_dir / "status.json"
@@ -385,7 +417,7 @@ def run_target(root, config, tic, cache, budget, local_cache, code):
             return checkpoint(cache / "inventory" / f"{tic}.json", stage_key(code, tic, now()[:10]), lambda: discover(tic))
 
         inventory = checkpoint(target_dir / "inventory.json", stage_key(1, tic, "MAST"), get_inventory)
-        products = [dict(tic=tic, **p) for p in choose_products(inventory, config["max_sectors"])]
+        products = choose_product_groups(inventory, config["max_sectors"])
         stage("discovery", "complete" if products else "no_products")
     except (OSError, ValueError) as exc:
         failures.append(dict(stage="discovery", error=str(exc)))
@@ -395,21 +427,12 @@ def run_target(root, config, tic, cache, budget, local_cache, code):
     curves, inputs = [], []
     input_lock = target_dir / "fits-lock.json"
     locked = load(input_lock) if input_lock.is_file() else {}
-    for product in products:
-        try:
-            file, receipt = fetch_product(product, cache, budget, local_cache)
-            uri = receipt["uri"]
-            if uri in locked and locked[uri]["sha256"] != receipt["sha256"]:
-                raise ValueError("Archive bytes differ from this run's frozen input")
-            time, flux, _ = read_curve(product, path=file)
-            if uri not in locked:
-                locked[uri] = receipt
-                write(input_lock, locked)
-            curves.append(dict(sector=product["sequence_number"], time=time, flux=flux))
-            inputs.append(dict(**product, **locked[uri], cadence_count=len(time), first_btjd=float(time[0]),
-                               last_btjd=float(time[-1])))
-        except (OSError, HTTPError, ValueError, KeyError, IndexError) as exc:
-            failures.append(dict(stage="ingestion", uri=product["dataURL"], error=str(exc)))
+    for options in products:
+        result = ingest_sector(tic, options, cache, budget, local_cache, locked, input_lock, failures)
+        if result:
+            curve, product = result
+            curves.append(curve)
+            inputs.append(product)
     stage("ingestion", "complete" if curves and len(curves) == len(products) else "partial" if curves else "unavailable")
     stage("screening_vetting", "running")
     try:
@@ -432,8 +455,10 @@ def run_target(root, config, tic, cache, budget, local_cache, code):
     period = result.get("period_days")
     prior, records = prior_reports(tic, [period] if period else [], catalogs)
     reasons = list(result.get("flags", []))
-    if failures or result["status"] != "measured":
+    if any(not row.get("recovered_with") for row in failures) or result["status"] != "measured":
         reasons.append("incomplete_evidence")
+    if any(p.get("rejected_products") for p in inputs):
+        reasons.append("alternate_product_used")
     if result["status"] == "measured" and result.get("supported_cycles", 0) >= 3:
         reasons.append("repeat_like_signal")
     if records:

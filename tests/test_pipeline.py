@@ -238,6 +238,32 @@ class RunTests(unittest.TestCase):
             self.assertEqual(target["evidence"]["status"], "no_usable_observations")
             self.assertIn("incomplete_evidence", audit.load(run / "review-queue.json")[0]["reasons"])
 
+    def test_ingestion_falls_back_when_preferred_sector_has_negative_flux(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(workflow, "RUNS", Path(temp) / "runs"):
+            root = Path(temp)
+            local = root / "fits"
+            local.mkdir()
+            tic = "123456"
+            time, flux = series(1500)
+            fixture_fits(local / "preferred_lc.fits", tic, time, flux - 2)
+            fixture_fits(local / "alternate_lc.fits", tic, time, flux)
+            base = dict(sequence_number=2, t_exptime=1800, s_ra=20, s_dec=-60)
+            primary = dict(base, dataURL="mast:fixture/preferred_lc.fits", provenance_name="SPOC")
+            alternate = dict(base, dataURL="mast:fixture/alternate_lc.fits", provenance_name="TESS-SPOC")
+            inventory = dict(products=[alternate, primary])
+            with patch.object(workflow, "discover", return_value=inventory), \
+                    patch.object(workflow, "catalogs_for", return_value=[]):
+                run = workflow.create_run({"tics": [tic], "max_sectors": 1}, "fallback")
+                first = workflow.process(run, root / "cache", local)["targets"][0]
+                resumed = workflow.process(run, root / "cache")["targets"][0]
+            self.assertEqual(first["stages"]["ingestion"], "complete")
+            self.assertEqual([p["uri"] for p in first["provenance"]], [alternate["dataURL"]])
+            self.assertEqual(first["failures"][0]["uri"], primary["dataURL"])
+            self.assertEqual(resumed["provenance"], first["provenance"])
+            self.assertEqual(resumed["failures"], first["failures"])
+            self.assertEqual(first["failures"][0]["recovered_with"], alternate["dataURL"])
+            self.assertIn("alternate_product_used", resumed["review_reasons"])
+
     def test_catalog_branch_resolved_once_per_run(self):
         source = dict(workflow.DEFAULT_CATALOG, ref="main")
         raw = b"TIC,period_d,candidate_id\n123,26.02,old\n"
