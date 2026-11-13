@@ -1,0 +1,88 @@
+{
+  "actionable_claims": 0,
+  "duplicate_collection_new_events": 0,
+  "packet_size_unit": "UTF-8 bytes",
+  "runs": {
+    "worker-order-pilot-extension-3b8bef46": {
+      "new_fits_bytes": 2373120,
+      "summary": {
+        "artifact": "runs/worker-order-pilot-extension-3b8bef46/report.json",
+        "model_calls": 0,
+        "new_events": 1,
+        "pending": [
+          {
+            "count": 3,
+            "kind": "uncertain",
+            "packet_bytes": 2997
+          }
+        ],
+        "run_id": "worker-order-pilot-extension-3b8bef46",
+        "wall_seconds": 26.353
+      },
+      "targets": [
+        {
+          "cycles": 1,
+          "failures": [],
+          "leading_trial": 13.926528378848928,
+          "status": "inconclusive_search",
+          "tic": "307815853"
+        },
+        {
+          "cycles": 4,
+          "failures": [],
+          "leading_trial": 3.851356834206133,
+          "status": "inconclusive_search",
+          "tic": "140920261"
+        }
+      ]
+    },
+    "worker-order-smoke-31b83a83": {
+      "new_fits_bytes": 0,
+      "summary": {
+        "artifact": "runs/worker-order-smoke-31b83a83/report.json",
+        "model_calls": 0,
+        "new_events": 2,
+        "pending": [
+          {
+            "count": 2,
+            "kind": "uncertain",
+            "packet_bytes": 1847
+          }
+        ],
+        "run_id": "worker-order-smoke-31b83a83",
+        "wall_seconds": 27.593
+      },
+      "targets": [
+        {
+          "cycles": 36,
+          "failures": [],
+          "leading_trial": 1.2741870008958704,
+          "status": "inconclusive_search",
+          "tic": "22529346"
+        },
+        {
+          "cycles": 2,
+          "failures": [],
+          "leading_trial": 16.055800883179447,
+          "status": "inconclusive_search",
+          "tic": "150428135"
+        },
+        {
+          "cycles": 4,
+          "failures": [],
+          "leading_trial": 0.6038155741990178,
+          "status": "inconclusive_search",
+          "tic": "251848941"
+        },
+        {
+          "cycles": 0,
+          "failures": [],
+          "leading_trial": 27.318989071038253,
+          "status": "inconclusive_search",
+          "tic": "410153553"
+        }
+      ]
+    }
+  },
+  "token_usage": null
+}

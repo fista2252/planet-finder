@@ -1,0 +1,31 @@
+{
+  "download_mib": 48,
+  "durations_days": [
+    0.06,
+    0.12,
+    0.2
+  ],
+  "grid_points": 8000,
+  "max_period_days": 40,
+  "max_sectors": 2,
+  "min_period_days": 0.5,
+  "prior_sources": [
+    {
+      "kind": "community",
+      "label_column": "candidate_id",
+      "name": "eumemic",
+      "path": "candidates/ephemerides.csv",
+      "period_column": "period_d",
+      "ref": "e2eee928fd621f75c1621f6b4206d34bb222ae59",
+      "repository": "eumemic/exoplanets",
+      "tic_column": "TIC"
+    }
+  ],
+  "seeds": {},
+  "tics": [
+    "22529346",
+    "150428135",
+    "251848941",
+    "410153553"
+  ]
+}

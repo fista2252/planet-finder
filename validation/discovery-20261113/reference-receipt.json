@@ -1,0 +1,5 @@
+{
+  "response_sha256": "09079fa6045d52d17c8d9fc04d6418922a316709a813b6c6fe535007020fe7d9",
+  "retrieved_at": "2026-11-13T07:33:55+00:00",
+  "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+hostname%2Ctic_id%2Cpl_name%2Cpl_orbper%2Cdiscoverymethod+from+pscomppars+where+hostname+in+%28%27TOI-700%27%2C%27WASP-121%27%2C%27TOI-178%27%2C%27LHS+3844%27%29+order+by+hostname%2Cpl_orbper&format=csv"
+}

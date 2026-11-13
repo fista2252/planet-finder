@@ -1,0 +1,12 @@
+{
+  "config_sha256": "31b83a830309e1f8352327ada8194f353d166cfa47616cab9984d008f2698e16",
+  "frozen_at": "2026-11-13T07:34:43+00:00",
+  "known_positive_controls": [
+    "22529346",
+    "150428135",
+    "251848941",
+    "410153553"
+  ],
+  "notes": "WASP-121 short-period control; TOI-700 and TOI-178 multiple-signal controls; LHS 3844 intentional out-of-band control because its known period is below the supported 0.5-day floor. Compare leading and accepted periods to archive reference with relative tolerance 0.001.",
+  "seeded": false
+}

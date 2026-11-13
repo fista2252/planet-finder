@@ -1,0 +1,33 @@
+{
+  "config_sha256": "3b8bef463d3ce1685b1f721fa8c10d703824d69a9e4f48ef6b3a7417c14c183f",
+  "frozen_at": "2026-11-13T07:40:54+00:00",
+  "selection": "First two eligible non-pilot T16 targets sorted by number of later sectors, depth, then TIC",
+  "targets": [
+    {
+      "CCD": "3",
+      "Camera": "1",
+      "Depth": "0.0131",
+      "Duration": "0.1425",
+      "GAIAID": "3356148674149834752",
+      "Sector": "6",
+      "TICID": "307815853",
+      "Tc": "1478.07283",
+      "exclusion": "eligible",
+      "later_sectors": "33;43;44;45;71;72;87",
+      "matches": ""
+    },
+    {
+      "CCD": "1",
+      "Camera": "3",
+      "Depth": "0.0061",
+      "Duration": "0.1717",
+      "GAIAID": "5521523751472135552",
+      "Sector": "8",
+      "TICID": "140920261",
+      "Tc": "1522.1709",
+      "exclusion": "eligible",
+      "later_sectors": "9;35;36;61;62;88;89",
+      "matches": ""
+    }
+  ]
+}

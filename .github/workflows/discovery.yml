@@ -1,0 +1,45 @@
+name: Deterministic discovery worker
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 11 * * 2-6,0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: planet-finder-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    if: github.event_name == 'workflow_dispatch' || vars.PLANET_FINDER_DISCOVERY == 'enabled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: |
+            .audit-cache/discovery
+            .audit-cache/shared
+          key: discovery-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: discovery-v1-
+      - name: Run bounded archive search
+        run: python discovery_worker.py tick --config validation/discovery-20261113/pilot-extension-config.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: discovery-receipts
+          path: |
+            .audit-cache/discovery/*.json
+            .audit-cache/discovery/events.sqlite
+            runs/worker-*/report.json
+            runs/worker-*/review-queue.json
+          retention-days: 14

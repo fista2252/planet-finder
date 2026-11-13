@@ -7,6 +7,7 @@ import math
 import re
 import shutil
 import sys
+import time
 from contextlib import contextmanager
 from datetime import UTC, datetime
 from importlib.metadata import version
@@ -143,7 +144,11 @@ def discover(tic):
     query = dict(service="Mast.Caom.Filtered", params=dict(columns="*", filters=filters),
                  format="json", pagesize=2000, page=1)
     # A target with more than one response page needs explicit scope review.
-    response = requests.post(MAST, data={"request": json.dumps(query)}, timeout=(8, 35))
+    try:
+        response = requests.post(MAST, data={"request": json.dumps(query)}, timeout=(8, 35))
+    except (requests.ConnectionError, requests.Timeout):
+        time.sleep(2)
+        response = requests.post(MAST, data={"request": json.dumps(query)}, timeout=(8, 35))
     response.raise_for_status()
     result = response.json()
     data = result.get("data")
@@ -436,11 +441,16 @@ def run_target(root, config, tic, cache, budget, local_cache, code):
     stage("ingestion", "complete" if curves and len(curves) == len(products) else "partial" if curves else "unavailable")
     stage("screening_vetting", "running")
     try:
-        result = checkpoint(target_dir / "measurements.json", stage_key(code, config, inputs),
-                            lambda: search(curves, config, config["seeds"].get(tic)))
+        search_config = {name: config[name] for name in ("min_period_days", "max_period_days", "durations_days", "grid_points")}
+        seed = config["seeds"].get(tic)
+        inputs_key = [(p["uri"], p["sha256"], p["sequence_number"], p["provenance_name"]) for p in inputs]
+        key = stage_key(code, search_config, seed, inputs_key)
+        result = checkpoint(target_dir / "measurements.json", key, lambda: checkpoint(
+            cache / "measurements" / f"{tic}-{key}.json", key, lambda: search(curves, config, seed)))
         stage("screening_vetting", "complete" if result["status"] == "measured" else result["status"])
     except (OSError, ValueError, ArithmeticError) as exc:
-        failures.append(dict(stage="screening_vetting", error=str(exc)))
+        failures.append(dict(stage="screening_vetting", error=str(exc),
+                             failure_class="environment" if isinstance(exc, OSError) else "computation"))
         result = {"status": "failed"}
         stage("screening_vetting", "failed")
     stage("catalog", "running")
