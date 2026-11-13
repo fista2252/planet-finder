@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "kind": "toi",
+      "matches": [],
+      "retrieved_at": "2026-11-13T07:41:19+00:00",
+      "rows_checked": 0,
+      "scope": "exact TIC",
+      "sha256": "5a02640bcb08fbfd8dfa8e839d97e10081a5a92db8eebbeecec8536eec00920d",
+      "source_modified_at": null,
+      "source_name": "toi",
+      "state": "checked_no_rows",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tid%2Cpl_orbper%2Ctoi+from+toi+where+tid%3D140920261&format=csv"
+    },
+    {
+      "kind": "confirmed",
+      "matches": [],
+      "retrieved_at": "2026-11-13T07:41:20+00:00",
+      "rows_checked": 0,
+      "scope": "exact TIC",
+      "sha256": "030f53860e820d7fbe29a1db3eca0124f4e37f04852c1f2b5feac03449325341",
+      "source_modified_at": null,
+      "source_name": "confirmed",
+      "state": "checked_no_rows",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+tic_id%2Cpl_orbper%2Cpl_name+from+pscomppars+where+tic_id%3D%27TIC+140920261%27&format=csv"
+    },
+    {
+      "kind": "community",
+      "matches": [],
+      "requested_ref": "e2eee928fd621f75c1621f6b4206d34bb222ae59",
+      "retrieved_at": "2026-11-13T12:47:33+00:00",
+      "revision": "e2eee928fd621f75c1621f6b4206d34bb222ae59",
+      "revision_date": "2026-11-04",
+      "rows_checked": 740,
+      "scope": "exact TIC",
+      "sha256": "795b431cf3c057115fb09b055fe20cfa03482d24448b324a9920b27161db42a5",
+      "source_modified_at": null,
+      "source_name": "eumemic",
+      "state": "checked_snapshot",
+      "url": "https://github.com/eumemic/exoplanets/blob/e2eee928fd621f75c1621f6b4206d34bb222ae59/candidates/ephemerides.csv"
+    }
+  ],
+  "failures": [],
+  "literature": "Exact TIC web search did not surface a target-specific period. The original single event is listed in the T16 catalog."
+}

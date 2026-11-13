@@ -1,0 +1,295 @@
+{
+  "baseline": {
+    "anchor_measurement": [
+      {
+        "cadence": 0.02083356371622358,
+        "depth": 0.007220997847752335,
+        "duration": 0.1717,
+        "error": 0.0009247739391192746,
+        "points": 8,
+        "score": 7.808392453867574,
+        "tc": 1522.1709
+      }
+    ],
+    "disposition": "unresolved",
+    "inputs": [
+      {
+        "sha256": "a862ca285462395451f18c5352f5ab52ba1c4e48815534bac352dccb265e80f9",
+        "uri": "mast:HLSP/qlp/s0008/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0008-0000000140920261_tess_v01_llc.fits"
+      },
+      {
+        "sha256": "4b2462b61fd3eb7212339eb54c3c0d1b9da9f718ecf48b223e79bdb61dcf0afd",
+        "uri": "mast:HLSP/qlp/s0061/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0061-0000000140920261_tess_v01_llc.fits"
+      },
+      {
+        "sha256": "1199f1f3763f0d1abd6dc74e9ff8c48678dc26c1d15428cdc7a175b1def6c4c8",
+        "uri": "mast:HLSP/qlp/s0089/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0089-0000000140920261_tess_v01_llc.fits"
+      }
+    ],
+    "next_check": "Use an unused intermediate QLP sector to test the aliases at fixed timing windows before any refit.",
+    "original_t16_epoch_btjd": 1522.1709,
+    "results": [
+      {
+        "epoch_btjd": 2985.631834841218,
+        "per_sector": {
+          "61": {
+            "insufficient_sensitivity": 4,
+            "supported": 2
+          },
+          "8": {
+            "insufficient_cadence": 2,
+            "insufficient_sensitivity": 3,
+            "supported": 2
+          },
+          "89": {
+            "insufficient_cadence": 1,
+            "insufficient_sensitivity": 6
+          }
+        },
+        "period_days": 3.851356834206133,
+        "sensitive_misses": 0,
+        "support": 4
+      },
+      {
+        "epoch_btjd": 1522.1709,
+        "per_sector": {
+          "61": {
+            "insufficient_sensitivity": 5,
+            "supported": 1
+          },
+          "8": {
+            "insufficient_cadence": 2,
+            "insufficient_sensitivity": 3,
+            "supported": 2
+          },
+          "89": {
+            "insufficient_cadence": 1,
+            "insufficient_sensitivity": 6
+          }
+        },
+        "period_days": 3.851356834206133,
+        "sensitive_misses": 0,
+        "support": 3
+      },
+      {
+        "epoch_btjd": 2985.631834841218,
+        "per_sector": {
+          "61": {
+            "insufficient_cadence": 1,
+            "insufficient_sensitivity": 10,
+            "supported": 2
+          },
+          "8": {
+            "insufficient_cadence": 4,
+            "insufficient_sensitivity": 7,
+            "supported": 2
+          },
+          "89": {
+            "insufficient_cadence": 2,
+            "insufficient_sensitivity": 13
+          }
+        },
+        "period_days": 1.9256784171030665,
+        "sensitive_misses": 0,
+        "support": 4
+      },
+      {
+        "epoch_btjd": 1522.1709,
+        "per_sector": {
+          "61": {
+            "insufficient_cadence": 2,
+            "insufficient_sensitivity": 10,
+            "supported": 1
+          },
+          "8": {
+            "insufficient_cadence": 5,
+            "insufficient_sensitivity": 6,
+            "supported": 2
+          },
+          "89": {
+            "insufficient_cadence": 2,
+            "insufficient_sensitivity": 13
+          }
+        },
+        "period_days": 1.9256784171030665,
+        "sensitive_misses": 0,
+        "support": 3
+      },
+      {
+        "epoch_btjd": 2985.631834841218,
+        "per_sector": {
+          "61": {
+            "insufficient_cadence": 3,
+            "insufficient_sensitivity": 14,
+            "supported": 2
+          },
+          "8": {
+            "insufficient_cadence": 7,
+            "insufficient_sensitivity": 10,
+            "supported": 2
+          },
+          "89": {
+            "insufficient_cadence": 4,
+            "insufficient_sensitivity": 19
+          }
+        },
+        "period_days": 1.2837856114020443,
+        "sensitive_misses": 0,
+        "support": 4
+      },
+      {
+        "epoch_btjd": 1522.1709,
+        "per_sector": {
+          "61": {
+            "insufficient_cadence": 3,
+            "insufficient_sensitivity": 15,
+            "supported": 1
+          },
+          "8": {
+            "insufficient_cadence": 6,
+            "insufficient_sensitivity": 10,
+            "sensitive_non_detection": 1,
+            "supported": 2
+          },
+          "89": {
+            "insufficient_cadence": 3,
+            "insufficient_sensitivity": 19
+          }
+        },
+        "period_days": 1.2837856114020443,
+        "sensitive_misses": 1,
+        "support": 3
+      }
+    ],
+    "source_report": "runs/worker-order-pilot-extension-3b8bef46/report.json",
+    "source_report_sha256": "83add6622715fb26885bb74680d2254cbf68d640b8cb2c3971a2640d071b5586",
+    "tic": "140920261",
+    "trial_duration_days": 0.16
+  },
+  "baseline_sha256": "92ba952f07c437e5de0113937ed08b887a23a0bebc8b4d90388e871cd3247956",
+  "commit": "1b487d9060b4e18da25132d34e29bbcaffc1c67d",
+  "duration_days": 0.16,
+  "fits_budget_bytes": 12582912,
+  "frozen_at": "2026-11-13T12:46:46+00:00",
+  "inventory_response_sha256": "4648626f74881386e70da9e787e146ed3c5a08a3e171dc9d04afc3cb15ff3942",
+  "inventory_sha256": "a18f09f8bde61aaa8179b6d7d8d7d8dc951aca729ed9cdd39d5d8563b36bbca9",
+  "models": [
+    {
+      "epoch_btjd": 2985.631834841218,
+      "period_days": 3.851356834206133
+    },
+    {
+      "epoch_btjd": 1522.1709,
+      "period_days": 3.851356834206133
+    },
+    {
+      "epoch_btjd": 2985.631834841218,
+      "period_days": 1.9256784171030665
+    },
+    {
+      "epoch_btjd": 1522.1709,
+      "period_days": 1.9256784171030665
+    },
+    {
+      "epoch_btjd": 2985.631834841218,
+      "period_days": 1.2837856114020443
+    },
+    {
+      "epoch_btjd": 1522.1709,
+      "period_days": 1.2837856114020443
+    }
+  ],
+  "new_products": [
+    {
+      "dataRights": "PUBLIC",
+      "dataURL": "mast:HLSP/qlp/s0009/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0009-0000000140920261_tess_v01_llc.fits",
+      "obs_id": "hlsp_qlp_tess_ffi_s0009-0000000140920261_tess_v01_llc",
+      "provenance_name": "QLP",
+      "s_dec": -47.1748911729,
+      "s_ra": 128.659046515,
+      "sequence_number": 9,
+      "t_exptime": 1800
+    },
+    {
+      "dataRights": "PUBLIC",
+      "dataURL": "mast:HLSP/qlp/s0036/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0036-0000000140920261_tess_v01_llc.fits",
+      "obs_id": "hlsp_qlp_tess_ffi_s0036-0000000140920261_tess_v01_llc",
+      "provenance_name": "QLP",
+      "s_dec": -47.1748911729,
+      "s_ra": 128.659046515,
+      "sequence_number": 36,
+      "t_exptime": 600
+    },
+    {
+      "dataRights": "PUBLIC",
+      "dataURL": "mast:HLSP/qlp/s0062/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0062-0000000140920261_tess_v01_llc.fits",
+      "obs_id": "hlsp_qlp_tess_ffi_s0062-0000000140920261_tess_v01_llc",
+      "provenance_name": "QLP",
+      "s_dec": -47.1748911729,
+      "s_ra": 128.659046515,
+      "sequence_number": 62,
+      "t_exptime": 200
+    }
+  ],
+  "old_products": [
+    {
+      "bytes": 63360,
+      "cadence_count": 683,
+      "dataRights": "PUBLIC",
+      "dataURL": "mast:HLSP/qlp/s0008/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0008-0000000140920261_tess_v01_llc.fits",
+      "first_btjd": 1518.0967698002194,
+      "last_btjd": 1541.930286858549,
+      "method": "public archive",
+      "obs_id": "hlsp_qlp_tess_ffi_s0008-0000000140920261_tess_v01_llc",
+      "provenance_name": "QLP",
+      "retrieved_at": "2026-11-13T07:41:12+00:00",
+      "s_dec": -47.1748911729,
+      "s_ra": 128.659046515,
+      "sequence_number": 8,
+      "sha256": "a862ca285462395451f18c5352f5ab52ba1c4e48815534bac352dccb265e80f9",
+      "t_exptime": 1800,
+      "tic": "140920261",
+      "uri": "mast:HLSP/qlp/s0008/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0008-0000000140920261_tess_v01_llc.fits"
+    },
+    {
+      "bytes": 653760,
+      "cadence_count": 9326,
+      "dataRights": "PUBLIC",
+      "dataURL": "mast:HLSP/qlp/s0061/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0061-0000000140920261_tess_v01_llc.fits",
+      "first_btjd": 2963.760138067138,
+      "last_btjd": 2987.779118596735,
+      "method": "public archive",
+      "obs_id": "hlsp_qlp_tess_ffi_s0061-0000000140920261_tess_v01_llc",
+      "provenance_name": "QLP",
+      "retrieved_at": "2026-11-13T07:41:13+00:00",
+      "s_dec": -47.1748911729,
+      "s_ra": 128.659046515,
+      "sequence_number": 61,
+      "sha256": "4b2462b61fd3eb7212339eb54c3c0d1b9da9f718ecf48b223e79bdb61dcf0afd",
+      "t_exptime": 200,
+      "tic": "140920261",
+      "uri": "mast:HLSP/qlp/s0061/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0061-0000000140920261_tess_v01_llc.fits"
+    },
+    {
+      "bytes": 694080,
+      "cadence_count": 11056,
+      "dataRights": "PUBLIC",
+      "dataURL": "mast:HLSP/qlp/s0089/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0089-0000000140920261_tess_v01_llc.fits",
+      "first_btjd": 3718.18479132749,
+      "last_btjd": 3746.9208593982466,
+      "method": "public archive",
+      "obs_id": "hlsp_qlp_tess_ffi_s0089-0000000140920261_tess_v01_llc",
+      "provenance_name": "QLP",
+      "retrieved_at": "2026-11-13T07:41:15+00:00",
+      "s_dec": -47.1748911729,
+      "s_ra": 128.659046515,
+      "sequence_number": 89,
+      "sha256": "1199f1f3763f0d1abd6dc74e9ff8c48678dc26c1d15428cdc7a175b1def6c4c8",
+      "t_exptime": 200,
+      "tic": "140920261",
+      "uri": "mast:HLSP/qlp/s0089/0000/0001/4092/0261/hlsp_qlp_tess_ffi_s0089-0000000140920261_tess_v01_llc.fits"
+    }
+  ],
+  "rule": "At all three offsets, require a nominal score of at least 5 for the half-depth box injection and require measured depth plus five local errors below that depth. At least two sensitive new cycles conditionally contradict the fixed trial. No fit or phase selection on the new data. Use only the original sectors to set the injection depth.",
+  "tic": "140920261"
+}
