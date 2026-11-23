@@ -1,0 +1,88 @@
+{
+  "week": "2026-11-23",
+  "disposition": "blocked_environment",
+  "kind": "external checkpoint for partial read-only weekly checks; canonical maintenance CLI ledger could not be written",
+  "repository": {
+    "local_head": "25512680d1e4a9ac2fda85eb6836367f88bf8e61",
+    "local_tree": "d4d7c6413d4c3c6f88b102647cdc15824b9479b3",
+    "isolated_checkout_dirty": false,
+    "original_checkout_dirty": true,
+    "upstream_main_checked": "c8be9245401ee53c88e7f26cc1e220d9eb13f9bb",
+    "open_pull_requests_found": 0,
+    "github_combined_status_entries": 0,
+    "pull_request_workflow_runs_found": 0,
+    "exact_head_ci_success_verified": false,
+    "workflow_lookup_limitation": "Connector only returns pull-request runs. Public Actions page was unavailable to web tool."
+  },
+  "checks": {
+    "dependencies": "passed: numpy, astropy, requests",
+    "javascript": "node --check site/app.js emitted no diagnostics",
+    "regression_subset": {
+      "passed": 12,
+      "environment_errors": 1,
+      "seconds": 1.961,
+      "error_case": "test_fits_download_budget_refuses_before_network",
+      "reason": "Python could not create a temporary directory, before reaching the test assertions.",
+      "full_suite_run": false
+    },
+    "publication": {
+      "mode": "fresh audit.build with checkpoint bypass and output writes captured in memory, bypassing disk I/O only",
+      "compared": 10,
+      "differing": [],
+      "targets": 24,
+      "predictions": 18
+    },
+    "cached_examples": [
+      {
+        "status": "ambiguous_period",
+        "cycles": 4,
+        "sha256": "43c280739f93745450af9650e87bf30f46bc2340a13957dafda9c25ea2c53d86"
+      },
+      {
+        "status": "measured",
+        "cycles": 3,
+        "sha256": "63f6983143487450849df4d4077232b230916096e39f73287dc637fd292e8838"
+      }
+    ],
+    "benchmark": {
+      "definition_sha256": "727b940558c63d1946fcd6c42fba4c16834629f3c3cc91bc42d4e84c59fc7210",
+      "baseline_sha256": "582ce53c07de19e07f46260ba4859146471f2d404fafe51e8a805bfdf2bf671f",
+      "recovery": [
+        1,
+        4
+      ],
+      "abstention": [
+        3,
+        4
+      ],
+      "wrong_period": [
+        0,
+        4
+      ],
+      "false_alarm": [
+        0,
+        2
+      ],
+      "violations": [],
+      "metrics_match_baseline": true,
+      "blind_holdout": false
+    }
+  },
+  "catalog": {
+    "eumemic_pin": "e2eee928fd621f75c1621f6b4206d34bb222ae59",
+    "revision_date": "2026-11-04",
+    "age_days": 19,
+    "upstream_main_matches_pin": true,
+    "live_exofop_and_exoplanet_archive_refresh": "not run"
+  },
+  "selection": {
+    "first_backlog_item": "TECH-001",
+    "state": "proposed",
+    "selected_for_implementation": false,
+    "reason": "No reproduced product defect, no validated ready item, and exact upstream CI and writable runner unverified."
+  },
+  "repair_attempts": 0,
+  "new_archive_bytes": 0,
+  "change": "Checkpoint only",
+  "next": "Verify main and its successful CI through the workflow provider, use a clean isolated checkout at that exact revision with writable temporary space, then run and record the full standard maintenance health check. Before any TECH-001 scoring change, define development and reserved validation noise fixtures."
+}
