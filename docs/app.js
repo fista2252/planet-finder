@@ -100,11 +100,11 @@ function current(t) {
 
 function selectTarget(t, updateHash = true) {
   selected = t.tic;
-  if (updateHash) history.replaceState(null, "", "#tic-" + t.tic);
+  if (updateHash && location.hash !== "#tic-" + t.tic) history.pushState(null, "", "#tic-" + t.tic);
   for (const button of el("list").querySelectorAll("button")) button.setAttribute("aria-pressed", button.dataset.tic === selected);
   const coord = t.coordinates_icrs_deg ?? [t.ra_deg, t.dec_deg];
-  el("detail").innerHTML = '<span class="pill ' + (t.prior_status.startsWith("recovered") ? "recovered" : "") + '">' +
-    esc(t.prior_status === "unresolved" ? "Unresolved priority" : t.prior_status) + '</span><h3>TIC ' + esc(t.tic) + '</h3><p>' +
+  el("detail").innerHTML = '<div class="target-heading"><div><span class="pill ' + (t.prior_status.startsWith("recovered") ? "recovered" : "") + '">' +
+    esc(t.prior_status === "unresolved" ? "Unresolved priority" : t.prior_status) + '</span><h3>TIC ' + esc(t.tic) + '</h3></div><a class="target-link" href="#tic-' + esc(t.tic) + '">Target link</a></div><p>' +
     esc(t.review || "Run evidence") + ' · ICRS ' + num(coord[0], 5) + '°, ' + num(coord[1], 5) + '°</p>' +
     (run.run_id ? current(t) : archived(t)) + '<div><h3>Prior reports</h3>' + links(t) + '</div>' +
     '<p><a href="https://exofop.ipac.caltech.edu/tess/target.php?id=' + esc(t.tic) + '">ExoFOP target ↗</a></p>';
@@ -117,6 +117,7 @@ function listTargets() {
     .filter(t => t.tic.includes(query) && (filter === "all" ||
     (filter === "flagged" && queued.has(t.tic)) || (filter === "recovered" && t.prior_status.startsWith("recovered")) ||
     (filter === "unresolved" && t.prior_status === "unresolved")));
+  el("result-count").textContent = visible.length + " of " + run.targets.length + " targets";
   el("list").replaceChildren();
   for (const t of visible) {
     const button = document.createElement("button");
@@ -124,12 +125,15 @@ function listTargets() {
     button.dataset.tic = t.tic;
     button.innerHTML = "<strong>TIC " + esc(t.tic) + "</strong><small>" +
       esc(t.prior_status === "unresolved" ? t.review ?? words(t.evidence.status) : t.prior_status) + "</small>";
-    button.addEventListener("click", () => selectTarget(t));
+    button.addEventListener("click", () => {
+      selectTarget(t);
+      if (matchMedia("(max-width: 740px)").matches) el("detail").focus();
+    });
     el("list").append(button);
   }
   const initial = visible.find(t => t.tic === selected) ?? visible[0];
   if (initial) selectTarget(initial, false);
-  else el("detail").textContent = "No targets match these filters.";
+  else el("detail").textContent = "No targets match. Try a different TIC or status filter.";
 }
 
 function planner() {
@@ -187,10 +191,22 @@ async function initialize() {
     el("search").addEventListener("input", listTargets);
     el("filter").addEventListener("change", listTargets);
     listTargets();
+    window.addEventListener("hashchange", () => {
+      const target = run.targets.find(t => location.hash === "#tic-" + t.tic);
+      if (!target) return;
+      el("search").value = "";
+      el("filter").value = "all";
+      selected = target.tic;
+      listTargets();
+      el("detail").focus();
+    });
     planner();
     el("message").hidden = true;
     el("targets").hidden = false;
     el("planner").hidden = false;
+    el("research").hidden = Boolean(run.run_id);
+    if (run.run_id) document.querySelector('nav a[href="#research"]').hidden = true;
+    if (location.hash.startsWith("#tic-")) el("targets").scrollIntoView();
   } catch (error) {
     el("message").textContent = "Run data could not be loaded. Serve the export with python -m http.server --directory EXPORT. " + error.message;
   }
