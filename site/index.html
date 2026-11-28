@@ -12,16 +12,17 @@
   <header class="top"><div class="frame top-inner">
     <a class="brand" href="./"><span class="mark" aria-hidden="true">◌</span> Planet Finder</a>
     <nav aria-label="Main navigation">
-      <a href="#targets">Targets</a><a href="#planner">Transit planner</a>
+      <a href="#targets">Targets</a><a href="#research">Research</a><a href="#planner">Transit planner</a>
       <a href="https://github.com/fista2252/planet-finder#start-a-run">Run on your computer ↗</a>
     </nav>
   </div></header>
   <main class="frame">
+    <a href="#targets" class="skip">Skip to targets</a>
     <section class="intro" aria-labelledby="page-title">
       <div><p class="kicker" id="run-label">TESS transit research</p>
       <h1 id="page-title">Planet Finder</h1>
       <p class="lede">Inspect transit evidence from public TESS light curves. Trace each measurement back to its source and see which signals still need follow-up.</p></div>
-      <div class="summary" id="summary" aria-label="Run summary"></div>
+      <div class="run-panel"><p class="kicker">Current dataset</p><div class="summary" id="summary" aria-label="Run summary"></div><a href="#targets" class="browse">Explore targets <span aria-hidden="true">↓</span></a></div>
     </section>
     <p id="message" role="status">Loading run data…</p>
     <noscript>This explorer uses JavaScript. You can read the machine-readable <a href="data.json">run data</a> directly.</noscript>
@@ -34,9 +35,25 @@
             <label for="filter">Filter by status</label>
             <select id="filter"><option value="all">All targets</option><option value="flagged">Flagged for review</option><option value="recovered">Recovered prior period</option><option value="unresolved">Unresolved priority</option></select>
           </div>
+          <p id="result-count" class="result-count" role="status"></p>
           <div id="list"></div>
         </aside>
-        <article class="detail" id="detail" aria-label="Selected target evidence"></article>
+        <article class="detail" id="detail" tabindex="-1" aria-label="Selected target evidence"></article>
+      </div>
+    </section>
+    <section id="research" aria-labelledby="research-heading" hidden>
+      <div class="section-head"><div><p class="kicker">Latest investigation</p><h2 id="research-heading">Research results</h2></div>
+        <a href="https://github.com/fista2252/planet-finder/tree/main/validation/discovery-20261128">Campaign record ↗</a></div>
+      <div class="research-grid">
+        <article class="research-feature">
+          <div class="research-copy"><span class="pill event">Recurring eclipse · companion unresolved</span>
+            <h3>TIC 99769876</h3><p>Nine ground-based ZTF measurements across seven predicted eclipse windows showed 2.27% average dimming. TESS provided the 19.086-day timing prediction.</p>
+            <a href="https://github.com/fista2252/planet-finder/blob/main/validation/discovery-20261128/tic99769876-independent-ztf.md">Read the eclipse analysis ↗</a>
+          </div>
+          <img src="ztf-predicted-eclipses.png" width="1505" height="735" loading="lazy" alt="Nine ZTF points around the predicted eclipse, with deeper dimming near the center">
+        </article>
+        <article class="research-note"><p class="kicker">Source localization</p><h3>Two signals traced to neighbors</h3><p>Difference images place the dips attributed to TIC 140920261 and TIC 418817415 away from their original targets.</p>
+          <a href="https://github.com/fista2252/planet-finder/blob/main/validation/discovery-20261128/README.md">Read the 93-target survey ↗</a></article>
       </div>
     </section>
     <section id="planner" aria-labelledby="planner-heading" hidden>

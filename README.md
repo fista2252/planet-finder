@@ -57,6 +57,10 @@ python workflow.py run current-priors
 
 Set `prior_sources` to a list of up to six CSV sources. Each entry declares `name`, `kind`, `tic_column`, `period_column` and `label_column`, plus either `repository`, `ref` and `path`, or a public HTTPS `url`. Kinds include `community`, `ctoi`, `eclipsing_binary` and `tce`. Use the EB or TCE kind with an archive CSV that provides a TIC column and periods in days. Built-in NASA checks run in addition to these sources. Each run freezes CSV bytes and their digest, and records the resolved GitHub commit and date when available. An endpoint without a version exposes the content hash, retrieval time and any server modification date. Matching only covers the selected sources and their exact TIC records.
 
+### Optional transit diagnostics
+
+For a completed run, use [the experimental diagnostics](docs/experimental-techniques.md) to compare a box and trapezoid and check local scores against quiet or noisy control windows. The command uses verified cached FITS and leaves the run's original results in place.
+
 ## Imported pilot and verification
 
 ```sh
